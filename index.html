@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +40,7 @@
     "name": "Canvas Theory",
     "url": "https://www.canvastheory.in/",
     "logo": "https://www.canvastheory.in/assets/icons/icon-512.png",
-    "sameAs": ["https://www.instagram.com/canvastheory"],
+    "sameAs": ["https://www.instagram.com/crafts.by.nish/"],
     "description": "Handcrafted custom denim jackets and tote bags made to order in Bangalore, India."
   }
   </script>
@@ -57,6 +56,23 @@
       "@type": "Offer",
       "priceCurrency": "INR",
       "price": "2499",
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.canvastheory.in/#order"
+    }
+  }
+  </script>
+  <!-- Structured data: Product (wall clock) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Hand-Painted Quartz Wall Clock",
+    "description": "Plain quartz wall clock, hand-painted to order. Sold without glass, fully working. Choose Roman or plain numerals.",
+    "brand": { "@type": "Brand", "name": "Canvas Theory" },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "INR",
+      "price": "999",
       "availability": "https://schema.org/InStock",
       "url": "https://www.canvastheory.in/#order"
     }
@@ -88,8 +104,45 @@
   <!-- Razorpay -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-  <!-- Google Identity -->
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <!-- Firebase (Auth + Functions) — type=module enables ES imports -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+    import {
+      getAuth, GoogleAuthProvider, signInWithPopup, signOut as fbSignOut,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+    import {
+      getFunctions, httpsCallable
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-functions.js";
+
+    // ⚠ FILL THESE IN — Firebase Console → Project Settings → Your apps → Web app → SDK setup & config
+    // See the setup guide for exactly where each value comes from.
+    const firebaseConfig = {
+      apiKey:            "YOUR_FIREBASE_API_KEY",
+      authDomain:         "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId:          "YOUR_PROJECT_ID",
+      storageBucket:      "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId:  "YOUR_SENDER_ID",
+      appId:              "YOUR_APP_ID",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const functions = getFunctions(app, 'asia-south1'); // must match setGlobalOptions region in index.js
+    const provider = new GoogleAuthProvider();
+
+    // Expose what the rest of the page (non-module scripts) needs to call.
+    // Real Firebase Auth verifies the Google identity server-side — this
+    // replaces the old client-only JWT parsing, which never checked the
+    // token signature and could be forged.
+    window.__ctAuth = {
+      signIn: () => signInWithPopup(auth, provider),
+      signOut: () => fbSignOut(auth),
+      onAuthStateChanged: (cb) => onAuthStateChanged(auth, cb),
+      createOrder: (data) => httpsCallable(functions, 'createOrder')(data),
+      getMyOrders: () => httpsCallable(functions, 'getMyOrders')(),
+    };
+  </script>
 
 
   <style>
@@ -629,51 +682,6 @@
     }
 
     /* ════════════════════════════════════════
-       MARQUEE — dual speed, two tracks
-    ════════════════════════════════════════ */
-    .marquee-wrap {
-      background: var(--emerald);
-      overflow: hidden;
-      padding: 0;
-    }
-    .marquee-band {
-      padding: 0.9rem 0;
-      overflow: hidden;
-      white-space: nowrap;
-      border-bottom: 1px solid rgba(253,246,240,0.1);
-    }
-    .marquee-band-2 {
-      padding: 0.9rem 0;
-      overflow: hidden;
-      white-space: nowrap;
-      direction: rtl;
-    }
-    .marquee-track {
-      display: inline-flex;
-      animation: marquee 24s linear infinite;
-    }
-    .marquee-track-r {
-      display: inline-flex;
-      animation: marqueeR 18s linear infinite;
-    }
-    .marquee-track span, .marquee-track-r span {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      font-weight: 300;
-      letter-spacing: 0.14em;
-      padding: 0 2rem;
-      color: rgba(253,246,240,0.85);
-    }
-    .marquee-track .dot, .marquee-track-r .dot {
-      color: var(--rose-light);
-      font-size: 0.55rem;
-      vertical-align: middle;
-      opacity: 0.7;
-    }
-    @keyframes marquee  { from { transform:translateX(0); } to { transform:translateX(-50%); } }
-    @keyframes marqueeR { from { transform:translateX(0); } to { transform:translateX(50%); } }
-
-    /* ════════════════════════════════════════
        SECTION BASE
     ════════════════════════════════════════ */
     section { padding: 9rem 4rem; }
@@ -826,14 +834,14 @@
     }
     .products-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 2px;
-      max-width: 1100px;
+      max-width: 1500px;
       margin: 0 auto;
     }
     .product-card {
       background: var(--cream-dark);
-      padding: 5rem 3.5rem;
+      padding: 5rem 2.5rem;
       position: relative;
       overflow: hidden;
       cursor: pointer;
@@ -1071,6 +1079,21 @@
       margin-bottom:2rem; line-height:1.7;
     }
     #order-form-wrapper { display:none; }
+
+    .btn-google-signin {
+      display:inline-flex; align-items:center; gap:0.7rem;
+      padding:0.85rem 1.8rem; background:var(--cream);
+      border:1px solid rgba(30,45,39,0.18); border-radius:4px;
+      font-family:var(--font-body); font-size:0.85rem; font-weight:400;
+      color:var(--ink); cursor:pointer;
+      transition:border-color 0.3s, box-shadow 0.3s, transform 0.2s var(--ease-apple);
+    }
+    .btn-google-signin:hover {
+      border-color:rgba(45,106,85,0.4);
+      box-shadow:0 4px 14px rgba(30,45,39,0.08);
+      transform:translateY(-1px);
+    }
+    .btn-google-signin:disabled { opacity:0.6; cursor:default; transform:none; }
 
     .form-section-label {
       font-size:0.72rem; letter-spacing:0.2em;
@@ -1377,7 +1400,7 @@
   <a href="#process" onclick="closeMobileNav()">Process</a>
   <a href="#instagram" onclick="closeMobileNav()">Instagram</a>
   <a href="#order" onclick="closeMobileNav()">Order</a>
-  <a href="https://instagram.com/canvastheory" class="mobile-nav-ig" target="_blank" rel="noopener">@canvastheory ↗</a>
+  <a href="https://www.instagram.com/crafts.by.nish/" class="mobile-nav-ig" target="_blank" rel="noopener">@crafts.by.nish ↗</a>
 </div>
 
 <!-- HERO -->
@@ -1405,7 +1428,7 @@
     </h1>
 
     <p class="hero-sub">
-      Custom denim jackets and tote bags, built by hand in Bangalore. Every stitch placed with intention. No two pieces alike.
+      Custom hand-painted denim jackets, totes, and clocks, made in Bangalore. Every piece painted with intention. No two alike.
     </p>
 
     <div class="hero-cta-group">
@@ -1431,44 +1454,6 @@
   </div>
 </section>
 
-<!-- MARQUEE (dual track) -->
-<div class="marquee-wrap">
-  <div class="marquee-band">
-    <div class="marquee-track">
-      <span>100% Raw Denim</span><span class="dot">✦</span>
-      <span>Handstitched</span><span class="dot">✦</span>
-      <span>Custom Orders</span><span class="dot">✦</span>
-      <span>Bangalore — 7 Days</span><span class="dot">✦</span>
-      <span>Pan India — 14 Days</span><span class="dot">✦</span>
-      <span>India Post</span><span class="dot">✦</span>
-      <span>No Two Alike</span><span class="dot">✦</span>
-      <span>100% Raw Denim</span><span class="dot">✦</span>
-      <span>Handstitched</span><span class="dot">✦</span>
-      <span>Custom Orders</span><span class="dot">✦</span>
-      <span>Bangalore — 7 Days</span><span class="dot">✦</span>
-      <span>Pan India — 14 Days</span><span class="dot">✦</span>
-      <span>India Post</span><span class="dot">✦</span>
-      <span>No Two Alike</span><span class="dot">✦</span>
-    </div>
-  </div>
-  <div class="marquee-band-2">
-    <div class="marquee-track-r">
-      <span>Made Slow</span><span class="dot">·</span>
-      <span>On Purpose</span><span class="dot">·</span>
-      <span>Cut by Hand</span><span class="dot">·</span>
-      <span>Stitched by Hand</span><span class="dot">·</span>
-      <span>Finished by Hand</span><span class="dot">·</span>
-      <span>Progress Photos Included</span><span class="dot">·</span>
-      <span>Made Slow</span><span class="dot">·</span>
-      <span>On Purpose</span><span class="dot">·</span>
-      <span>Cut by Hand</span><span class="dot">·</span>
-      <span>Stitched by Hand</span><span class="dot">·</span>
-      <span>Finished by Hand</span><span class="dot">·</span>
-      <span>Progress Photos Included</span><span class="dot">·</span>
-    </div>
-  </div>
-</div>
-
 <!-- ABOUT -->
 <section id="about" class="about-section">
   <div class="about-grid">
@@ -1476,7 +1461,7 @@
       <span class="section-eyebrow" data-reveal>Our philosophy</span>
       <h2 class="section-title" data-reveal data-delay="1">Made slow.<br><em>On purpose.</em></h2>
       <p class="section-body" data-reveal data-delay="2">
-        Canvas Theory started with a simple belief — clothing should carry meaning. Each jacket and tote bag is cut and stitched by hand to your exact spec. We take our time because the work demands it.
+        Canvas Theory started with a simple belief — everything is a canvas if you look hard enough. Each jacket, tote, and clock starts as a plain piece and is hand-painted to your exact spec. We take our time because the work demands it.
       </p>
       <p class="section-body" data-reveal data-delay="3" style="margin-top:1.2rem;">
         You tell us what you want. We make it exactly that way. Then we send you photos as it comes to life — so you watch it being made.
@@ -1523,7 +1508,7 @@
 <section id="products" class="products-section">
   <div class="products-header">
     <span class="section-eyebrow" data-reveal>What we make</span>
-    <h2 class="section-title" data-reveal data-delay="1">Two products.<br><em>Infinite variations.</em></h2>
+    <h2 class="section-title" data-reveal data-delay="1">Three products.<br><em>Infinite variations.</em></h2>
   </div>
   <div class="products-grid">
     <div class="product-card" data-reveal="left">
@@ -1531,18 +1516,27 @@
       <span class="product-icon">🧥</span>
       <h3 class="product-name">Denim Jacket</h3>
       <p class="product-desc">
-        Unisex cut, raw denim, built to last. Choose your wash, distressing level, patches, embroidery, and hardware. Sizes S through XXL.
+        A plain blue denim jacket, hand-painted to your spec. Choose from 50+ design options, sizes XS through XL. Flat price, every size.
       </p>
-      <div class="product-price">₹2,499 <span>onwards</span></div>
+      <div class="product-price">₹1,299</div>
     </div>
-    <div class="product-card" data-reveal="right">
+    <div class="product-card" data-reveal="scale">
       <div class="product-card-fill"></div>
       <span class="product-icon">👜</span>
       <h3 class="product-name">Tote Bag</h3>
       <p class="product-desc">
-        Heavy-duty denim tote with reinforced stitching. Customise the pocket layout, handles, lining colour, and any surface detail you want.
+        A plain canvas tote, hand-painted to your spec. Choose from 50+ design options. Sizes S, M, L — price scales with size.
       </p>
-      <div class="product-price">₹899 <span>onwards</span></div>
+      <div class="product-price">₹399 <span>– ₹849</span></div>
+    </div>
+    <div class="product-card" data-reveal="right">
+      <div class="product-card-fill"></div>
+      <span class="product-icon">🕓</span>
+      <h3 class="product-name">Wall Clock</h3>
+      <p class="product-desc">
+        A plain quartz wall clock, hand-painted to your spec — sold without glass, working order guaranteed (battery not included). Roman or plain numerals. Small or Big.
+      </p>
+      <div class="product-price">₹499 <span>– ₹599</span></div>
     </div>
   </div>
 </section>
@@ -1587,6 +1581,7 @@
 </section>
 
 <!-- TESTIMONIALS -->
+<!-- ⚠ PLACEHOLDER — swap these for real customer reviews once you have them. -->
 <section id="testimonials" class="testimonials-section">
   <div class="testimonials-header">
     <span class="section-eyebrow" data-reveal>What people say</span>
@@ -1596,7 +1591,7 @@
 
     <div class="testimonial-card">
       <div class="tcard-stars">★★★★★</div>
-      <p class="tcard-text">Wasn't sure at first — custom denim from an Instagram page felt risky. But the progress photos changed everything. I watched my jacket being cut and stitched from my phone while at office. The inside stitching was cleaner than branded stuff I've paid three times more for.</p>
+      <p class="tcard-text">Wasn't sure at first — custom painted denim from an Instagram page felt risky. But the progress photos changed everything. I watched my jacket get painted from my phone while at office. The detail work was cleaner than I expected for the price.</p>
       <div class="tcard-meta">
         <div class="tcard-avatar">AS</div>
         <div>
@@ -1604,12 +1599,12 @@
           <div class="tcard-detail">Delhi</div>
         </div>
       </div>
-      <span class="tcard-product">Raw Indigo Jacket — XL</span>
+      <span class="tcard-product">Hand-Painted Jacket — L</span>
     </div>
 
     <div class="testimonial-card">
       <div class="tcard-stars">★★★★★</div>
-      <p class="tcard-text">I wanted a tote that wasn't just another canvas print bag. I sent a mood board through the notes field and they followed it exactly — not approximately. The denim is heavy and structured, doesn't go floppy when full. Gets compliments constantly.</p>
+      <p class="tcard-text">I wanted a tote that wasn't just another canvas print bag. I sent a mood board through the notes field and they followed it exactly — not approximately. Gets compliments constantly.</p>
       <div class="tcard-meta">
         <div class="tcard-avatar" style="background:rgba(45,106,85,0.12);color:var(--emerald)">SA</div>
         <div>
@@ -1617,25 +1612,25 @@
           <div class="tcard-detail">Bangalore</div>
         </div>
       </div>
-      <span class="tcard-product">Custom Tote — Floral Embroidery</span>
+      <span class="tcard-product">Hand-Painted Tote — M</span>
     </div>
 
     <div class="testimonial-card">
       <div class="tcard-stars">★★★★★</div>
-      <p class="tcard-text">Got my guitar project done. The neck inlay embroidery is unreal — I've played for 8 years and even the dot pattern was right. Wore the jacket to a gig and three people asked where it was from within 20 minutes.</p>
+      <p class="tcard-text">Got a clock painted for my study and it's become the centerpiece of the room. The numerals are evenly spaced and it still keeps perfect time — exactly what I wanted.</p>
       <div class="tcard-meta">
-        <div class="tcard-avatar" style="background:rgba(201,169,110,0.18);color:var(--gold)">UG</div>
+        <div class="tcard-avatar" style="background:rgba(201,169,110,0.18);color:var(--gold)">RK</div>
         <div>
-          <div class="tcard-name">Udit Gandhi</div>
+          <div class="tcard-name">Rohan Kapoor</div>
           <div class="tcard-detail">Mumbai</div>
         </div>
       </div>
-      <span class="tcard-product">Guitar Project Jacket — Mid Wash</span>
+      <span class="tcard-product">Hand-Painted Wall Clock — Big</span>
     </div>
 
     <div class="testimonial-card">
       <div class="tcard-stars">★★★★☆</div>
-      <p class="tcard-text">Ordered a black denim jacket for a friend's birthday with custom text on the back. Delivery was 12 days, exactly as promised. The matte black hardware was the right call — friend was genuinely shocked it was handmade.</p>
+      <p class="tcard-text">Ordered a jacket for a friend's birthday with a custom design idea I described in the notes. Delivery was on time and my friend was genuinely surprised it was hand-painted, not printed.</p>
       <div class="tcard-meta">
         <div class="tcard-avatar">KA</div>
         <div>
@@ -1643,12 +1638,12 @@
           <div class="tcard-detail">Chandigarh</div>
         </div>
       </div>
-      <span class="tcard-product">Black Denim Jacket — Custom Text</span>
+      <span class="tcard-product">Hand-Painted Jacket — Custom Design</span>
     </div>
 
     <div class="testimonial-card">
       <div class="tcard-stars">★★★★★</div>
-      <p class="tcard-text">My third guitar project commission, which should tell you everything. They pushed back on one element of my design — the spacing was too tight, they said — and they were right. That kind of honesty from a maker is rare.</p>
+      <p class="tcard-text">Second order from them, which should tell you everything. They pushed back on one part of my design — said the spacing was too tight — and they were right. That kind of honesty from a maker is rare.</p>
       <div class="tcard-meta">
         <div class="tcard-avatar" style="background:rgba(212,129,138,0.14);color:var(--rose)">GB</div>
         <div>
@@ -1656,7 +1651,7 @@
           <div class="tcard-detail">Pune</div>
         </div>
       </div>
-      <span class="tcard-product">Guitar Project — Acoustic Silhouette</span>
+      <span class="tcard-product">Hand-Painted Tote — S</span>
     </div>
 
   </div>
@@ -1666,7 +1661,7 @@
 <section id="instagram" class="ig-section">
   <div class="ig-inner">
     <span class="section-eyebrow" data-reveal style="color:var(--rose-light)">Follow along</span>
-    <div class="ig-handle" data-reveal data-delay="1">@canvastheory</div>
+    <div class="ig-handle" data-reveal data-delay="1">@crafts.by.nish</div>
     <p class="ig-sub" data-reveal data-delay="2">New drops every Friday. Behind-the-scenes from the workshop. Tag us in your piece to be featured.</p>
 
     <div class="ig-grid" data-reveal data-delay="3">
@@ -1679,7 +1674,7 @@
     </div>
 
     <div class="ig-cta-group" data-reveal data-delay="4">
-      <a href="https://instagram.com/canvastheory" class="btn-outline" target="_blank" rel="noopener" style="color:var(--cream); border-color:rgba(253,246,240,0.35);"><span>Follow on Instagram</span></a>
+      <a href="https://www.instagram.com/crafts.by.nish/" class="btn-outline" target="_blank" rel="noopener" style="color:var(--cream); border-color:rgba(253,246,240,0.35);"><span>Follow on Instagram</span></a>
     </div>
 
     <div class="ig-referral" data-reveal data-delay="5">
@@ -1699,20 +1694,17 @@
 
     <!-- AUTH GATE -->
     <div id="auth-gate" data-reveal data-delay="2">
-      <p>Sign in with Google to place your order.<br>Your details will auto-fill the form and your session stays active for 14 days — right through to delivery.</p>
-      <div id="g_id_onload"
-           data-client_id="YOUR_GOOGLE_CLIENT_ID"
-           data-callback="handleCredentialResponse"
-           data-auto_prompt="false">
-      </div>
-      <div class="g_id_signin"
-           data-type="standard"
-           data-size="large"
-           data-theme="outline"
-           data-text="sign_in_with"
-           data-shape="rectangular"
-           data-logo_alignment="left">
-      </div>
+      <p>Sign in with Google to place your order.<br>Your details will auto-fill the form and your session stays active until you sign out.</p>
+      <button type="button" id="google-signin-btn" class="btn-google-signin" onclick="ctSignIn()">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+          <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62z"/>
+          <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.81.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.33A9 9 0 0 0 9 18z"/>
+          <path fill="#FBBC05" d="M3.97 10.72A5.4 5.4 0 0 1 3.69 9c0-.6.1-1.18.28-1.72V4.95H.96A9 9 0 0 0 0 9c0 1.45.35 2.83.96 4.05l3.01-2.33z"/>
+          <path fill="#EA4335" d="M9 3.58c1.32 0 2.51.45 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .96 4.95l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58z"/>
+        </svg>
+        <span>Sign in with Google</span>
+      </button>
+      <p id="auth-error" style="display:none; color:var(--rose); font-size:0.8rem; margin-top:1rem;"></p>
     </div>
 
         <!-- ORDER FORM (shown after sign-in) -->
@@ -1722,6 +1714,7 @@
       <div class="product-tabs">
         <button class="product-tab active" onclick="switchProduct('jacket')">🧥 &nbsp; Denim Jacket</button>
         <button class="product-tab" onclick="switchProduct('tote')">👜 &nbsp; Tote Bag</button>
+        <button class="product-tab" onclick="switchProduct('clock')">🕓 &nbsp; Wall Clock</button>
       </div>
 
       <form id="order-form" novalidate>
@@ -1784,61 +1777,32 @@
         <div id="fields-jacket" class="product-fields active">
           <div class="form-block">
             <span class="form-section-label">Jacket details</span>
+            <p style="font-size:0.85rem; color:var(--ink-soft); margin-bottom:1.5rem; line-height:1.6;">
+              A plain blue denim jacket, hand-painted by us to your spec. Flat ₹1,299 across every size. We're building out a library of 50+ painted designs to choose from; for now, describe your idea in the notes and we'll confirm the look with you before we start painting.
+            </p>
             <div class="form-group">
               <label>Size</label>
               <div class="chip-group" id="jacket-size">
+                <button type="button" class="chip" data-val="XS">XS</button>
                 <button type="button" class="chip" data-val="S">S</button>
                 <button type="button" class="chip" data-val="M">M</button>
                 <button type="button" class="chip" data-val="L">L</button>
                 <button type="button" class="chip" data-val="XL">XL</button>
-                <button type="button" class="chip" data-val="XXL">XXL</button>
               </div>
               <span class="field-error" id="err-jacket-size">Please select a size.</span>
             </div>
             <div class="form-group">
-              <label>Denim wash</label>
-              <div class="chip-group" id="jacket-wash">
-                <button type="button" class="chip" data-val="Raw (dark indigo)">Raw (dark indigo)</button>
-                <button type="button" class="chip" data-val="Mid wash">Mid wash</button>
-                <button type="button" class="chip" data-val="Light wash">Light wash</button>
-                <button type="button" class="chip" data-val="Black denim">Black denim</button>
+              <label>Design</label>
+              <div class="chip-group" id="jacket-design">
+                <button type="button" class="chip" data-val="Custom (describe in notes)">Custom — tell us in notes</button>
+                <button type="button" class="chip" data-val="Surprise us" disabled style="opacity:0.4; cursor:not-allowed;">Surprise us</button>
               </div>
-              <span class="field-error" id="err-jacket-wash">Please select a wash.</span>
+              <span class="field-error" id="err-jacket-design">Please select a design option.</span>
+              <p style="font-size:0.75rem; color:var(--ink-soft); margin-top:0.6rem; font-style:italic;">Full design catalogue (50+ options) coming soon — placeholder for now.</p>
             </div>
             <div class="form-group">
-              <label>Distressing</label>
-              <div class="chip-group" id="jacket-distress">
-                <button type="button" class="chip" data-val="None (clean)">None (clean)</button>
-                <button type="button" class="chip" data-val="Light">Light</button>
-                <button type="button" class="chip" data-val="Medium">Medium</button>
-                <button type="button" class="chip" data-val="Heavy">Heavy</button>
-              </div>
-              <span class="field-error" id="err-jacket-distress">Please select distressing level.</span>
-            </div>
-            <div class="form-group">
-              <label>Patches (select all that apply)</label>
-              <div class="chip-group" id="jacket-patches">
-                <button type="button" class="chip multi" data-val="No patches">No patches</button>
-                <button type="button" class="chip multi" data-val="Floral embroidery">Floral embroidery</button>
-                <button type="button" class="chip multi" data-val="Band / graphic patch">Band / graphic patch</button>
-                <button type="button" class="chip multi" data-val="Custom text">Custom text</button>
-                <button type="button" class="chip multi" data-val="Geometric pattern">Geometric pattern</button>
-                <button type="button" class="chip multi" data-val="Vintage badges">Vintage badges</button>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Hardware finish</label>
-              <div class="chip-group" id="jacket-hardware">
-                <button type="button" class="chip" data-val="Silver">Silver</button>
-                <button type="button" class="chip" data-val="Gold / brass">Gold / brass</button>
-                <button type="button" class="chip" data-val="Matte black">Matte black</button>
-                <button type="button" class="chip" data-val="Antique copper">Antique copper</button>
-              </div>
-              <span class="field-error" id="err-jacket-hardware">Please select hardware finish.</span>
-            </div>
-            <div class="form-group">
-              <label for="jacket-notes">Any other details for us?</label>
-              <textarea id="jacket-notes" name="jacket-notes" maxlength="400" placeholder="Placement of patches, specific embroidery text, etc."></textarea>
+              <label for="jacket-notes">Describe the design you'd like</label>
+              <textarea id="jacket-notes" name="jacket-notes" maxlength="400" placeholder="Colours, motifs, theme, reference images you'll send over email, etc."></textarea>
             </div>
           </div>
         </div>
@@ -1847,68 +1811,62 @@
         <div id="fields-tote" class="product-fields">
           <div class="form-block">
             <span class="form-section-label">Tote bag details</span>
+            <p style="font-size:0.85rem; color:var(--ink-soft); margin-bottom:1.5rem; line-height:1.6;">
+              A plain canvas tote, hand-painted by us to your spec. Price scales with size. We're building out a library of 50+ painted designs to choose from; for now, describe your idea in the notes and we'll confirm the look with you before we start painting.
+            </p>
             <div class="form-group">
               <label>Size</label>
               <div class="chip-group" id="tote-size">
-                <button type="button" class="chip" data-val="Small (30×35 cm)">Small (30×35 cm)</button>
-                <button type="button" class="chip" data-val="Medium (38×42 cm)">Medium (38×42 cm)</button>
-                <button type="button" class="chip" data-val="Large (45×50 cm)">Large (45×50 cm)</button>
+                <button type="button" class="chip" data-val="S">S — ₹399</button>
+                <button type="button" class="chip" data-val="M">M — ₹599</button>
+                <button type="button" class="chip" data-val="L">L — ₹849</button>
               </div>
               <span class="field-error" id="err-tote-size">Please select a size.</span>
             </div>
             <div class="form-group">
-              <label>Denim wash</label>
-              <div class="chip-group" id="tote-wash">
-                <button type="button" class="chip" data-val="Raw (dark indigo)">Raw (dark indigo)</button>
-                <button type="button" class="chip" data-val="Mid wash">Mid wash</button>
-                <button type="button" class="chip" data-val="Light wash">Light wash</button>
-                <button type="button" class="chip" data-val="Black denim">Black denim</button>
+              <label>Design</label>
+              <div class="chip-group" id="tote-design">
+                <button type="button" class="chip" data-val="Custom (describe in notes)">Custom — tell us in notes</button>
+                <button type="button" class="chip" data-val="Surprise us" disabled style="opacity:0.4; cursor:not-allowed;">Surprise us</button>
               </div>
-              <span class="field-error" id="err-tote-wash">Please select a wash.</span>
+              <span class="field-error" id="err-tote-design">Please select a design option.</span>
+              <p style="font-size:0.75rem; color:var(--ink-soft); margin-top:0.6rem; font-style:italic;">Full design catalogue (50+ options) coming soon — placeholder for now.</p>
             </div>
             <div class="form-group">
-              <label>Handle style</label>
-              <div class="chip-group" id="tote-handle">
-                <button type="button" class="chip" data-val="Short (shoulder carry)">Short (shoulder carry)</button>
-                <button type="button" class="chip" data-val="Long (crossbody)">Long (crossbody)</button>
-                <button type="button" class="chip" data-val="Both short + long">Both short + long</button>
+              <label for="tote-notes">Describe the design you'd like</label>
+              <textarea id="tote-notes" name="tote-notes" maxlength="400" placeholder="Colours, motifs, theme, reference images you'll send over email, etc."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ CLOCK FIELDS ══ -->
+        <div id="fields-clock" class="product-fields">
+          <div class="form-block">
+            <span class="form-section-label">Wall clock details</span>
+            <p style="font-size:0.85rem; color:var(--ink-soft); margin-bottom:1.5rem; line-height:1.6;">
+              A plain quartz wall clock, hand-painted by us to your spec. Sold without glass — still keeps perfect time. We're building out a library of 50+ painted designs to choose from; for now, tell us your idea in the notes below and we'll confirm the look with you before we start painting.
+            </p>
+            <div class="form-group">
+              <label>Design</label>
+              <div class="chip-group" id="clock-design">
+                <button type="button" class="chip" data-val="Custom (describe in notes)">Custom — tell us in notes</button>
+                <button type="button" class="chip" data-val="Surprise us" disabled style="opacity:0.4; cursor:not-allowed;">Surprise us</button>
               </div>
-              <span class="field-error" id="err-tote-handle">Please select handle style.</span>
+              <span class="field-error" id="err-clock-design">Please select a design option.</span>
+              <p style="font-size:0.75rem; color:var(--ink-soft); margin-top:0.6rem; font-style:italic;">Full design catalogue (50+ options) coming soon — placeholder for now.</p>
             </div>
             <div class="form-group">
-              <label>Inner lining colour</label>
-              <div class="chip-group" id="tote-lining">
-                <button type="button" class="chip" data-val="Natural cream">Natural cream</button>
-                <button type="button" class="chip" data-val="Black">Black</button>
-                <button type="button" class="chip" data-val="Dusty rose">Dusty rose</button>
-                <button type="button" class="chip" data-val="Sage green">Sage green</button>
-                <button type="button" class="chip" data-val="No lining">No lining</button>
+              <label>Numerals</label>
+              <div class="chip-group" id="clock-numerals">
+                <button type="button" class="chip" data-val="Roman numerals">Roman numerals</button>
+                <button type="button" class="chip" data-val="Plain numerals">Plain numerals (1–12)</button>
               </div>
-              <span class="field-error" id="err-tote-lining">Please select lining colour.</span>
+              <span class="field-error" id="err-clock-numerals">Please select a numeral style.</span>
+              <p style="font-size:0.75rem; color:var(--ink-soft); margin-top:0.6rem;">Numbering is kept consistent around the full dial — no mixed styles.</p>
             </div>
             <div class="form-group">
-              <label>Surface customisation (select all that apply)</label>
-              <div class="chip-group" id="tote-surface">
-                <button type="button" class="chip multi" data-val="Plain">Plain</button>
-                <button type="button" class="chip multi" data-val="Embroidered text">Embroidered text</button>
-                <button type="button" class="chip multi" data-val="Floral embroidery">Floral embroidery</button>
-                <button type="button" class="chip multi" data-val="Patch work">Patch work</button>
-                <button type="button" class="chip multi" data-val="Block print">Block print</button>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Pocket preference</label>
-              <div class="chip-group" id="tote-pocket">
-                <button type="button" class="chip" data-val="No pockets">No pockets</button>
-                <button type="button" class="chip" data-val="1 inner zip pocket">1 inner zip pocket</button>
-                <button type="button" class="chip" data-val="Outer slip pocket">Outer slip pocket</button>
-                <button type="button" class="chip" data-val="Both inner zip + outer slip">Both inner zip + outer slip</button>
-              </div>
-              <span class="field-error" id="err-tote-pocket">Please select pocket preference.</span>
-            </div>
-            <div class="form-group">
-              <label for="tote-notes">Any other details?</label>
-              <textarea id="tote-notes" name="tote-notes" maxlength="400" placeholder="Embroidery text, specific dimensions, etc."></textarea>
+              <label for="clock-notes">Describe the design you'd like</label>
+              <textarea id="clock-notes" name="clock-notes" maxlength="400" placeholder="Colours, motifs, theme, reference images you'll send over email, etc."></textarea>
             </div>
           </div>
         </div>
@@ -1949,7 +1907,7 @@
         <li><a href="privacy-policy.html">Privacy Policy</a></li>
         <li><a href="terms.html">Terms of Service</a></li>
         <li><a href="refund.html">Refund Policy</a></li>
-        <li><a href="https://instagram.com/canvastheory" target="_blank" rel="noopener">Instagram ↗</a></li>
+        <li><a href="https://www.instagram.com/crafts.by.nish/" target="_blank" rel="noopener">Instagram ↗</a></li>
       </ul>
     </div>
   </div>
@@ -1996,10 +1954,11 @@ document.querySelectorAll('input, textarea').forEach(el => {
 
 // ─── PRODUCT TABS ────────────────────────────
 let currentProduct = 'jacket';
+const PRODUCT_TYPES = ['jacket', 'tote', 'clock'];
 function switchProduct(type) {
   currentProduct = type;
   document.querySelectorAll('.product-tab').forEach((t, i) => {
-    t.classList.toggle('active', (i === 0 && type === 'jacket') || (i === 1 && type === 'tote'));
+    t.classList.toggle('active', PRODUCT_TYPES[i] === type);
   });
   document.querySelectorAll('.product-fields').forEach(f => f.classList.remove('active'));
   document.getElementById('fields-' + type).classList.add('active');
@@ -2009,6 +1968,7 @@ function switchProduct(type) {
 // Single-select chips
 document.querySelectorAll('.chip:not(.multi)').forEach(chip => {
   chip.addEventListener('click', () => {
+    if (chip.disabled) return;
     const group = chip.closest('.chip-group');
     group.querySelectorAll('.chip:not(.multi)').forEach(c => c.classList.remove('active'));
     chip.classList.add('active');
@@ -2075,102 +2035,126 @@ function validateForm() {
     if (!getChipValue('jacket-wash')) { showErr('err-jacket-wash', 'Please select a wash.'); valid = false; } else clearErr('err-jacket-wash');
     if (!getChipValue('jacket-distress')) { showErr('err-jacket-distress', 'Please select distressing level.'); valid = false; } else clearErr('err-jacket-distress');
     if (!getChipValue('jacket-hardware')) { showErr('err-jacket-hardware', 'Please select hardware finish.'); valid = false; } else clearErr('err-jacket-hardware');
-  } else {
+  } else if (currentProduct === 'tote') {
     if (!getChipValue('tote-size')) { showErr('err-tote-size', 'Please select a size.'); valid = false; } else clearErr('err-tote-size');
     if (!getChipValue('tote-wash')) { showErr('err-tote-wash', 'Please select a wash.'); valid = false; } else clearErr('err-tote-wash');
     if (!getChipValue('tote-handle')) { showErr('err-tote-handle', 'Please select handle style.'); valid = false; } else clearErr('err-tote-handle');
     if (!getChipValue('tote-lining')) { showErr('err-tote-lining', 'Please select lining colour.'); valid = false; } else clearErr('err-tote-lining');
     if (!getChipValue('tote-pocket')) { showErr('err-tote-pocket', 'Please select pocket preference.'); valid = false; } else clearErr('err-tote-pocket');
+  } else if (currentProduct === 'clock') {
+    if (!getChipValue('clock-design')) { showErr('err-clock-design', 'Please select a design option.'); valid = false; } else clearErr('err-clock-design');
+    if (!getChipValue('clock-numerals')) { showErr('err-clock-numerals', 'Please select a numeral style.'); valid = false; } else clearErr('err-clock-numerals');
   }
 
   return valid;
 }
 
 // ─── COLLECT ORDER DATA ───────────────────────
+// Shape matches what index.js createOrder() expects: { product, specs, shipping }.
+// No price is sent — the server is the only source of truth for amount.
 function collectOrderData() {
-  const base = {
+  const shipping = {
     name:    sanitize(document.getElementById('f-name').value),
     phone:   sanitize(document.getElementById('f-phone').value),
-    email:   sanitize(document.getElementById('f-email').value),
     address: sanitize(document.getElementById('f-address').value),
     pincode: sanitize(document.getElementById('f-pincode').value),
     state:   sanitize(document.getElementById('f-state').value),
-    product: currentProduct,
   };
-  if (currentProduct === 'jacket') {
-    Object.assign(base, {
-      size:       getChipValue('jacket-size'),
-      wash:       getChipValue('jacket-wash'),
-      distress:   getChipValue('jacket-distress'),
-      patches:    getChipValue('jacket-patches') || 'No patches',
-      hardware:   getChipValue('jacket-hardware'),
-      notes:      sanitize(document.getElementById('jacket-notes').value),
-      amount:     249900, // paise
-    });
-  } else {
-    Object.assign(base, {
-      size:       getChipValue('tote-size'),
-      wash:       getChipValue('tote-wash'),
-      handle:     getChipValue('tote-handle'),
-      lining:     getChipValue('tote-lining'),
-      surface:    getChipValue('tote-surface') || 'Plain',
-      pocket:     getChipValue('tote-pocket'),
-      notes:      sanitize(document.getElementById('tote-notes').value),
-      amount:     89900, // paise
-    });
+
+  let specs;
+  if (currentProduct === 'jacket' || currentProduct === 'guitar') {
+    specs = {
+      size:     getChipValue('jacket-size'),
+      wash:     getChipValue('jacket-wash'),
+      distress: getChipValue('jacket-distress'),
+      patches:  getChipValue('jacket-patches') || 'No patches',
+      hardware: getChipValue('jacket-hardware'),
+      notes:    sanitize(document.getElementById('jacket-notes').value),
+    };
+  } else if (currentProduct === 'tote') {
+    specs = {
+      size:    getChipValue('tote-size'),
+      wash:    getChipValue('tote-wash'),
+      handle:  getChipValue('tote-handle'),
+      lining:  getChipValue('tote-lining'),
+      surface: getChipValue('tote-surface') || 'Plain',
+      pocket:  getChipValue('tote-pocket'),
+      notes:   sanitize(document.getElementById('tote-notes').value),
+    };
+  } else if (currentProduct === 'clock') {
+    specs = {
+      design:   getChipValue('clock-design') || 'Placeholder — design TBA',
+      numerals: getChipValue('clock-numerals'),
+      notes:    sanitize(document.getElementById('clock-notes').value),
+    };
   }
-  return base;
+
+  return { product: currentProduct, specs, shipping, email: sanitize(document.getElementById('f-email').value) };
 }
 
-// ─── RAZORPAY ────────────────────────────────
-// ⚠ SECURITY NOTICE — DO NOT GO LIVE WITH THIS AS-IS
-// This client-only flow sets `amount` in the browser, which means anyone can
-// edit the JS before checkout opens and pay ₹1 for a ₹2,499 jacket.
-// Before accepting real payments:
-//   1. Move price calculation to a Firebase Cloud Function (createOrder)
-//   2. Call Razorpay Orders API server-side, get back an order_id
-//   3. Pass order_id (not amount) into the options object below
-//   4. Verify payment.captured via webhook + HMAC-SHA256 signature server-side
-// See the Razorpay Integration section of the strategy doc for full code.
-function openRazorpay(order) {
-  const options = {
-    key: 'YOUR_RAZORPAY_KEY_ID', // ← replace with your key
-    amount: order.amount,
-    currency: 'INR',
-    name: 'Canvas Theory',
-    description: `Custom Denim ${order.product === 'jacket' ? 'Jacket' : 'Tote Bag'}`,
-    prefill: {
-      name:    order.name,
-      email:   order.email,
-      contact: order.phone,
-    },
-    notes: {
-      delivery_address: order.address,
-      pincode:          order.pincode,
-      state:            order.state,
-      product_details:  JSON.stringify(order),
-    },
-    theme: { color: '#2D6A55' },
-    handler: function(response) {
-      showToast('✓ Order placed! Check your email for updates.');
-      document.getElementById('order-form').reset();
-      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-      switchProduct('jacket');
-    },
-    modal: {
-      ondismiss: function() { console.log('Payment dismissed'); }
-    }
-  };
-  const rzp = new Razorpay(options);
-  rzp.on('payment.failed', function(resp) {
-    showToast('Payment failed. Please try again.');
-  });
-  rzp.open();
+// ─── RAZORPAY (server-verified amount) ───────
+// The amount, order_id, and key_id all come from the createOrder Cloud
+// Function (index.js) — the client never decides what anything costs.
+// Razorpay enforces server-to-server that the payment matches the order
+// it created, so editing this JS can no longer change the price.
+async function openRazorpay(orderPayload) {
+  const submitBtn = document.querySelector('#order-form button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Creating order…';
+
+  try {
+    const { data } = await window.__ctAuth.createOrder(orderPayload);
+
+    const options = {
+      key: data.key_id,
+      order_id: data.order_id,
+      amount: data.amount,
+      currency: data.currency,
+      name: 'Canvas Theory',
+      description: `Custom ${productLabel(orderPayload.product)}`,
+      prefill: {
+        name:    orderPayload.shipping.name,
+        email:   orderPayload.email,
+        contact: orderPayload.shipping.phone,
+      },
+      theme: { color: '#2D6A55' },
+      handler: function() {
+        showToast('✓ Order placed! Check your email for updates.');
+        document.getElementById('order-form').reset();
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        switchProduct('jacket');
+        if (ctCurrentUser) applySession(ctCurrentUser);
+      },
+      modal: {
+        ondismiss: function() { console.log('Payment dismissed'); }
+      }
+    };
+    const rzp = new Razorpay(options);
+    rzp.on('payment.failed', function() {
+      showToast('Payment failed. Please try again.');
+    });
+    rzp.open();
+  } catch (err) {
+    console.error('createOrder failed:', err);
+    showToast(err.message || 'Could not create order. Please try again.');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Place Order & Pay';
+  }
+}
+
+function productLabel(product) {
+  if (product === 'jacket') return 'Denim Jacket';
+  if (product === 'tote') return 'Tote Bag';
+  if (product === 'clock') return 'Wall Clock';
+  if (product === 'guitar') return 'Guitar Project Jacket';
+  return product;
 }
 
 // ─── FORM SUBMIT ─────────────────────────────
 document.getElementById('order-form').addEventListener('submit', function(e) {
   e.preventDefault();
+  if (!ctCurrentUser) { showToast('Please sign in first.'); return; }
   if (!validateForm()) return;
   const order = collectOrderData();
   openRazorpay(order);
@@ -2184,77 +2168,55 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 4000);
 }
 
-// ─── GOOGLE SIGN-IN ──────────────────────────
-// ⚠ SECURITY NOTICE
-// This parses the Google JWT client-side and never verifies its signature
-// against Google's public keys, so a forged token could pass these checks.
-// Replace this whole block with the Firebase Auth SDK (signInWithPopup +
-// GoogleAuthProvider) before launch — see the Google Authentication section
-// of the strategy doc for the production version, which also auto-creates
-// a Firestore user document and handles session persistence for you.
-function handleCredentialResponse(response) {
-  const payload = parseJwt(response.credential);
-  if (!payload) return;
+// ─── GOOGLE SIGN-IN (real Firebase Auth) ─────
+// signInWithPopup talks to Firebase Auth's servers, which verify the
+// Google identity properly — this replaces the old client-only JWT
+// parsing, which never checked the token signature and could be forged
+// by anyone who crafted their own payload and dropped it in localStorage.
+let ctCurrentUser = null;
 
-  // Store session (14-day expiry)
-  const session = {
-    name:    payload.name,
-    email:   payload.email,
-    picture: payload.picture,
-    expires: Date.now() + (14 * 24 * 60 * 60 * 1000),
-  };
-  localStorage.setItem('ct_session', JSON.stringify(session));
-  applySession(session);
-}
-
-function parseJwt(token) {
-  try {
-    const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
-    return JSON.parse(decodeURIComponent(
-      atob(base64).split('').map(c =>
-        '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-      ).join('')
-    ));
-  } catch { return null; }
-}
-
-function applySession(session) {
-  // Show user badge in nav
-  const badge = document.getElementById('user-badge');
-  document.getElementById('user-avatar').src = session.picture || '';
-  document.getElementById('user-name').textContent = session.name.split(' ')[0];
-  badge.style.display = 'flex';
-
-  // Swap auth gate for form
-  document.getElementById('auth-gate').style.display = 'none';
-  document.getElementById('order-form-wrapper').style.display = 'block';
-
-  // Pre-fill email
-  document.getElementById('f-email').value = session.email;
-  document.getElementById('f-name').value = session.name;
+function ctSignIn() {
+  const btn = document.getElementById('google-signin-btn');
+  const errEl = document.getElementById('auth-error');
+  errEl.style.display = 'none';
+  btn.disabled = true;
+  window.__ctAuth.signIn().catch(err => {
+    console.error('Sign-in failed:', err);
+    errEl.textContent = 'Sign-in failed. Please try again.';
+    errEl.style.display = 'block';
+  }).finally(() => { btn.disabled = false; });
 }
 
 function signOut() {
-  localStorage.removeItem('ct_session');
+  window.__ctAuth.signOut();
+}
+
+function applySession(user) {
+  ctCurrentUser = user;
+  const badge = document.getElementById('user-badge');
+  document.getElementById('user-avatar').src = user.photoURL || '';
+  document.getElementById('user-name').textContent = (user.displayName || user.email || '').split(' ')[0];
+  badge.style.display = 'flex';
+
+  document.getElementById('auth-gate').style.display = 'none';
+  document.getElementById('order-form-wrapper').style.display = 'block';
+
+  document.getElementById('f-email').value = user.email || '';
+  if (user.displayName) document.getElementById('f-name').value = user.displayName;
+}
+
+function clearSession() {
+  ctCurrentUser = null;
   document.getElementById('user-badge').style.display = 'none';
   document.getElementById('auth-gate').style.display = 'block';
   document.getElementById('order-form-wrapper').style.display = 'none';
-  try { if (window.google && google.accounts) google.accounts.id.disableAutoSelect(); } catch(e) {}
 }
 
-// Check existing session on load
-(function checkSession() {
-  try {
-    const raw = localStorage.getItem('ct_session');
-    if (!raw) return;
-    const session = JSON.parse(raw);
-    if (Date.now() > session.expires) {
-      localStorage.removeItem('ct_session');
-      return;
-    }
-    applySession(session);
-  } catch { localStorage.removeItem('ct_session'); }
-})();
+// Fires on load with current state, and again on every sign-in/out.
+window.__ctAuth.onAuthStateChanged((user) => {
+  if (user) applySession(user);
+  else clearSession();
+});
 
 // ─── NAV SCROLL EFFECT ───────────────────────
 window.addEventListener('scroll', () => {
