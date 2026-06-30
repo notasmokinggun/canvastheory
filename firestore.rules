@@ -1,0 +1,74 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── users ──────────────────────────────────────────────────────────
+    // Each user can only read/write their own document. Created by the
+    // client's signInWithGoogle() flow (see auth.js in the README).
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // ── orders ─────────────────────────────────────────────────────────
+    // Orders are created ONLY by the createOrder Cloud Function (which
+    // runs with admin privileges and bypasses these rules entirely), so
+    // client-side `create` is intentionally disallowed here — it would
+    // let someone write an order doc with a fake amount_paise. Reads are
+    // restricted to the order's owner. Updates and deletes are never
+    // allowed from the client — only the webhook (also admin-privileged)
+    // can change order status.
+    match /orders/{orderId} {
+      allow create: if false;
+      allow read: if request.auth != null
+        && resource.data.user_uid == request.auth.uid;
+      allow update, delete: if false;
+    }
+
+    // ── gallery ────────────────────────────────────────────────────────
+    // Public read for the gallery.html browsing experience. Writes
+    // restricted to admin accounts (set via a custom claim — see README
+    // "Granting admin access" section).
+    match /gallery/{designId} {
+      allow read: if true;
+      allow write: if request.auth != null
+        && request.auth.token.admin == true;
+    }
+
+    // ── drafts ─────────────────────────────────────────────────────────
+    // Customization Studio drafts. Public read because share links must
+    // work for anonymous visitors. Only the owner can create or update
+    // their own draft. Anonymous (no-auth) drafts are intentionally not
+    // supported here — require sign-in before saving a draft so it can
+    // be tied to a user.
+    match /drafts/{draftId} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.resource.data.user_uid == request.auth.uid;
+      allow update: if request.auth != null
+        && resource.data.user_uid == request.auth.uid;
+      allow delete: if request.auth != null
+        && resource.data.user_uid == request.auth.uid;
+    }
+
+    // ── referral_credits ───────────────────────────────────────────────
+    // Written only by the webhook (admin-privileged). Owners can read
+    // their own credit history.
+    match /referral_credits/{creditId} {
+      allow read: if request.auth != null
+        && resource.data.referrer_uid == request.auth.uid;
+      allow write: if false;
+    }
+
+    // ── stats ──────────────────────────────────────────────────────────
+    // Denormalized counters for admin dashboards. No client access.
+    match /stats/{doc} {
+      allow read, write: if false;
+    }
+
+    // Default deny — anything not matched above is inaccessible.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story — Handmade in a Bangalore Workshop | Canvas Theory</title>
+  <meta name="description" content="Canvas Theory is a small Bangalore workshop making denim jackets and totes by hand, one piece at a time. Meet the makers, see the materials, and read why everything is a canvas." />
+  <link rel="canonical" href="https://www.canvastheory.in/about.html" />
+
+  <!-- ═══════════════════════════════════════════
+       SOCIAL SHARING — Open Graph + Twitter Card
+  ═══════════════════════════════════════════ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.canvastheory.in/about.html" />
+  <meta property="og:site_name" content="Canvas Theory" />
+  <meta property="og:title" content="Our Story — Canvas Theory" />
+  <meta property="og:description" content="A small Bangalore workshop making denim jackets and totes by hand, one piece at a time. Meet the makers." />
+  <meta property="og:image" content="https://www.canvastheory.in/assets/images/og-about.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_IN" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@canvastheory" />
+  <meta name="twitter:title" content="Our Story — Canvas Theory" />
+  <meta name="twitter:description" content="A small Bangalore workshop making denim jackets and totes by hand, one piece at a time." />
+  <meta name="twitter:image" content="https://www.canvastheory.in/assets/images/og-about.jpg" />
+
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#2D6A55" />
+  <link rel="icon" href="/assets/icons/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
+
+  <!-- Structured data: AboutPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Canvas Theory",
+    "url": "https://www.canvastheory.in/about.html",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Canvas Theory",
+      "foundingLocation": "Bangalore, India",
+      "description": "Handcrafted custom denim jackets and tote bags made to order."
+    }
+  }
+  </script>
+
+  <!-- ═══════════════════════════════════════════
+       SECURITY HEADERS (meta-level)
+  ═══════════════════════════════════════════ -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' https://accounts.google.com https://apis.google.com https://checkout.razorpay.com https://fonts.googleapis.com https://fonts.gstatic.com;
+             script-src 'self' 'unsafe-inline' https://accounts.google.com https://apis.google.com https://checkout.razorpay.com;
+             style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+             img-src 'self' data: https://lh3.googleusercontent.com https://accounts.google.com;
+             connect-src 'self' https://accounts.google.com https://apis.google.com https://api.razorpay.com https://lumberjack.razorpay.com;
+             frame-src https://accounts.google.com https://api.razorpay.com;" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ════════════════════════════════════════
+       DESIGN TOKENS — identical to index.html
+    ════════════════════════════════════════ */
+    :root {
+      --cream:         #FDF6F0;
+      --cream-dark:    #F5EAE2;
+      --rose:          #D4818A;
+      --rose-light:    #EBB5BA;
+      --rose-pale:     #F5DADE;
+      --emerald:       #2D6A55;
+      --emerald-mid:   #4A9178;
+      --emerald-light: #A8CBBF;
+      --ink:           #1E2D27;
+      --ink-soft:      #4A5E56;
+      --warm-white:    #FBF4EF;
+      --gold:          #C9A96E;
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body:    'DM Sans', sans-serif;
+
+      --ease-apple:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--rose-pale); color: var(--ink); }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s var(--ease-expo), transform 1s var(--ease-expo);
+    }
+    [data-reveal="left"] { transform: translateX(-60px); }
+    [data-reveal="right"] { transform: translateX(60px); }
+    [data-reveal="scale"] { transform: scale(0.9) translateY(24px); }
+    [data-reveal].is-visible { opacity: 1; transform: none; }
+    [data-delay="1"] { transition-delay: 0.1s; }
+    [data-delay="2"] { transition-delay: 0.22s; }
+    [data-delay="3"] { transition-delay: 0.36s; }
+    [data-delay="4"] { transition-delay: 0.52s; }
+
+    /* ════════════════════════════════════════
+       NAVBAR — identical to index.html
+    ════════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: rgba(253,246,240,0.94);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(45,106,85,0.12);
+    }
+    .nav-logo {
+      font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
+      color: var(--ink); letter-spacing: 0.02em; text-decoration: none;
+    }
+    .nav-logo span { color: var(--emerald); font-style: italic; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-soft); text-decoration: none;
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--rose);
+      transition: width 0.3s var(--ease-expo);
+    }
+    .nav-links a:hover { color: var(--rose); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.current { color: var(--rose); }
+    .nav-links a.current::after { width: 100%; }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+    .nav-burger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      width: 32px; height: 32px; background: none; border: none; cursor: pointer; z-index: 300;
+    }
+    .nav-burger span { display: block; height: 1.5px; width: 100%; background: var(--ink); transition: transform 0.35s var(--ease-expo), opacity 0.25s; }
+    .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-nav-overlay {
+      position: fixed; inset: 0; background: var(--ink); z-index: 250;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.2rem;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.45s var(--ease-expo), visibility 0.45s;
+    }
+    .mobile-nav-overlay.open { opacity: 1; visibility: visible; }
+    .mobile-nav-overlay a {
+      font-family: var(--font-display); font-size: 2.2rem; font-style: italic; font-weight: 300;
+      color: var(--cream); text-decoration: none;
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.5s var(--ease-expo), transform 0.5s var(--ease-expo);
+    }
+    .mobile-nav-overlay.open a { opacity: 1; transform: translateY(0); }
+    .mobile-nav-overlay.open a:nth-child(1) { transition-delay: 0.1s; }
+    .mobile-nav-overlay.open a:nth-child(2) { transition-delay: 0.16s; }
+    .mobile-nav-overlay.open a:nth-child(3) { transition-delay: 0.22s; }
+    .mobile-nav-overlay.open a:nth-child(4) { transition-delay: 0.28s; }
+    .mobile-nav-overlay.open a:nth-child(5) { transition-delay: 0.34s; }
+
+    @media (max-width: 880px) {
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      nav { padding: 1.2rem 1.5rem; }
+    }
+
+    section { padding: 8rem 4rem; }
+    .section-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 1.2rem; display: block;
+    }
+    .section-title {
+      font-family: var(--font-display); font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+      font-weight: 300; line-height: 1.05; color: var(--ink);
+      letter-spacing: -0.02em; margin-bottom: 1.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--rose); }
+    .section-body { font-size: 1rem; line-height: 1.85; color: var(--ink-soft); max-width: 540px; }
+
+    /* ════════════════════════════════════════
+       PAGE HERO
+    ════════════════════════════════════════ */
+    .about-hero {
+      min-height: 70vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; background: var(--ink); color: var(--cream);
+      position: relative; overflow: hidden; padding: 9rem 2rem 5rem;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(90deg, rgba(45,106,85,0.09) 0px, rgba(45,106,85,0.09) 1px, transparent 1px, transparent 18px),
+        repeating-linear-gradient(0deg, rgba(45,106,85,0.06) 0px, rgba(45,106,85,0.06) 1px, transparent 1px, transparent 18px);
+    }
+    .about-hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .about-hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rose-light); margin-bottom: 2rem; }
+    .about-hero-title {
+      font-family: var(--font-display); font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.8rem;
+    }
+    .about-hero-title em { font-style: italic; color: var(--rose-light); }
+    .about-hero-sub { font-size: 1.05rem; color: rgba(253,246,240,0.6); max-width: 480px; margin: 0 auto; line-height: 1.8; }
+
+    /* ════════════════════════════════════════
+       ORIGIN STORY — split layout
+    ════════════════════════════════════════ */
+    .origin-section { background: var(--cream); }
+    .origin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1140px; margin: 0 auto; align-items: center; }
+    .origin-visual {
+      aspect-ratio: 4/5; background: var(--ink); border-radius: 4px;
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .origin-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(90deg, rgba(168,203,191,0.08) 0px, rgba(168,203,191,0.08) 1px, transparent 1px, transparent 22px),
+        repeating-linear-gradient(0deg, rgba(168,203,191,0.05) 0px, rgba(168,203,191,0.05) 1px, transparent 1px, transparent 22px);
+    }
+    .origin-visual-mark {
+      font-family: var(--font-display); font-style: italic; font-size: 5rem;
+      color: rgba(253,246,240,0.08); position: relative; z-index: 1;
+    }
+    .origin-pull {
+      margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid rgba(45,106,85,0.2);
+      font-family: var(--font-display); font-size: 1.3rem; font-style: italic;
+      color: var(--ink-soft); line-height: 1.6; max-width: 500px;
+    }
+
+    /* ════════════════════════════════════════
+       WORKSHOP — photo grid
+    ════════════════════════════════════════ */
+    .workshop-section { background: var(--warm-white); }
+    .workshop-header { text-align: center; max-width: 640px; margin: 0 auto 4.5rem; }
+    .workshop-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: 1fr 1fr;
+      gap: 0.75rem; max-width: 1140px; margin: 0 auto; height: 560px;
+    }
+    .workshop-photo {
+      border-radius: 4px; position: relative; overflow: hidden;
+      display: flex; align-items: flex-end; padding: 1.2rem;
+      background: var(--cream-dark);
+    }
+    .workshop-photo::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(90deg, rgba(45,106,85,0.08) 0px, rgba(45,106,85,0.08) 1px, transparent 1px, transparent 16px),
+        repeating-linear-gradient(0deg, rgba(45,106,85,0.06) 0px, rgba(45,106,85,0.06) 1px, transparent 1px, transparent 16px);
+    }
+    .wp-1 { grid-row: 1 / 3; }
+    .wp-2 { background: var(--ink); }
+    .wp-2::before {
+      background:
+        repeating-linear-gradient(90deg, rgba(168,203,191,0.08) 0px, rgba(168,203,191,0.08) 1px, transparent 1px, transparent 16px),
+        repeating-linear-gradient(0deg, rgba(168,203,191,0.05) 0px, rgba(168,203,191,0.05) 1px, transparent 1px, transparent 16px);
+    }
+    .workshop-photo-label {
+      position: relative; z-index: 1;
+      font-size: 0.74rem; letter-spacing: 0.08em; color: var(--cream);
+      background: rgba(30,45,39,0.55); backdrop-filter: blur(4px);
+      padding: 0.4rem 0.8rem; border-radius: 100px;
+    }
+    .wp-2 .workshop-photo-label, .wp-4 .workshop-photo-label { color: var(--cream); }
+
+    /* ════════════════════════════════════════
+       MATERIALS — spec table
+    ════════════════════════════════════════ */
+    .materials-section { background: var(--cream); }
+    .materials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1140px; margin: 0 auto; align-items: start; }
+    .materials-spec { display: flex; flex-direction: column; }
+    .spec-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 1.1rem 0; border-bottom: 1px solid rgba(74,94,86,0.14);
+    }
+    .spec-row:first-child { border-top: 1px solid rgba(74,94,86,0.14); }
+    .spec-key { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+    .spec-val { font-family: var(--font-display); font-size: 1.15rem; color: var(--ink); text-align: right; }
+
+    /* ════════════════════════════════════════
+       MEET THE MAKER
+    ════════════════════════════════════════ */
+    .maker-section { background: var(--emerald); color: var(--cream); position: relative; overflow: hidden; }
+    .maker-section::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(90deg, rgba(253,246,240,0.04) 0px, rgba(253,246,240,0.04) 1px, transparent 1px, transparent 32px),
+        repeating-linear-gradient(0deg, rgba(253,246,240,0.03) 0px, rgba(253,246,240,0.03) 1px, transparent 1px, transparent 32px);
+      pointer-events: none;
+    }
+    .maker-inner { position: relative; z-index: 1; max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 4rem; align-items: center; }
+    .maker-portrait {
+      aspect-ratio: 1; border-radius: 4px; background: rgba(253,246,240,0.06);
+      border: 1px solid rgba(253,246,240,0.14);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 4rem; color: rgba(253,246,240,0.2);
+    }
+    .maker-section .section-eyebrow { color: var(--rose-pale); }
+    .maker-section .section-title { color: var(--cream); }
+    .maker-section .section-body { color: rgba(253,246,240,0.65); max-width: 520px; }
+    .maker-name { font-family: var(--font-display); font-size: 1.6rem; font-style: italic; color: var(--rose-light); margin-top: 1.5rem; }
+    .maker-role { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(253,246,240,0.45); margin-top: 0.3rem; }
+
+    /* ════════════════════════════════════════
+       CRAFTSMANSHIP — macro detail strip
+    ════════════════════════════════════════ */
+    .craft-section { background: var(--warm-white); }
+    .craft-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+    .craft-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; max-width: 1140px; margin: 0 auto; }
+    .craft-card {
+      aspect-ratio: 3/4; border-radius: 4px; background: var(--cream-dark);
+      position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.1rem;
+      transition: transform 0.4s var(--ease-spring);
+    }
+    .craft-card:hover { transform: translateY(-6px); }
+    .craft-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(45deg, rgba(212,129,138,0.07) 0px, rgba(212,129,138,0.07) 1px, transparent 1px, transparent 14px);
+    }
+    .craft-card-label { position: relative; z-index: 1; font-size: 0.8rem; color: var(--ink); font-weight: 500; }
+    .craft-card-detail { position: relative; z-index: 1; font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.2rem; }
+
+    /* ════════════════════════════════════════
+       PHILOSOPHY — manifesto
+    ════════════════════════════════════════ */
+    .philosophy-section {
+      background: var(--ink); color: var(--cream);
+      text-align: center; padding: 10rem 2rem;
+      position: relative; overflow: hidden;
+    }
+    .philosophy-section::before {
+      content: '';
+      position: absolute; bottom: -0.1em; left: 50%; transform: translateX(-50%);
+      font-family: var(--font-display); font-size: clamp(8rem, 20vw, 22rem);
+      font-weight: 600; letter-spacing: -0.04em; color: transparent;
+      -webkit-text-stroke: 1px rgba(253,246,240,0.05);
+      content: 'CANVAS'; white-space: nowrap; pointer-events: none;
+    }
+    .philosophy-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+    .philosophy-eyebrow { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rose-light); margin-bottom: 2rem; }
+    .philosophy-text {
+      font-family: var(--font-display); font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+      font-weight: 300; line-height: 1.45; letter-spacing: -0.01em;
+    }
+    .philosophy-text em { font-style: italic; color: var(--rose-light); }
+    .philosophy-cta { margin-top: 3rem; }
+    .btn-primary {
+      background: var(--emerald); color: var(--cream); border: none;
+      padding: 1rem 2.5rem; font-family: var(--font-body); font-size: 0.82rem;
+      letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+      text-decoration: none; display: inline-block; border-radius: 2px;
+      transition: transform 0.3s var(--ease-spring), box-shadow 0.3s, background 0.3s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(45,106,85,0.4); background: var(--rose); }
+
+    /* ════════════════════════════════════════
+       FOOTER — identical to index.html
+    ════════════════════════════════════════ */
+    footer { background: var(--ink); color: var(--cream); padding: 4rem 4rem 2.5rem; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:4rem; max-width:1100px; margin:0 auto 3rem; }
+    .footer-brand-name { font-family:var(--font-display); font-size:1.8rem; font-weight:300; font-style:italic; color:var(--cream); margin-bottom:0.8rem; }
+    .footer-tagline { font-size:0.85rem; color:rgba(253,246,240,0.4); line-height:1.7; max-width:280px; }
+    .footer-col-title { font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--rose-light); margin-bottom:1.2rem; }
+    .footer-links { list-style:none; }
+    .footer-links li { margin-bottom:0.6rem; }
+    .footer-links a { font-size:0.88rem; color:rgba(253,246,240,0.45); text-decoration:none; transition:color 0.3s; }
+    .footer-links a:hover { color:var(--cream); }
+    .footer-bottom { border-top:1px solid rgba(253,246,240,0.08); padding-top:2rem; display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-size:0.78rem; color:rgba(253,246,240,0.3); }
+    .footer-legal { display:flex; gap:1.5rem; }
+    .footer-legal a { font-size:0.78rem; color:rgba(253,246,240,0.3); text-decoration:none; transition:color 0.3s; }
+    .footer-legal a:hover { color:var(--cream); }
+
+    @media (max-width: 880px) {
+      section { padding: 5rem 1.5rem; }
+      .about-hero { padding: 8rem 1.5rem 4rem; }
+      .origin-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .workshop-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 200px); height: auto; }
+      .wp-1 { grid-row: auto; grid-column: 1 / 3; }
+      .materials-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .maker-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+      .maker-portrait { max-width: 220px; margin: 0 auto; }
+      .craft-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 3rem 1.5rem 2rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Canvas <span>Theory</span></a>
+  <ul class="nav-links">
+    <li><a href="about.html" class="current">About</a></li>
+    <li><a href="index.html#products">Products</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="index.html#instagram">Instagram</a></li>
+    <li><a href="index.html#order">Order</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <a href="about.html" onclick="closeMobileNav()">About</a>
+  <a href="index.html#products" onclick="closeMobileNav()">Products</a>
+  <a href="gallery.html" onclick="closeMobileNav()">Gallery</a>
+  <a href="index.html#instagram" onclick="closeMobileNav()">Instagram</a>
+  <a href="index.html#order" onclick="closeMobileNav()">Order</a>
+</div>
+
+<!-- HERO -->
+<div class="about-hero">
+  <div class="about-hero-content">
+    <div class="about-hero-eyebrow" data-reveal>Our story</div>
+    <h1 class="about-hero-title" data-reveal data-delay="1">Made by hand.<br><em>Made for you.</em></h1>
+    <p class="about-hero-sub" data-reveal data-delay="2">Canvas Theory is a small workshop in Bangalore where every jacket and tote is cut, stitched, and finished by hand — to your exact spec, never anyone else's.</p>
+  </div>
+</div>
+
+<!-- ORIGIN STORY -->
+<section class="origin-section" id="story">
+  <div class="origin-grid">
+    <div data-reveal="left">
+      <span class="section-eyebrow">How it started</span>
+      <h2 class="section-title">A blank jacket<br>and a <em>bad idea.</em></h2>
+      <p class="section-body">Canvas Theory began in 2023 with one denim jacket, a borrowed sewing machine, and the kind of idea most people talk themselves out of. The first piece was for a friend's birthday — hand-painted, badly, then re-stitched properly after three attempts. She wore it for a year straight.</p>
+      <p class="section-body" style="margin-top:1.2rem;">That was the moment the idea stopped being a favor and started being a question: what if every piece of clothing could be made the way that jacket was — slowly, specifically, for one person, instead of fast and for everyone?</p>
+      <p class="origin-pull">"We didn't set out to start a brand. We set out to make one good jacket. Then someone asked for a second one."</p>
+    </div>
+    <div class="origin-visual" data-reveal="right" data-delay="2">
+      <div class="origin-visual-mark">CT</div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOP -->
+<section class="workshop-section" id="workshop">
+  <div class="workshop-header">
+    <span class="section-eyebrow" data-reveal>The workshop</span>
+    <h2 class="section-title" data-reveal data-delay="1">Where it<br>actually <em>happens.</em></h2>
+    <p class="section-body" data-reveal data-delay="2" style="margin:0 auto;">A single room in Bangalore. Two sewing machines, a cutting table, and a wall of thread spools organized by a system only one person fully understands.</p>
+  </div>
+  <div class="workshop-grid" data-reveal data-delay="3">
+    <div class="workshop-photo wp-1">
+      <span class="workshop-photo-label">The cutting table</span>
+    </div>
+    <div class="workshop-photo wp-2">
+      <span class="workshop-photo-label">Thread wall</span>
+    </div>
+    <div class="workshop-photo wp-3">
+      <span class="workshop-photo-label">Hand-stitching detail</span>
+    </div>
+    <div class="workshop-photo wp-4">
+      <span class="workshop-photo-label">Finished, ready to ship</span>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIALS -->
+<section class="materials-section" id="materials">
+  <div class="materials-grid">
+    <div data-reveal="left">
+      <span class="section-eyebrow">Materials</span>
+      <h2 class="section-title">Heavy denim.<br><em>No shortcuts.</em></h2>
+      <p class="section-body">Every piece starts as raw cotton denim sourced from mills in Gujarat, woven to a weight that holds its shape instead of going limp after a few washes. We don't pre-distress with chemicals or lasers — any worn-in look is either how the fabric naturally ages or done by hand, thread by thread.</p>
+    </div>
+    <div class="materials-spec" data-reveal="right" data-delay="2">
+      <div class="spec-row"><span class="spec-key">Fabric weight</span><span class="spec-val">12.5 oz raw cotton</span></div>
+      <div class="spec-row"><span class="spec-key">Source</span><span class="spec-val">Gujarat denim mills</span></div>
+      <div class="spec-row"><span class="spec-key">Stitching</span><span class="spec-val">100% hand-finished</span></div>
+      <div class="spec-row"><span class="spec-key">Hardware</span><span class="spec-val">Solid brass / steel</span></div>
+      <div class="spec-row"><span class="spec-key">Thread</span><span class="spec-val">Heavy-duty polyester core</span></div>
+      <div class="spec-row"><span class="spec-key">Lining (totes)</span><span class="spec-val">Brushed cotton twill</span></div>
+      <div class="spec-row"><span class="spec-key">Wash process</span><span class="spec-val">Stone + enzyme, small batch</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MEET THE MAKER -->
+<section class="maker-section" id="maker">
+  <div class="maker-inner">
+    <div class="maker-portrait" data-reveal="scale">CT</div>
+    <div data-reveal="right" data-delay="1">
+      <span class="section-eyebrow">Meet the maker</span>
+      <h2 class="section-title">One person.<br><em>Every stitch.</em></h2>
+      <p class="section-body">Canvas Theory is run out of a single workshop by a small team that still personally touches every order — no offshore factory, no white-labeled stock. When you message us, you're talking to the same person who'll cut your fabric.</p>
+      <div class="maker-name">Ananya R.</div>
+      <div class="maker-role">Founder &amp; Lead Maker</div>
+    </div>
+  </div>
+</section>
+
+<!-- CRAFTSMANSHIP -->
+<section class="craft-section" id="craft">
+  <div class="craft-header">
+    <span class="section-eyebrow" data-reveal>Craftsmanship</span>
+    <h2 class="section-title" data-reveal data-delay="1">The details<br>you'll <em>feel.</em></h2>
+  </div>
+  <div class="craft-grid">
+    <div class="craft-card" data-reveal data-delay="1">
+      <div class="craft-card-label">Reinforced seams</div>
+      <div class="craft-card-detail">Double-stitched at every stress point</div>
+    </div>
+    <div class="craft-card" data-reveal data-delay="2">
+      <div class="craft-card-label">Hand embroidery</div>
+      <div class="craft-card-detail">Every thread placed individually</div>
+    </div>
+    <div class="craft-card" data-reveal data-delay="3">
+      <div class="craft-card-label">Hardware setting</div>
+      <div class="craft-card-detail">Hand-pressed, tested for hold</div>
+    </div>
+    <div class="craft-card" data-reveal data-delay="4">
+      <div class="craft-card-label">Final inspection</div>
+      <div class="craft-card-detail">Checked under daylight before packing</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy-section" id="philosophy">
+  <div class="philosophy-inner">
+    <div class="philosophy-eyebrow" data-reveal>Brand philosophy</div>
+    <p class="philosophy-text" data-reveal data-delay="1">Everything is a canvas <em>if you look deep enough.</em> A jacket isn't finished fabric — it's a surface waiting for a decision. We don't sell clothing. We sell the decision.</p>
+    <div class="philosophy-cta" data-reveal data-delay="2">
+      <a href="index.html#order" class="btn-primary"><span>Start your piece</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Canvas Theory</div>
+      <p class="footer-tagline">Handcrafted denim jackets and tote bags made to order in Bangalore. Every piece is unique because you are.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Navigate</p>
+      <ul class="footer-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="index.html#testimonials">Reviews</a></li>
+        <li><a href="index.html#order">Order now</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Legal</p>
+      <ul class="footer-links">
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+        <li><a href="https://instagram.com/canvastheory" target="_blank" rel="noopener">Instagram ↗</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Canvas Theory. All rights reserved.</span>
+    <div class="footer-legal">
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:hello@canvastheory.in">hello@canvastheory.in</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── MOBILE NAV ───────────────────────────────
+function toggleMobileNav() {
+  const overlay = document.getElementById('mobileNavOverlay');
+  const burger  = document.getElementById('navBurger');
+  const isOpen  = overlay.classList.toggle('open');
+  burger.classList.toggle('open', isOpen);
+  burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+function closeMobileNav() {
+  document.getElementById('mobileNavOverlay').classList.remove('open');
+  document.getElementById('navBurger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─── SCROLL REVEAL ────────────────────────────
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('is-visible'); ro.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('[data-reveal]').forEach(el => ro.observe(el));
+
+requestAnimationFrame(() => {
+  document.querySelectorAll('[data-reveal]').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) { el.classList.add('is-visible'); ro.unobserve(el); }
+  });
+});
+</script>
+</body>
+</html>

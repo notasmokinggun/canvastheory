@@ -1,0 +1,25 @@
+{
+  "name": "canvas-theory-functions",
+  "description": "Cloud Functions for Canvas Theory — Razorpay order creation, payment verification, and order lifecycle.",
+  "main": "index.js",
+  "engines": {
+    "node": "20"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.5.0",
+    "firebase-functions": "^6.1.0",
+    "razorpay": "^2.9.4"
+  },
+  "devDependencies": {
+    "eslint": "^9.13.0"
+  },
+  "private": true
+}

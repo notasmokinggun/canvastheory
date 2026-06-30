@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Gallery — 50+ Custom Denim Pieces | Canvas Theory</title>
+  <meta name="description" content="Browse 50+ handcrafted denim jackets, totes, and guitar projects made by Canvas Theory. Filter by wash, patch style, and category. Find your design, then order it directly." />
+  <link rel="canonical" href="https://www.canvastheory.in/gallery.html" />
+
+  <!-- ═══════════════════════════════════════════
+       SOCIAL SHARING — Open Graph + Twitter Card
+  ═══════════════════════════════════════════ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.canvastheory.in/gallery.html" />
+  <meta property="og:site_name" content="Canvas Theory" />
+  <meta property="og:title" content="Design Gallery — Canvas Theory" />
+  <meta property="og:description" content="50+ handcrafted denim jackets, totes, and guitar projects. Browse, favorite, and order any design directly." />
+  <meta property="og:image" content="https://www.canvastheory.in/assets/images/og-gallery.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_IN" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@canvastheory" />
+  <meta name="twitter:title" content="Design Gallery — Canvas Theory" />
+  <meta name="twitter:description" content="50+ handcrafted denim jackets, totes, and guitar projects. Browse, favorite, and order any design directly." />
+  <meta name="twitter:image" content="https://www.canvastheory.in/assets/images/og-gallery.jpg" />
+
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#2D6A55" />
+  <link rel="icon" href="/assets/icons/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
+
+  <!-- Structured data: ImageGallery -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "Canvas Theory Design Gallery",
+    "description": "Handcrafted custom denim jackets, totes, and guitar projects.",
+    "url": "https://www.canvastheory.in/gallery.html"
+  }
+  </script>
+
+  <!-- ═══════════════════════════════════════════
+       SECURITY HEADERS (meta-level)
+  ═══════════════════════════════════════════ -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' https://accounts.google.com https://apis.google.com https://checkout.razorpay.com https://fonts.googleapis.com https://fonts.gstatic.com;
+             script-src 'self' 'unsafe-inline' https://accounts.google.com https://apis.google.com https://checkout.razorpay.com;
+             style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+             img-src 'self' data: https://lh3.googleusercontent.com https://accounts.google.com;
+             connect-src 'self' https://accounts.google.com https://apis.google.com https://api.razorpay.com https://lumberjack.razorpay.com;
+             frame-src https://accounts.google.com https://api.razorpay.com;" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ════════════════════════════════════════
+       DESIGN TOKENS — identical to index.html
+    ════════════════════════════════════════ */
+    :root {
+      --cream:         #FDF6F0;
+      --cream-dark:    #F5EAE2;
+      --rose:          #D4818A;
+      --rose-light:    #EBB5BA;
+      --rose-pale:     #F5DADE;
+      --emerald:       #2D6A55;
+      --emerald-mid:   #4A9178;
+      --emerald-light: #A8CBBF;
+      --ink:           #1E2D27;
+      --ink-soft:      #4A5E56;
+      --warm-white:    #FBF4EF;
+      --gold:          #C9A96E;
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body:    'DM Sans', sans-serif;
+
+      --ease-apple:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--rose-pale); color: var(--ink); }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s var(--ease-expo), transform 0.9s var(--ease-expo);
+    }
+    [data-reveal].is-visible { opacity: 1; transform: none; }
+    [data-delay="1"] { transition-delay: 0.08s; }
+    [data-delay="2"] { transition-delay: 0.16s; }
+    [data-delay="3"] { transition-delay: 0.24s; }
+
+    /* ════════════════════════════════════════
+       NAVBAR — identical to index.html
+    ════════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: rgba(253,246,240,0.94);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(45,106,85,0.12);
+      transition: padding 0.4s var(--ease-apple);
+    }
+    .nav-logo {
+      font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
+      color: var(--ink); letter-spacing: 0.02em; text-decoration: none;
+    }
+    .nav-logo span { color: var(--emerald); font-style: italic; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-soft); text-decoration: none;
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--rose);
+      transition: width 0.3s var(--ease-expo);
+    }
+    .nav-links a:hover { color: var(--rose); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.current { color: var(--rose); }
+    .nav-links a.current::after { width: 100%; }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+    .nav-burger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      width: 32px; height: 32px; background: none; border: none; cursor: pointer; z-index: 300;
+    }
+    .nav-burger span { display: block; height: 1.5px; width: 100%; background: var(--ink); transition: transform 0.35s var(--ease-expo), opacity 0.25s; }
+    .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-nav-overlay {
+      position: fixed; inset: 0; background: var(--ink); z-index: 250;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.2rem;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.45s var(--ease-expo), visibility 0.45s;
+    }
+    .mobile-nav-overlay.open { opacity: 1; visibility: visible; }
+    .mobile-nav-overlay a {
+      font-family: var(--font-display); font-size: 2.2rem; font-style: italic; font-weight: 300;
+      color: var(--cream); text-decoration: none;
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.5s var(--ease-expo), transform 0.5s var(--ease-expo);
+    }
+    .mobile-nav-overlay.open a { opacity: 1; transform: translateY(0); }
+    .mobile-nav-overlay.open a:nth-child(1) { transition-delay: 0.1s; }
+    .mobile-nav-overlay.open a:nth-child(2) { transition-delay: 0.16s; }
+    .mobile-nav-overlay.open a:nth-child(3) { transition-delay: 0.22s; }
+    .mobile-nav-overlay.open a:nth-child(4) { transition-delay: 0.28s; }
+    .mobile-nav-overlay.open a:nth-child(5) { transition-delay: 0.34s; }
+
+    @media (max-width: 880px) {
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      nav { padding: 1.2rem 1.5rem; }
+    }
+
+    /* ════════════════════════════════════════
+       PAGE HEADER
+    ════════════════════════════════════════ */
+    .gallery-hero {
+      padding: 10rem 4rem 3rem;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .section-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 1.2rem; display: block;
+    }
+    .gallery-title {
+      font-family: var(--font-display); font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+      font-weight: 300; line-height: 1.05; color: var(--ink);
+      letter-spacing: -0.02em; margin-bottom: 1.2rem;
+    }
+    .gallery-title em { font-style: italic; color: var(--rose); }
+    .gallery-sub { font-size: 1rem; line-height: 1.8; color: var(--ink-soft); }
+
+    /* ════════════════════════════════════════
+       CONTROLS — search + filter chips
+    ════════════════════════════════════════ */
+    .gallery-controls {
+      max-width: 1200px; margin: 0 auto; padding: 0 4rem 2rem;
+      display: flex; flex-direction: column; gap: 1.25rem;
+      position: sticky; top: 78px; z-index: 50;
+      background: var(--cream);
+      padding-top: 1rem;
+    }
+    .search-row { display: flex; gap: 0.75rem; align-items: center; }
+    .search-input-wrap { position: relative; flex: 1; max-width: 420px; }
+    .search-input-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); opacity: 0.4; }
+    #gallerySearch {
+      width: 100%; background: var(--warm-white);
+      border: 1px solid rgba(74,94,86,0.18); border-radius: 100px;
+      padding: 0.75rem 1.1rem 0.75rem 2.6rem;
+      font-family: var(--font-body); font-size: 0.9rem; color: var(--ink);
+      outline: none; transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    #gallerySearch:focus { border-color: var(--rose); box-shadow: 0 0 0 3px rgba(212,129,138,0.15); }
+    .result-count { font-size: 0.78rem; color: var(--ink-soft); white-space: nowrap; margin-left: auto; }
+
+    .filter-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    .filter-group-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); margin-right: 0.4rem; }
+    .filter-chip {
+      padding: 0.45rem 1rem; border: 1.5px solid rgba(74,94,86,0.2); border-radius: 100px;
+      font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.03em;
+      color: var(--ink-soft); cursor: pointer; background: var(--cream);
+      transition: all 0.25s var(--ease-apple); user-select: none;
+    }
+    .filter-chip:hover { border-color: var(--rose); color: var(--rose); }
+    .filter-chip.active { background: var(--emerald); border-color: var(--emerald); color: var(--cream); }
+    .filter-divider { width: 1px; height: 18px; background: rgba(74,94,86,0.18); margin: 0 0.3rem; }
+
+    /* ════════════════════════════════════════
+       GALLERY GRID
+    ════════════════════════════════════════ */
+    .gallery-wrap { max-width: 1200px; margin: 0 auto; padding: 1rem 4rem 7rem; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .gcard {
+      perspective: 1400px;
+      transition: opacity 0.35s var(--ease-apple), transform 0.35s var(--ease-apple);
+    }
+    .gcard.hidden-item { display: none; }
+    .gcard-inner {
+      position: relative; width: 100%; aspect-ratio: 3/4;
+      transform-style: preserve-3d;
+      transition: transform 0.7s var(--ease-expo);
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .gcard:hover .gcard-inner { transform: rotateY(180deg); }
+
+    .gcard-face {
+      position: absolute; inset: 0; backface-visibility: hidden;
+      border-radius: 6px; overflow: hidden;
+      border: 1px solid rgba(45,106,85,0.12);
+      background: var(--cream-dark);
+      display: flex; flex-direction: column;
+    }
+    .gcard-face.back { transform: rotateY(180deg); background: var(--warm-white); }
+
+    .gcard-visual {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      font-size: 3.4rem; position: relative;
+      background:
+        repeating-linear-gradient(90deg, rgba(45,106,85,0.07) 0px, rgba(45,106,85,0.07) 1px, transparent 1px, transparent 16px),
+        repeating-linear-gradient(0deg, rgba(45,106,85,0.05) 0px, rgba(45,106,85,0.05) 1px, transparent 1px, transparent 16px);
+    }
+    .gcard-face.back .gcard-visual {
+      background:
+        repeating-linear-gradient(90deg, rgba(212,129,138,0.06) 0px, rgba(212,129,138,0.06) 1px, transparent 1px, transparent 16px),
+        repeating-linear-gradient(0deg, rgba(212,129,138,0.04) 0px, rgba(212,129,138,0.04) 1px, transparent 1px, transparent 16px);
+    }
+    .gcard-back-label {
+      position: absolute; top: 10px; left: 10px;
+      font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--rose); background: rgba(253,246,240,0.85);
+      padding: 0.25rem 0.6rem; border-radius: 100px;
+    }
+
+    .gcard-info { padding: 1rem 1.1rem 1.1rem; }
+    .gcard-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--ink); margin-bottom: 0.2rem; }
+    .gcard-meta { font-size: 0.74rem; color: var(--ink-soft); letter-spacing: 0.02em; }
+    .gcard-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.6rem; }
+    .gcard-tag {
+      font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--emerald); background: rgba(45,106,85,0.08);
+      padding: 0.18rem 0.5rem; border-radius: 100px;
+    }
+
+    .gcard-actions {
+      position: absolute; top: 10px; right: 10px; z-index: 5;
+      display: flex; gap: 0.4rem;
+    }
+    .gcard-action-btn {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(253,246,240,0.92); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; transition: transform 0.25s var(--ease-spring), background 0.25s;
+      backdrop-filter: blur(4px);
+    }
+    .gcard-action-btn:hover { transform: scale(1.12); background: var(--cream); }
+    .gcard-action-btn.favorited { color: var(--rose); }
+    .gcard-action-btn.favorited svg { fill: var(--rose); }
+
+    .gcard-order-btn {
+      width: 100%; padding: 0.7rem; margin-top: 0.7rem;
+      background: var(--emerald); color: var(--cream); border: none; border-radius: 3px;
+      font-family: var(--font-body); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.3s, transform 0.2s;
+    }
+    .gcard-order-btn:hover { background: var(--rose); transform: translateY(-2px); }
+
+    .gcard-back-actions { display: flex; gap: 0.5rem; padding: 0 1.1rem; }
+    .gcard-back-btn {
+      flex: 1; padding: 0.5rem; background: transparent;
+      border: 1.5px solid rgba(74,94,86,0.25); border-radius: 3px;
+      font-family: var(--font-body); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--ink-soft); cursor: pointer; transition: all 0.25s;
+    }
+    .gcard-back-btn:hover { border-color: var(--emerald); color: var(--emerald); }
+
+    .empty-state {
+      text-align: center; padding: 5rem 2rem; color: var(--ink-soft);
+      display: none;
+    }
+    .empty-state.show { display: block; }
+    .empty-state-icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.4; }
+    .empty-state h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; color: var(--ink); margin-bottom: 0.5rem; }
+
+    .load-more-row { text-align: center; margin-top: 3rem; }
+    .btn-outline-dark {
+      background: transparent; color: var(--ink); border: 1.5px solid rgba(45,106,85,0.3);
+      padding: 0.9rem 2.4rem; font-family: var(--font-body); font-size: 0.78rem;
+      letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+      border-radius: 2px; transition: all 0.35s var(--ease-expo);
+    }
+    .btn-outline-dark:hover { background: var(--emerald); border-color: var(--emerald); color: var(--cream); }
+
+    /* ════════════════════════════════════════
+       TOAST
+    ════════════════════════════════════════ */
+    #toast {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(120%);
+      background: var(--ink); color: var(--cream); padding: 0.9rem 1.8rem;
+      border-radius: 100px; font-size: 0.85rem; z-index: 999;
+      transition: transform 0.5s var(--ease-expo); box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ════════════════════════════════════════
+       FOOTER — identical to index.html
+    ════════════════════════════════════════ */
+    footer { background: var(--ink); color: var(--cream); padding: 4rem 4rem 2.5rem; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:4rem; max-width:1100px; margin:0 auto 3rem; }
+    .footer-brand-name { font-family:var(--font-display); font-size:1.8rem; font-weight:300; font-style:italic; color:var(--cream); margin-bottom:0.8rem; }
+    .footer-tagline { font-size:0.85rem; color:rgba(253,246,240,0.4); line-height:1.7; max-width:280px; }
+    .footer-col-title { font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--rose-light); margin-bottom:1.2rem; }
+    .footer-links { list-style:none; }
+    .footer-links li { margin-bottom:0.6rem; }
+    .footer-links a { font-size:0.88rem; color:rgba(253,246,240,0.45); text-decoration:none; transition:color 0.3s; }
+    .footer-links a:hover { color:var(--cream); }
+    .footer-bottom { border-top:1px solid rgba(253,246,240,0.08); padding-top:2rem; display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-size:0.78rem; color:rgba(253,246,240,0.3); }
+    .footer-legal { display:flex; gap:1.5rem; }
+    .footer-legal a { font-size:0.78rem; color:rgba(253,246,240,0.3); text-decoration:none; transition:color 0.3s; }
+    .footer-legal a:hover { color:var(--cream); }
+
+    @media (max-width: 880px) {
+      .gallery-hero { padding: 8rem 1.5rem 2rem; }
+      .gallery-controls { padding: 1rem 1.5rem 1.5rem; top: 70px; }
+      .gallery-wrap { padding: 1rem 1.5rem 5rem; }
+      .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.85rem; }
+      .result-count { display: none; }
+      footer { padding: 3rem 1.5rem 2rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Canvas <span>Theory</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#products">Products</a></li>
+    <li><a href="gallery.html" class="current">Gallery</a></li>
+    <li><a href="index.html#instagram">Instagram</a></li>
+    <li><a href="index.html#order">Order</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <a href="index.html#about" onclick="closeMobileNav()">About</a>
+  <a href="index.html#products" onclick="closeMobileNav()">Products</a>
+  <a href="gallery.html" onclick="closeMobileNav()">Gallery</a>
+  <a href="index.html#instagram" onclick="closeMobileNav()">Instagram</a>
+  <a href="index.html#order" onclick="closeMobileNav()">Order</a>
+</div>
+
+<!-- HERO -->
+<div class="gallery-hero">
+  <span class="section-eyebrow" data-reveal>Design gallery</span>
+  <h1 class="gallery-title" data-reveal data-delay="1">Find your piece.<br><em>Or your starting point.</em></h1>
+  <p class="gallery-sub" data-reveal data-delay="2">Every design here has already been made once. Favorite the ones you love, filter by what matters to you, then order it directly — or use it as a starting point in the Customization Studio.</p>
+</div>
+
+<!-- CONTROLS -->
+<div class="gallery-controls" data-reveal data-delay="2">
+  <div class="search-row">
+    <div class="search-input-wrap">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="gallerySearch" placeholder="Search by name, wash, or detail…" autocomplete="off" />
+    </div>
+    <span class="result-count" id="resultCount">54 designs</span>
+  </div>
+  <div class="filter-row">
+    <span class="filter-group-label">Category</span>
+    <button class="filter-chip active" data-filter-type="category" data-filter-val="all">All</button>
+    <button class="filter-chip" data-filter-type="category" data-filter-val="jacket">Jackets</button>
+    <button class="filter-chip" data-filter-type="category" data-filter-val="tote">Totes</button>
+    <button class="filter-chip" data-filter-type="category" data-filter-val="guitar">Guitar Projects</button>
+    <div class="filter-divider"></div>
+    <span class="filter-group-label">Wash</span>
+    <button class="filter-chip active" data-filter-type="wash" data-filter-val="all">All</button>
+    <button class="filter-chip" data-filter-type="wash" data-filter-val="raw">Raw</button>
+    <button class="filter-chip" data-filter-type="wash" data-filter-val="mid">Mid</button>
+    <button class="filter-chip" data-filter-type="wash" data-filter-val="light">Light</button>
+    <button class="filter-chip" data-filter-type="wash" data-filter-val="black">Black</button>
+    <div class="filter-divider"></div>
+    <button class="filter-chip" id="favoritesOnlyBtn" data-filter-type="favorites">★ Favorites</button>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery-wrap">
+  <div class="gallery-grid" id="galleryGrid"></div>
+  <div class="empty-state" id="emptyState">
+    <div class="empty-state-icon">⌬</div>
+    <h3>Nothing matches yet</h3>
+    <p>Try a different filter, or clear your search.</p>
+  </div>
+  <div class="load-more-row" id="loadMoreRow" style="display:none;">
+    <button class="btn-outline-dark" id="loadMoreBtn">Load more designs</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Canvas Theory</div>
+      <p class="footer-tagline">Handcrafted denim jackets and tote bags made to order in Bangalore. Every piece is unique because you are.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Navigate</p>
+      <ul class="footer-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="index.html#testimonials">Reviews</a></li>
+        <li><a href="index.html#order">Order now</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Legal</p>
+      <ul class="footer-links">
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+        <li><a href="https://instagram.com/canvastheory" target="_blank" rel="noopener">Instagram ↗</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Canvas Theory. All rights reserved.</span>
+    <div class="footer-legal">
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:hello@canvastheory.in">hello@canvastheory.in</a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+// ─── MOBILE NAV ───────────────────────────────
+function toggleMobileNav() {
+  const overlay = document.getElementById('mobileNavOverlay');
+  const burger  = document.getElementById('navBurger');
+  const isOpen  = overlay.classList.toggle('open');
+  burger.classList.toggle('open', isOpen);
+  burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+function closeMobileNav() {
+  document.getElementById('mobileNavOverlay').classList.remove('open');
+  document.getElementById('navBurger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─── TOAST ───────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+// ─── DESIGN DATA ──────────────────────────────
+// In production this array is replaced by a Firestore query against the
+// `gallery` collection (see Firebase Backend section of the strategy doc).
+// front_emoji/back_emoji are placeholders — swap for front_image/back_image
+// Storage URLs when real product photography is ready.
+const JACKET_NAMES = [
+  'Midnight Garden','Static Bloom','Quiet Riot','Tide Pool','Velvet Static',
+  'Paper Moon','Iron Orchid','Slow Burn','Echo Chamber','Loose Thread',
+  'Saltwater','Afterglow','Concrete Bloom','Northbound','Heat Mirage',
+  'Dust & Gold','Wildflower Static','Low Tide','Amber Hour','Tin Roof',
+  'Faded Polaroid','Lemon Static','Smoke Signal','Frayed Edge','Last Light',
+  'Coastal Drift','Static Rose','Bone Yard','Honeycomb','Riverbed',
+  'Crosswind','Salt & Indigo','Dusty Trail','Late Bloomer','Pale Fire',
+  'Open Road','Marble Static','Wild Grass','Long Shadow','Indigo Static',
+  'Driftwood','Static Garden','Foxfire','Slow Light','Quiet Static',
+  'Threadbare Sun','Static Moth','Hollow Bloom','Embered','Loose Static'
+];
+const TOTE_NAMES = ['Sunflower Carry','Field Notes','Daily Static','Market Run','Loose Leaf'];
+const GUITAR_NAMES = ['Stratocaster Static','Les Paul Bloom'];
+
+const WASHES = ['raw','mid','light','black'];
+const WASH_LABEL = { raw: 'Raw indigo', mid: 'Mid wash', light: 'Light wash', black: 'Black denim' };
+const JACKET_EMOJI = ['🧥'];
+const TOTE_EMOJI = ['👜'];
+const GUITAR_EMOJI = ['🎸'];
+const TAGS_POOL = ['embroidery','floral','geometric','custom text','vintage badge','minimal'];
+
+function buildDesigns() {
+  const designs = [];
+  let id = 1;
+  JACKET_NAMES.forEach((name, i) => {
+    designs.push({
+      id: id++, name, category: 'jacket',
+      wash: WASHES[i % WASHES.length],
+      emoji: JACKET_EMOJI[0],
+      tags: [TAGS_POOL[i % TAGS_POOL.length], TAGS_POOL[(i + 2) % TAGS_POOL.length]],
+      price: 2499 + (i % 4) * 350,
+    });
+  });
+  TOTE_NAMES.forEach((name, i) => {
+    designs.push({
+      id: id++, name, category: 'tote',
+      wash: WASHES[i % WASHES.length],
+      emoji: TOTE_EMOJI[0],
+      tags: [TAGS_POOL[i % TAGS_POOL.length]],
+      price: 899 + (i % 3) * 200,
+    });
+  });
+  GUITAR_NAMES.forEach((name, i) => {
+    designs.push({
+      id: id++, name, category: 'guitar',
+      wash: WASHES[i % WASHES.length],
+      emoji: GUITAR_EMOJI[0],
+      tags: ['embroidery', 'custom text'],
+      price: 3199 + i * 400,
+    });
+  });
+  return designs;
+}
+
+const ALL_DESIGNS = buildDesigns();
+const PAGE_SIZE = 12;
+
+let state = {
+  category: 'all',
+  wash: 'all',
+  favoritesOnly: false,
+  query: '',
+  visibleCount: PAGE_SIZE,
+};
+
+// Favorites persist for the session only — wire to Firestore wishlist
+// (see users.wishlist schema) once Firebase Auth is integrated.
+let favorites = new Set();
+
+function getFiltered() {
+  return ALL_DESIGNS.filter(d => {
+    if (state.category !== 'all' && d.category !== state.category) return false;
+    if (state.wash !== 'all' && d.wash !== state.wash) return false;
+    if (state.favoritesOnly && !favorites.has(d.id)) return false;
+    if (state.query) {
+      const q = state.query.toLowerCase();
+      const hay = (d.name + ' ' + d.category + ' ' + d.wash + ' ' + d.tags.join(' ')).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function categoryLabel(cat) {
+  return cat === 'jacket' ? 'Jacket' : cat === 'tote' ? 'Tote bag' : 'Guitar project';
+}
+
+function renderCard(d) {
+  const isFav = favorites.has(d.id);
+  return `
+    <div class="gcard" data-id="${d.id}">
+      <div class="gcard-actions">
+        <button class="gcard-action-btn ${isFav ? 'favorited' : ''}" title="Favorite" onclick="toggleFavorite(event, ${d.id})">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <button class="gcard-action-btn" title="Share" onclick="shareDesign(event, ${d.id})">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </button>
+      </div>
+      <div class="gcard-inner">
+        <div class="gcard-face front">
+          <div class="gcard-visual">${d.emoji}</div>
+          <div class="gcard-info">
+            <div class="gcard-name">${d.name}</div>
+            <div class="gcard-meta">${categoryLabel(d.category)} · ${WASH_LABEL[d.wash]}</div>
+            <div class="gcard-tags">${d.tags.map(t => `<span class="gcard-tag">${t}</span>`).join('')}</div>
+          </div>
+        </div>
+        <div class="gcard-face back">
+          <span class="gcard-back-label">Back view</span>
+          <div class="gcard-visual">${d.emoji}</div>
+          <div class="gcard-info" style="padding-bottom:0.5rem;">
+            <div class="gcard-name">₹${d.price.toLocaleString('en-IN')} <span style="font-size:0.7rem;color:var(--ink-soft);font-family:var(--font-body);">onwards</span></div>
+          </div>
+          <div class="gcard-back-actions">
+            <button class="gcard-back-btn" onclick="duplicateDesign(event, ${d.id})">Duplicate</button>
+            <button class="gcard-back-btn" onclick="saveDesign(event, ${d.id})">Save</button>
+          </div>
+          <div style="padding:0.7rem 1.1rem 1.1rem;">
+            <button class="gcard-order-btn" onclick="orderDesign(event, ${d.id})">Order this design</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function render() {
+  const filtered = getFiltered();
+  const grid = document.getElementById('galleryGrid');
+  const empty = document.getElementById('emptyState');
+  const loadMoreRow = document.getElementById('loadMoreRow');
+  const visible = filtered.slice(0, state.visibleCount);
+
+  document.getElementById('resultCount').textContent =
+    filtered.length + (filtered.length === 1 ? ' design' : ' designs');
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    empty.classList.add('show');
+    loadMoreRow.style.display = 'none';
+    return;
+  }
+  empty.classList.remove('show');
+  grid.innerHTML = visible.map(renderCard).join('');
+  loadMoreRow.style.display = filtered.length > visible.length ? 'block' : 'none';
+
+  // Re-trigger reveal for newly added cards
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.gcard').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = `opacity 0.5s var(--ease-expo) ${Math.min(i * 0.03, 0.3)}s, transform 0.5s var(--ease-expo) ${Math.min(i * 0.03, 0.3)}s`;
+      requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    });
+  });
+}
+
+// ─── ACTIONS ──────────────────────────────────
+function toggleFavorite(e, id) {
+  e.stopPropagation();
+  if (favorites.has(id)) { favorites.delete(id); showToast('Removed from favorites'); }
+  else { favorites.add(id); showToast('★ Added to favorites'); }
+  render();
+}
+function shareDesign(e, id) {
+  e.stopPropagation();
+  const d = ALL_DESIGNS.find(x => x.id === id);
+  const url = `${location.origin}${location.pathname.replace('gallery.html','')}gallery.html?design=${id}`;
+  if (navigator.share) {
+    navigator.share({ title: `${d.name} — Canvas Theory`, url }).catch(() => {});
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(url);
+    showToast('Link copied');
+  } else {
+    showToast('Share: ' + url);
+  }
+}
+function duplicateDesign(e, id) {
+  e.stopPropagation();
+  // In production: clones this design's specs into a new Customization
+  // Studio draft (see drafts collection) and redirects to customize.html?from=<draftId>
+  showToast('Opening in Customization Studio…');
+}
+function saveDesign(e, id) {
+  e.stopPropagation();
+  // In production: writes to users.wishlist via Firestore (requires Firebase Auth)
+  showToast('Saved to your wishlist');
+}
+function orderDesign(e, id) {
+  e.stopPropagation();
+  const d = ALL_DESIGNS.find(x => x.id === id);
+  // Pre-fills the order form on index.html with this design's specs via query params
+  window.location.href = `index.html?prefill_product=${d.category}&prefill_wash=${d.wash}&prefill_name=${encodeURIComponent(d.name)}#order`;
+}
+
+// ─── FILTER WIRING ────────────────────────────
+document.querySelectorAll('.filter-chip[data-filter-type="category"]').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip[data-filter-type="category"]').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    state.category = chip.dataset.filterVal;
+    state.visibleCount = PAGE_SIZE;
+    render();
+  });
+});
+document.querySelectorAll('.filter-chip[data-filter-type="wash"]').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip[data-filter-type="wash"]').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    state.wash = chip.dataset.filterVal;
+    state.visibleCount = PAGE_SIZE;
+    render();
+  });
+});
+document.getElementById('favoritesOnlyBtn').addEventListener('click', function() {
+  state.favoritesOnly = !state.favoritesOnly;
+  this.classList.toggle('active', state.favoritesOnly);
+  state.visibleCount = PAGE_SIZE;
+  render();
+});
+let searchDebounce;
+document.getElementById('gallerySearch').addEventListener('input', (e) => {
+  clearTimeout(searchDebounce);
+  searchDebounce = setTimeout(() => {
+    state.query = e.target.value.trim();
+    state.visibleCount = PAGE_SIZE;
+    render();
+  }, 150);
+});
+document.getElementById('loadMoreBtn').addEventListener('click', () => {
+  state.visibleCount += PAGE_SIZE;
+  render();
+});
+
+// ─── SCROLL REVEAL (hero + controls only — cards handle their own) ──
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('is-visible'); ro.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('[data-reveal]').forEach(el => ro.observe(el));
+requestAnimationFrame(() => {
+  document.querySelectorAll('[data-reveal]').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight) { el.classList.add('is-visible'); ro.unobserve(el); }
+  });
+});
+
+// ─── INITIAL RENDER ───────────────────────────
+render();
+</script>
+</body>
+</html>
