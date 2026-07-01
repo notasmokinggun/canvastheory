@@ -74,14 +74,14 @@
     :root {
       --cream:         #FDF6F0;
       --cream-dark:    #F5EAE2;
-      --rose:          #D4818A;
-      --rose-light:    #EBB5BA;
-      --rose-pale:     #F5DADE;
-      --emerald:       #2D6A55;
-      --emerald-mid:   #4A9178;
-      --emerald-light: #A8CBBF;
-      --ink:           #1E2D27;
-      --ink-soft:      #4A5E56;
+      --rose:          #E1948A;
+      --rose-light:    #EBB8B2;
+      --rose-pale:     #F5DADA;
+      --emerald:       #445124;
+      --emerald-mid:   #6A7D3A;
+      --emerald-light: #B5C48A;
+      --ink:           #1E2D1A;
+      --ink-soft:      #4A5E42;
       --warm-white:    #FBF4EF;
       --gold:          #C9A96E;
 
@@ -130,11 +130,9 @@
       backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid rgba(45,106,85,0.12);
     }
-    .nav-logo {
-      font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
-      color: var(--ink); letter-spacing: 0.02em; text-decoration: none;
-    }
-    .nav-logo span { color: var(--emerald); font-style: italic; }
+    .nav-logo { display:flex; align-items:center; text-decoration:none; transition:opacity 0.3s; }
+    .nav-logo:hover { opacity:0.85; }
+    .nav-logo img { height:44px; width:auto; display:block; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
       font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em;
@@ -263,30 +261,14 @@
     }
     .workshop-photo {
       border-radius: 4px; position: relative; overflow: hidden;
-      display: flex; align-items: flex-end; padding: 1.2rem;
       background: var(--cream-dark);
     }
-    .workshop-photo::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        repeating-linear-gradient(90deg, rgba(45,106,85,0.08) 0px, rgba(45,106,85,0.08) 1px, transparent 1px, transparent 16px),
-        repeating-linear-gradient(0deg, rgba(45,106,85,0.06) 0px, rgba(45,106,85,0.06) 1px, transparent 1px, transparent 16px);
+    .workshop-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s var(--ease-apple);
     }
+    .workshop-photo:hover img { transform: scale(1.04); }
     .wp-1 { grid-row: 1 / 3; }
-    .wp-2 { background: var(--ink); }
-    .wp-2::before {
-      background:
-        repeating-linear-gradient(90deg, rgba(168,203,191,0.08) 0px, rgba(168,203,191,0.08) 1px, transparent 1px, transparent 16px),
-        repeating-linear-gradient(0deg, rgba(168,203,191,0.05) 0px, rgba(168,203,191,0.05) 1px, transparent 1px, transparent 16px);
-    }
-    .workshop-photo-label {
-      position: relative; z-index: 1;
-      font-size: 0.74rem; letter-spacing: 0.08em; color: var(--cream);
-      background: rgba(30,45,39,0.55); backdrop-filter: blur(4px);
-      padding: 0.4rem 0.8rem; border-radius: 100px;
-    }
-    .wp-2 .workshop-photo-label, .wp-4 .workshop-photo-label { color: var(--cream); }
 
     /* ════════════════════════════════════════
        MATERIALS — spec table
@@ -417,7 +399,7 @@
 <body>
 
 <nav id="main-nav">
-  <a href="index.html" class="nav-logo">Canvas <span>Theory</span></a>
+  <a href="index.html" class="nav-logo" aria-label="Canvas Theory"><img src="assets/icons/logo.png" alt="Canvas Theory" /></a>
   <ul class="nav-links">
     <li><a href="about.html" class="current">About</a></li>
     <li><a href="index.html#products">Products</a></li>
@@ -445,7 +427,7 @@
   <div class="about-hero-content">
     <div class="about-hero-eyebrow" data-reveal>Our story</div>
     <h1 class="about-hero-title" data-reveal data-delay="1">Made by hand.<br><em>Made for you.</em></h1>
-    <p class="about-hero-sub" data-reveal data-delay="2">Canvas Theory is a small workshop in Bangalore where every jacket and tote is cut, stitched, and finished by hand — to your exact spec, never anyone else's.</p>
+    <p class="about-hero-sub" data-reveal data-delay="2">Canvas Theory hand-paints jackets, totes, and clocks in Bangalore — to your exact spec, never anyone else's.</p>
   </div>
 </div>
 
@@ -455,9 +437,9 @@
     <div data-reveal="left">
       <span class="section-eyebrow">How it started</span>
       <h2 class="section-title">A blank jacket<br>and a <em>bad idea.</em></h2>
-      <p class="section-body">Canvas Theory began in 2023 with one denim jacket, a borrowed sewing machine, and the kind of idea most people talk themselves out of. The first piece was for a friend's birthday — hand-painted, badly, then re-stitched properly after three attempts. She wore it for a year straight.</p>
-      <p class="section-body" style="margin-top:1.2rem;">That was the moment the idea stopped being a favor and started being a question: what if every piece of clothing could be made the way that jacket was — slowly, specifically, for one person, instead of fast and for everyone?</p>
-      <p class="origin-pull">"We didn't set out to start a brand. We set out to make one good jacket. Then someone asked for a second one."</p>
+      <p class="section-body">Canvas Theory started in 2025 with one plain denim jacket and a paintbrush. The first piece was for a friend — hand-painted, freehand, no stencils, learning the surface as it went. She wore it constantly.</p>
+      <p class="section-body" style="margin-top:1.2rem;">That was the moment the idea stopped being a favor and started being a question: what if everyday things — jackets, totes, even a clock on the wall — were treated as a canvas instead of just an object?</p>
+      <p class="origin-pull">"Everything is a canvas if you look hard enough."</p>
     </div>
     <div class="origin-visual" data-reveal="right" data-delay="2">
       <div class="origin-visual-mark">CT</div>
@@ -466,24 +448,25 @@
 </section>
 
 <!-- WORKSHOP -->
+<!-- ⚠ PLACEHOLDER — swap workshop-photo blocks for real, watermark-free photos once available. -->
 <section class="workshop-section" id="workshop">
   <div class="workshop-header">
-    <span class="section-eyebrow" data-reveal>The workshop</span>
+    <span class="section-eyebrow" data-reveal>The studio</span>
     <h2 class="section-title" data-reveal data-delay="1">Where it<br>actually <em>happens.</em></h2>
-    <p class="section-body" data-reveal data-delay="2" style="margin:0 auto;">A single room in Bangalore. Two sewing machines, a cutting table, and a wall of thread spools organized by a system only one person fully understands.</p>
+    <p class="section-body" data-reveal data-delay="2" style="margin:0 auto;">A small home studio in Bangalore — brushes, paint, and a stack of plain jackets, totes, and clocks waiting for a design.</p>
   </div>
   <div class="workshop-grid" data-reveal data-delay="3">
     <div class="workshop-photo wp-1">
-      <span class="workshop-photo-label">The cutting table</span>
+      <img src="assets/photos/jacket.jpg" alt="Hand-painted Spider-Man denim jacket" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
     </div>
     <div class="workshop-photo wp-2">
-      <span class="workshop-photo-label">Thread wall</span>
+      <img src="assets/photos/clock_full_1.jpg" alt="Hand-painted swan wall clock, full view" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
     </div>
     <div class="workshop-photo wp-3">
-      <span class="workshop-photo-label">Hand-stitching detail</span>
+      <img src="assets/photos/clock_close.jpg" alt="Hand-painted swan clock detail close-up" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
     </div>
     <div class="workshop-photo wp-4">
-      <span class="workshop-photo-label">Finished, ready to ship</span>
+      <img src="assets/photos/tote_masala.jpg" alt="Hand-painted Masala tote bag" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
     </div>
   </div>
 </section>
@@ -493,17 +476,16 @@
   <div class="materials-grid">
     <div data-reveal="left">
       <span class="section-eyebrow">Materials</span>
-      <h2 class="section-title">Heavy denim.<br><em>No shortcuts.</em></h2>
-      <p class="section-body">Every piece starts as raw cotton denim sourced from mills in Gujarat, woven to a weight that holds its shape instead of going limp after a few washes. We don't pre-distress with chemicals or lasers — any worn-in look is either how the fabric naturally ages or done by hand, thread by thread.</p>
+      <h2 class="section-title">Plain pieces.<br><em>Painted by hand.</em></h2>
+      <p class="section-body">Every piece starts as a plain blue denim jacket, a plain canvas tote, or a plain quartz wall clock — sourced as-is and hand-painted from there. We're not a denim manufacturer; we're painters working on a ready-made surface, so what you're paying for is the design, not the construction.</p>
     </div>
     <div class="materials-spec" data-reveal="right" data-delay="2">
-      <div class="spec-row"><span class="spec-key">Fabric weight</span><span class="spec-val">12.5 oz raw cotton</span></div>
-      <div class="spec-row"><span class="spec-key">Source</span><span class="spec-val">Gujarat denim mills</span></div>
-      <div class="spec-row"><span class="spec-key">Stitching</span><span class="spec-val">100% hand-finished</span></div>
-      <div class="spec-row"><span class="spec-key">Hardware</span><span class="spec-val">Solid brass / steel</span></div>
-      <div class="spec-row"><span class="spec-key">Thread</span><span class="spec-val">Heavy-duty polyester core</span></div>
-      <div class="spec-row"><span class="spec-key">Lining (totes)</span><span class="spec-val">Brushed cotton twill</span></div>
-      <div class="spec-row"><span class="spec-key">Wash process</span><span class="spec-val">Stone + enzyme, small batch</span></div>
+      <div class="spec-row"><span class="spec-key">Jacket base</span><span class="spec-val">Plain blue denim, XS–XL</span></div>
+      <div class="spec-row"><span class="spec-key">Tote base</span><span class="spec-val">Plain canvas, S / M / L</span></div>
+      <div class="spec-row"><span class="spec-key">Clock base</span><span class="spec-val">Plain quartz, no glass, Small / Big</span></div>
+      <div class="spec-row"><span class="spec-key">Paint</span><span class="spec-val">Fabric-safe / surface-safe, hand-applied</span></div>
+      <div class="spec-row"><span class="spec-key">Numerals (clock)</span><span class="spec-val">Roman or plain, consistent dial</span></div>
+      <div class="spec-row"><span class="spec-key">Clock battery</span><span class="spec-val">Not included</span></div>
     </div>
   </div>
 </section>
@@ -514,10 +496,10 @@
     <div class="maker-portrait" data-reveal="scale">CT</div>
     <div data-reveal="right" data-delay="1">
       <span class="section-eyebrow">Meet the maker</span>
-      <h2 class="section-title">One person.<br><em>Every stitch.</em></h2>
-      <p class="section-body">Canvas Theory is run out of a single workshop by a small team that still personally touches every order — no offshore factory, no white-labeled stock. When you message us, you're talking to the same person who'll cut your fabric.</p>
-      <div class="maker-name">Ananya R.</div>
-      <div class="maker-role">Founder &amp; Lead Maker</div>
+      <h2 class="section-title">One person.<br><em>Every brushstroke.</em></h2>
+      <p class="section-body">Canvas Theory is a one-person operation — every design is hand-painted by the same person who answers your messages and packs your order. No outsourcing, no factory.</p>
+      <div class="maker-name">Nishtha Gandhi</div>
+      <div class="maker-role">Founder &amp; Artist</div>
     </div>
   </div>
 </section>
@@ -530,16 +512,16 @@
   </div>
   <div class="craft-grid">
     <div class="craft-card" data-reveal data-delay="1">
-      <div class="craft-card-label">Reinforced seams</div>
-      <div class="craft-card-detail">Double-stitched at every stress point</div>
+      <div class="craft-card-label">Freehand painting</div>
+      <div class="craft-card-detail">No stencils, no print transfers</div>
     </div>
     <div class="craft-card" data-reveal data-delay="2">
-      <div class="craft-card-label">Hand embroidery</div>
-      <div class="craft-card-detail">Every thread placed individually</div>
+      <div class="craft-card-label">Progress photos</div>
+      <div class="craft-card-detail">See your piece as it's painted</div>
     </div>
     <div class="craft-card" data-reveal data-delay="3">
-      <div class="craft-card-label">Hardware setting</div>
-      <div class="craft-card-detail">Hand-pressed, tested for hold</div>
+      <div class="craft-card-label">Confirmed before painting</div>
+      <div class="craft-card-detail">We check your design idea first</div>
     </div>
     <div class="craft-card" data-reveal data-delay="4">
       <div class="craft-card-label">Final inspection</div>
@@ -552,7 +534,7 @@
 <section class="philosophy-section" id="philosophy">
   <div class="philosophy-inner">
     <div class="philosophy-eyebrow" data-reveal>Brand philosophy</div>
-    <p class="philosophy-text" data-reveal data-delay="1">Everything is a canvas <em>if you look deep enough.</em> A jacket isn't finished fabric — it's a surface waiting for a decision. We don't sell clothing. We sell the decision.</p>
+    <p class="philosophy-text" data-reveal data-delay="1">Everything is a canvas <em>if you look hard enough.</em> A jacket isn't finished fabric — it's a surface waiting for a decision. We don't sell clothing. We sell the decision.</p>
     <div class="philosophy-cta" data-reveal data-delay="2">
       <a href="index.html#order" class="btn-primary"><span>Start your piece</span></a>
     </div>
@@ -563,8 +545,9 @@
 <footer>
   <div class="footer-grid">
     <div>
+      <img src="assets/icons/logo.png" alt="Canvas Theory" style="height:52px;width:auto;filter:brightness(0) invert(1);opacity:0.9;margin-bottom:0.8rem;display:block;" />
       <div class="footer-brand-name">Canvas Theory</div>
-      <p class="footer-tagline">Handcrafted denim jackets and tote bags made to order in Bangalore. Every piece is unique because you are.</p>
+      <p class="footer-tagline">Hand-painted denim jackets, totes, and clocks made to order in Bangalore. Every piece is unique because you are.</p>
     </div>
     <div>
       <p class="footer-col-title">Navigate</p>
@@ -581,7 +564,7 @@
         <li><a href="privacy-policy.html">Privacy Policy</a></li>
         <li><a href="terms.html">Terms of Service</a></li>
         <li><a href="refund.html">Refund Policy</a></li>
-        <li><a href="https://instagram.com/canvastheory" target="_blank" rel="noopener">Instagram ↗</a></li>
+        <li><a href="https://www.instagram.com/crafts.by.nish/" target="_blank" rel="noopener">Instagram ↗</a></li>
       </ul>
     </div>
   </div>
