@@ -3,6 +3,22 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    // Admin check: looks up /admins/{email}. Mirrors ADMIN_EMAILS in
+    // index.js and the same function in storage.rules — keep all three in
+    // sync. Create a doc at admins/{your-email} (any field, e.g. {ok:true})
+    // once via the Firebase Console. See the setup guide.
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email != null &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.token.email));
+    }
+
+    // ── admins ─────────────────────────────────────────────────────────
+    // Allowlist of admin emails, used only as a lookup table by isAdmin().
+    // No client read/write — managed by you directly in the console.
+    match /admins/{email} {
+      allow read, write: if false;
+    }
+
     // ── users ──────────────────────────────────────────────────────────
     // Each user can only read/write their own document. Created by the
     // client's signInWithGoogle() flow (see auth.js in the README).
@@ -16,8 +32,11 @@ service cloud.firestore {
     // client-side `create` is intentionally disallowed here — it would
     // let someone write an order doc with a fake amount_paise. Reads are
     // restricted to the order's owner. Updates and deletes are never
-    // allowed from the client — only the webhook (also admin-privileged)
-    // can change order status.
+    // allowed from the client — only the webhook and the admin-only
+    // updateOrderStatus / addProgressPhoto Cloud Functions (also
+    // admin-privileged, gated by ADMIN_EMAILS in index.js) can change
+    // order status. The admin page (admin.html) never writes to
+    // Firestore directly — it only calls those callables.
     match /orders/{orderId} {
       allow create: if false;
       allow read: if request.auth != null
@@ -27,12 +46,10 @@ service cloud.firestore {
 
     // ── gallery ────────────────────────────────────────────────────────
     // Public read for the gallery.html browsing experience. Writes
-    // restricted to admin accounts (set via a custom claim — see README
-    // "Granting admin access" section).
+    // restricted to admin accounts (see isAdmin() above).
     match /gallery/{designId} {
       allow read: if true;
-      allow write: if request.auth != null
-        && request.auth.token.admin == true;
+      allow write: if isAdmin();
     }
 
     // ── drafts ─────────────────────────────────────────────────────────
