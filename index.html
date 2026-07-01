@@ -49,13 +49,30 @@
   {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "Custom Handcrafted Denim Jacket",
-    "description": "Fully customizable handmade denim jacket. Choose wash, distress level, patches, embroidery, and hardware. Made to order in Bangalore.",
+    "name": "Custom Hand-Painted Denim Jacket",
+    "description": "A plain blue denim jacket, hand-painted to order. Choose from 50+ design options. Sizes XS to XL, flat pricing. Made in Bangalore.",
     "brand": { "@type": "Brand", "name": "Canvas Theory" },
     "offers": {
       "@type": "Offer",
       "priceCurrency": "INR",
-      "price": "2499",
+      "price": "1299",
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.canvastheory.in/#order"
+    }
+  }
+  </script>
+  <!-- Structured data: Product (tote bag) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Custom Hand-Painted Tote Bag",
+    "description": "A plain canvas tote, hand-painted to order. Choose from 50+ design options. Sizes S, M, L. Made in Bangalore.",
+    "brand": { "@type": "Brand", "name": "Canvas Theory" },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "INR",
+      "price": "399",
       "availability": "https://schema.org/InStock",
       "url": "https://www.canvastheory.in/#order"
     }
@@ -67,12 +84,12 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Hand-Painted Quartz Wall Clock",
-    "description": "Plain quartz wall clock, hand-painted to order. Sold without glass, fully working. Choose Roman or plain numerals.",
+    "description": "Plain quartz wall clock, hand-painted to order. Sold without glass, fully working, battery not included. Choose Roman or plain numerals.",
     "brand": { "@type": "Brand", "name": "Canvas Theory" },
     "offers": {
       "@type": "Offer",
       "priceCurrency": "INR",
-      "price": "999",
+      "price": "499",
       "availability": "https://schema.org/InStock",
       "url": "https://www.canvastheory.in/#order"
     }
@@ -152,14 +169,14 @@
     :root {
       --cream:         #FDF6F0;
       --cream-dark:    #F5EAE2;
-      --rose:          #D4818A;
-      --rose-light:    #EBB5BA;
-      --rose-pale:     #F5DADE;
-      --emerald:       #2D6A55;
-      --emerald-mid:   #4A9178;
-      --emerald-light: #A8CBBF;
-      --ink:           #1E2D27;
-      --ink-soft:      #4A5E56;
+      --rose:          #E1948A;
+      --rose-light:    #EBB8B2;
+      --rose-pale:     #F5DADA;
+      --emerald:       #445124;
+      --emerald-mid:   #6A7D3A;
+      --emerald-light: #B5C48A;
+      --ink:           #1E2D1A;
+      --ink-soft:      #4A5E42;
       --warm-white:    #FBF4EF;
       --gold:          #C9A96E;
 
@@ -244,17 +261,20 @@
       padding: 1rem 4rem;
     }
     .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--cream);
-      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
       text-decoration: none;
-      transition: color 0.4s;
+      transition: opacity 0.3s;
     }
-    nav.scrolled .nav-logo { color: var(--ink); }
-    .nav-logo span { color: var(--rose-light); font-style: italic; transition: color 0.4s; }
-    nav.scrolled .nav-logo span { color: var(--emerald); }
+    .nav-logo:hover { opacity: 0.85; }
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+      transition: filter 0.4s;
+    }
+    nav.scrolled .nav-logo img { filter: none; }
 
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
@@ -396,28 +416,11 @@
     .hero-denim-bg {
       position: absolute;
       inset: 0;
-      background:
-        repeating-linear-gradient(
-          90deg,
-          rgba(45,106,85,0.09) 0px, rgba(45,106,85,0.09) 1px,
-          transparent 1px, transparent 18px
-        ),
-        repeating-linear-gradient(
-          0deg,
-          rgba(45,106,85,0.06) 0px, rgba(45,106,85,0.06) 1px,
-          transparent 1px, transparent 18px
-        ),
-        repeating-linear-gradient(
-          135deg,
-          rgba(212,129,138,0.04) 0px, rgba(212,129,138,0.04) 1px,
-          transparent 1px, transparent 26px
-        );
-      animation: denimDrift 20s ease-in-out infinite alternate;
-      z-index: 0;
-    }
-    @keyframes denimDrift {
-      from { background-position: 0 0, 0 0, 0 0; }
-      to   { background-position: 18px 18px, 18px 18px, 26px 26px; }
+      background-image: url('assets/photos/jacket.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      opacity: 0.22;
+      filter: saturate(0.6);
     }
 
     /* Large ghosted "CANVAS" letterform behind content */
@@ -732,6 +735,30 @@
       background: var(--ink);
       overflow: hidden;
       min-height: 560px;
+    }
+    .about-photo-mosaic {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3px;
+      height: 100%;
+      min-height: 420px;
+    }
+    .apm-main { overflow: hidden; }
+    .apm-main img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.6s var(--ease-apple);
+    }
+    .apm-main:hover img { transform: scale(1.04); }
+    .apm-side { display: flex; flex-direction: column; gap: 3px; }
+    .apm-side-top, .apm-side-bot { overflow: hidden; flex: 1; }
+    .apm-side-top img, .apm-side-bot img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-apple);
+    }
+    .apm-side-top:hover img, .apm-side-bot:hover img { transform: scale(1.05); }
     }
 
     /* Thread count lines animate in */
@@ -1197,6 +1224,11 @@
       padding: 2rem;
       display: flex; flex-direction: column;
     }
+    .tcard-photo {
+      width: 100%; height: 160px; object-fit: cover;
+      border-radius: 2px; margin-bottom: 1.2rem;
+      display: block;
+    }
     .tcard-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 0.15em; margin-bottom: 1rem; }
     .tcard-text {
       font-size: 0.92rem; line-height: 1.8; color: var(--ink-soft);
@@ -1248,15 +1280,11 @@
     .ig-tile {
       aspect-ratio: 1; background: rgba(253,246,240,0.06);
       border: 1px solid rgba(253,246,240,0.1);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem; position: relative; overflow: hidden;
-      transition: transform 0.4s var(--ease-spring), background 0.3s;
+      position: relative; overflow: hidden;
+      transition: transform 0.4s var(--ease-spring);
     }
-    .ig-tile:hover { transform: scale(1.04); background: rgba(253,246,240,0.1); }
-    .ig-tile::after {
-      content: attr(data-emoji);
-      filter: grayscale(0.2);
-    }
+    .ig-tile:hover { transform: scale(1.04); }
+    .ig-tile::after { content: none; }
     .ig-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
     .ig-referral {
       margin-top: 3rem; padding-top: 2.5rem;
@@ -1276,6 +1304,10 @@
     .footer-grid {
       display:grid; grid-template-columns:2fr 1fr 1fr;
       gap:4rem; max-width:1100px; margin:0 auto 3rem;
+    }
+    .footer-brand-logo {
+      height: 56px; width: auto; margin-bottom: 1rem; display: block;
+      filter: brightness(0) invert(1); opacity: 0.9;
     }
     .footer-brand-name {
       font-family:var(--font-display); font-size:1.8rem;
@@ -1374,7 +1406,9 @@
 
 <!-- NAV -->
 <nav id="main-nav">
-  <a href="#" class="nav-logo">Canvas <span>Theory</span></a>
+  <a href="#" class="nav-logo" aria-label="Canvas Theory — Home">
+    <img src="assets/icons/logo.png" alt="Canvas Theory Hobby Shop" />
+  </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#products">Products</a></li>
@@ -1471,21 +1505,19 @@
       </p>
     </div>
     <div class="about-visual-col" data-reveal="right">
-      <div class="thread-lines"></div>
-      <!-- Animated stitch SVG -->
-      <svg class="about-stitch-svg" viewBox="0 0 400 560" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- Denim seam lines -->
-        <path class="stitch-path" d="M 80 40 Q 200 80 320 40" stroke="rgba(168,203,191,0.25)" stroke-width="1.5" stroke-dasharray="6 6"/>
-        <path class="stitch-path" d="M 40 140 L 360 140" stroke="rgba(168,203,191,0.15)" stroke-width="1"/>
-        <path class="stitch-path" d="M 200 60 L 200 500" stroke="rgba(212,129,138,0.2)" stroke-width="1.5" stroke-dasharray="8 8"/>
-        <!-- Corner details -->
-        <rect class="stitch-path" x="60" y="200" width="120" height="160" rx="2" stroke="rgba(168,203,191,0.2)" stroke-width="1" fill="none"/>
-        <rect class="stitch-path" x="220" y="180" width="120" height="200" rx="2" stroke="rgba(212,129,138,0.15)" stroke-width="1" fill="none"/>
-        <!-- Cross-stitch marks -->
-        <path class="stitch-path" d="M 90 220 L 102 232 M 102 220 L 90 232" stroke="rgba(168,203,191,0.4)" stroke-width="1.5"/>
-        <path class="stitch-path" d="M 230 200 L 242 212 M 242 200 L 230 212" stroke="rgba(212,129,138,0.4)" stroke-width="1.5"/>
-        <path class="stitch-path" d="M 155 380 L 167 392 M 167 380 L 155 392" stroke="rgba(201,169,110,0.4)" stroke-width="1.5"/>
-      </svg>
+      <div class="about-photo-mosaic">
+        <div class="apm-main">
+          <img src="assets/photos/jacket.jpg" alt="Hand-painted Spider-Man denim jacket by Canvas Theory" loading="lazy" />
+        </div>
+        <div class="apm-side">
+          <div class="apm-side-top">
+            <img src="assets/photos/clock_full_1.jpg" alt="Hand-painted swan wall clock by Canvas Theory" loading="lazy" />
+          </div>
+          <div class="apm-side-bot">
+            <img src="assets/photos/tote_masala.jpg" alt="Hand-painted Masala tote bag by Canvas Theory" loading="lazy" />
+          </div>
+        </div>
+      </div>
       <div class="about-stat-cards">
         <div class="about-stat" data-reveal="scale" data-delay="2">
           <div class="about-stat-num"><em>0</em> defects</div>
@@ -1511,7 +1543,7 @@
     <h2 class="section-title" data-reveal data-delay="1">Three products.<br><em>Infinite variations.</em></h2>
   </div>
   <div class="products-grid">
-    <div class="product-card" data-reveal="left">
+    <div class="product-card" data-reveal="left" style="background-image:url('assets/photos/jacket.jpg'); background-size:cover; background-position:center top;">
       <div class="product-card-fill"></div>
       <span class="product-icon">🧥</span>
       <h3 class="product-name">Denim Jacket</h3>
@@ -1520,7 +1552,7 @@
       </p>
       <div class="product-price">₹1,299</div>
     </div>
-    <div class="product-card" data-reveal="scale">
+    <div class="product-card" data-reveal="scale" style="background-image:url('assets/photos/tote_masala.jpg'); background-size:cover; background-position:center;">
       <div class="product-card-fill"></div>
       <span class="product-icon">👜</span>
       <h3 class="product-name">Tote Bag</h3>
@@ -1529,7 +1561,7 @@
       </p>
       <div class="product-price">₹399 <span>– ₹849</span></div>
     </div>
-    <div class="product-card" data-reveal="right">
+    <div class="product-card" data-reveal="right" style="background-image:url('assets/photos/clock_full_2.jpg'); background-size:cover; background-position:center;">
       <div class="product-card-fill"></div>
       <span class="product-icon">🕓</span>
       <h3 class="product-name">Wall Clock</h3>
@@ -1590,8 +1622,8 @@
   <div class="testimonials-scroll" data-reveal data-delay="2">
 
     <div class="testimonial-card">
+      <img src="assets/photos/jacket.jpg" alt="Hand-painted Spider-Man jacket" class="tcard-photo" style="object-position:center top;" loading="lazy" />
       <div class="tcard-stars">★★★★★</div>
-      <p class="tcard-text">Wasn't sure at first — custom painted denim from an Instagram page felt risky. But the progress photos changed everything. I watched my jacket get painted from my phone while at office. The detail work was cleaner than I expected for the price.</p>
       <div class="tcard-meta">
         <div class="tcard-avatar">AS</div>
         <div>
@@ -1603,8 +1635,8 @@
     </div>
 
     <div class="testimonial-card">
+      <img src="assets/photos/tote_masala.jpg" alt="Hand-painted Masala tote bag" class="tcard-photo" loading="lazy" />
       <div class="tcard-stars">★★★★★</div>
-      <p class="tcard-text">I wanted a tote that wasn't just another canvas print bag. I sent a mood board through the notes field and they followed it exactly — not approximately. Gets compliments constantly.</p>
       <div class="tcard-meta">
         <div class="tcard-avatar" style="background:rgba(45,106,85,0.12);color:var(--emerald)">SA</div>
         <div>
@@ -1616,8 +1648,8 @@
     </div>
 
     <div class="testimonial-card">
+      <img src="assets/photos/clock_close.jpg" alt="Hand-painted swan wall clock close-up" class="tcard-photo" loading="lazy" />
       <div class="tcard-stars">★★★★★</div>
-      <p class="tcard-text">Got a clock painted for my study and it's become the centerpiece of the room. The numerals are evenly spaced and it still keeps perfect time — exactly what I wanted.</p>
       <div class="tcard-meta">
         <div class="tcard-avatar" style="background:rgba(201,169,110,0.18);color:var(--gold)">RK</div>
         <div>
@@ -1665,12 +1697,12 @@
     <p class="ig-sub" data-reveal data-delay="2">New drops every Friday. Behind-the-scenes from the workshop. Tag us in your piece to be featured.</p>
 
     <div class="ig-grid" data-reveal data-delay="3">
-      <div class="ig-tile" data-emoji="🧵"></div>
-      <div class="ig-tile" data-emoji="🧥"></div>
-      <div class="ig-tile" data-emoji="✂️"></div>
-      <div class="ig-tile" data-emoji="👜"></div>
-      <div class="ig-tile" data-emoji="🪡"></div>
-      <div class="ig-tile" data-emoji="🎸"></div>
+      <div class="ig-tile" style="background-image:url('assets/photos/jacket.jpg'); background-size:cover; background-position:center top;"></div>
+      <div class="ig-tile" style="background-image:url('assets/photos/clock_full_1.jpg'); background-size:cover; background-position:center;"></div>
+      <div class="ig-tile" style="background-image:url('assets/photos/tote_masala.jpg'); background-size:cover; background-position:center;"></div>
+      <div class="ig-tile" style="background-image:url('assets/photos/clock_close.jpg'); background-size:cover; background-position:center;"></div>
+      <div class="ig-tile" style="background-image:url('assets/photos/clock_full_2.jpg'); background-size:cover; background-position:center;"></div>
+      <div class="ig-tile" style="background-image:url('assets/photos/guitar.jpg'); background-size:cover; background-position:center top;"></div>
     </div>
 
     <div class="ig-cta-group" data-reveal data-delay="4">
@@ -1844,8 +1876,16 @@
           <div class="form-block">
             <span class="form-section-label">Wall clock details</span>
             <p style="font-size:0.85rem; color:var(--ink-soft); margin-bottom:1.5rem; line-height:1.6;">
-              A plain quartz wall clock, hand-painted by us to your spec. Sold without glass — still keeps perfect time. We're building out a library of 50+ painted designs to choose from; for now, tell us your idea in the notes below and we'll confirm the look with you before we start painting.
+              A plain quartz wall clock, hand-painted by us to your spec. Sold without glass — still keeps perfect time. Battery not included. We're building out a library of 50+ painted designs to choose from; for now, tell us your idea in the notes below and we'll confirm the look with you before we start painting.
             </p>
+            <div class="form-group">
+              <label>Size</label>
+              <div class="chip-group" id="clock-size">
+                <button type="button" class="chip" data-val="Small">Small — ₹499</button>
+                <button type="button" class="chip" data-val="Big">Big — ₹599</button>
+              </div>
+              <span class="field-error" id="err-clock-size">Please select a size.</span>
+            </div>
             <div class="form-group">
               <label>Design</label>
               <div class="chip-group" id="clock-design">
@@ -1889,6 +1929,7 @@
 <footer>
   <div class="footer-grid">
     <div>
+      <img src="assets/icons/logo.png" alt="Canvas Theory" class="footer-brand-logo" />
       <div class="footer-brand-name">Canvas Theory</div>
       <p class="footer-tagline">Handcrafted denim jackets and tote bags made to order in Bangalore. Every piece is unique because you are.</p>
     </div>
@@ -2032,16 +2073,12 @@ function validateForm() {
   // Product-specific
   if (currentProduct === 'jacket') {
     if (!getChipValue('jacket-size')) { showErr('err-jacket-size', 'Please select a size.'); valid = false; } else clearErr('err-jacket-size');
-    if (!getChipValue('jacket-wash')) { showErr('err-jacket-wash', 'Please select a wash.'); valid = false; } else clearErr('err-jacket-wash');
-    if (!getChipValue('jacket-distress')) { showErr('err-jacket-distress', 'Please select distressing level.'); valid = false; } else clearErr('err-jacket-distress');
-    if (!getChipValue('jacket-hardware')) { showErr('err-jacket-hardware', 'Please select hardware finish.'); valid = false; } else clearErr('err-jacket-hardware');
+    if (!getChipValue('jacket-design')) { showErr('err-jacket-design', 'Please select a design option.'); valid = false; } else clearErr('err-jacket-design');
   } else if (currentProduct === 'tote') {
     if (!getChipValue('tote-size')) { showErr('err-tote-size', 'Please select a size.'); valid = false; } else clearErr('err-tote-size');
-    if (!getChipValue('tote-wash')) { showErr('err-tote-wash', 'Please select a wash.'); valid = false; } else clearErr('err-tote-wash');
-    if (!getChipValue('tote-handle')) { showErr('err-tote-handle', 'Please select handle style.'); valid = false; } else clearErr('err-tote-handle');
-    if (!getChipValue('tote-lining')) { showErr('err-tote-lining', 'Please select lining colour.'); valid = false; } else clearErr('err-tote-lining');
-    if (!getChipValue('tote-pocket')) { showErr('err-tote-pocket', 'Please select pocket preference.'); valid = false; } else clearErr('err-tote-pocket');
+    if (!getChipValue('tote-design')) { showErr('err-tote-design', 'Please select a design option.'); valid = false; } else clearErr('err-tote-design');
   } else if (currentProduct === 'clock') {
+    if (!getChipValue('clock-size')) { showErr('err-clock-size', 'Please select a size.'); valid = false; } else clearErr('err-clock-size');
     if (!getChipValue('clock-design')) { showErr('err-clock-design', 'Please select a design option.'); valid = false; } else clearErr('err-clock-design');
     if (!getChipValue('clock-numerals')) { showErr('err-clock-numerals', 'Please select a numeral style.'); valid = false; } else clearErr('err-clock-numerals');
   }
@@ -2062,28 +2099,22 @@ function collectOrderData() {
   };
 
   let specs;
-  if (currentProduct === 'jacket' || currentProduct === 'guitar') {
+  if (currentProduct === 'jacket') {
     specs = {
-      size:     getChipValue('jacket-size'),
-      wash:     getChipValue('jacket-wash'),
-      distress: getChipValue('jacket-distress'),
-      patches:  getChipValue('jacket-patches') || 'No patches',
-      hardware: getChipValue('jacket-hardware'),
-      notes:    sanitize(document.getElementById('jacket-notes').value),
+      size:   getChipValue('jacket-size'),
+      design: getChipValue('jacket-design'),
+      notes:  sanitize(document.getElementById('jacket-notes').value),
     };
   } else if (currentProduct === 'tote') {
     specs = {
-      size:    getChipValue('tote-size'),
-      wash:    getChipValue('tote-wash'),
-      handle:  getChipValue('tote-handle'),
-      lining:  getChipValue('tote-lining'),
-      surface: getChipValue('tote-surface') || 'Plain',
-      pocket:  getChipValue('tote-pocket'),
-      notes:   sanitize(document.getElementById('tote-notes').value),
+      size:   getChipValue('tote-size'),
+      design: getChipValue('tote-design'),
+      notes:  sanitize(document.getElementById('tote-notes').value),
     };
   } else if (currentProduct === 'clock') {
     specs = {
-      design:   getChipValue('clock-design') || 'Placeholder — design TBA',
+      size:     getChipValue('clock-size'),
+      design:   getChipValue('clock-design'),
       numerals: getChipValue('clock-numerals'),
       notes:    sanitize(document.getElementById('clock-notes').value),
     };
@@ -2147,7 +2178,6 @@ function productLabel(product) {
   if (product === 'jacket') return 'Denim Jacket';
   if (product === 'tote') return 'Tote Bag';
   if (product === 'clock') return 'Wall Clock';
-  if (product === 'guitar') return 'Guitar Project Jacket';
   return product;
 }
 
