@@ -3,47 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Story — Handmade in a Bangalore Workshop | Canvas Theory</title>
-  <meta name="description" content="Canvas Theory is a small Bangalore workshop making denim jackets and totes by hand, one piece at a time. Meet the makers, see the materials, and read why everything is a canvas." />
-  <link rel="canonical" href="https://www.canvastheory.in/about.html" />
+  <title>Design Gallery — 50+ Custom Denim Pieces | Canvas Theory</title>
+  <meta name="description" content="Real hand-painted work by Canvas Theory — denim jackets, totes, and wall clocks made in Bangalore. See what we've made, then order your own." />
+  <link rel="canonical" href="https://www.canvastheory.in/gallery.html" />
 
   <!-- ═══════════════════════════════════════════
        SOCIAL SHARING — Open Graph + Twitter Card
   ═══════════════════════════════════════════ -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.canvastheory.in/about.html" />
+  <meta property="og:url" content="https://www.canvastheory.in/gallery.html" />
   <meta property="og:site_name" content="Canvas Theory" />
-  <meta property="og:title" content="Our Story — Canvas Theory" />
-  <meta property="og:description" content="A small Bangalore workshop making denim jackets and totes by hand, one piece at a time. Meet the makers." />
-  <meta property="og:image" content="https://www.canvastheory.in/assets/images/og-about.jpg" />
+  <meta property="og:title" content="Design Gallery — Canvas Theory" />
+  <meta property="og:description" content="50+ handcrafted denim jackets, totes, and guitar projects. Browse, favorite, and order any design directly." />
+  <meta property="og:image" content="https://www.canvastheory.in/assets/images/og-gallery.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_IN" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@canvastheory" />
-  <meta name="twitter:title" content="Our Story — Canvas Theory" />
-  <meta name="twitter:description" content="A small Bangalore workshop making denim jackets and totes by hand, one piece at a time." />
-  <meta name="twitter:image" content="https://www.canvastheory.in/assets/images/og-about.jpg" />
+  <meta name="twitter:title" content="Design Gallery — Canvas Theory" />
+  <meta name="twitter:description" content="50+ handcrafted denim jackets, totes, and guitar projects. Browse, favorite, and order any design directly." />
+  <meta name="twitter:image" content="https://www.canvastheory.in/assets/images/og-gallery.jpg" />
 
   <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#2D6A55" />
   <link rel="icon" href="/assets/icons/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
 
-  <!-- Structured data: AboutPage -->
+  <!-- Structured data: ImageGallery -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "About Canvas Theory",
-    "url": "https://www.canvastheory.in/about.html",
-    "mainEntity": {
-      "@type": "Organization",
-      "name": "Canvas Theory",
-      "foundingLocation": "Bangalore, India",
-      "description": "Handcrafted custom denim jackets and tote bags made to order."
-    }
+    "@type": "ImageGallery",
+    "name": "Canvas Theory Design Gallery",
+    "description": "Handcrafted custom denim jackets, totes, and guitar projects.",
+    "url": "https://www.canvastheory.in/gallery.html"
   }
   </script>
 
@@ -107,17 +102,13 @@
 
     [data-reveal] {
       opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 1s var(--ease-expo), transform 1s var(--ease-expo);
+      transform: translateY(40px);
+      transition: opacity 0.9s var(--ease-expo), transform 0.9s var(--ease-expo);
     }
-    [data-reveal="left"] { transform: translateX(-60px); }
-    [data-reveal="right"] { transform: translateX(60px); }
-    [data-reveal="scale"] { transform: scale(0.9) translateY(24px); }
     [data-reveal].is-visible { opacity: 1; transform: none; }
-    [data-delay="1"] { transition-delay: 0.1s; }
-    [data-delay="2"] { transition-delay: 0.22s; }
-    [data-delay="3"] { transition-delay: 0.36s; }
-    [data-delay="4"] { transition-delay: 0.52s; }
+    [data-delay="1"] { transition-delay: 0.08s; }
+    [data-delay="2"] { transition-delay: 0.16s; }
+    [data-delay="3"] { transition-delay: 0.24s; }
 
     /* ════════════════════════════════════════
        NAVBAR — identical to index.html
@@ -129,6 +120,7 @@
       background: rgba(253,246,240,0.94);
       backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid rgba(45,106,85,0.12);
+      transition: padding 0.4s var(--ease-apple);
     }
     .nav-logo { display:flex; align-items:center; text-decoration:none; transition:opacity 0.3s; }
     .nav-logo:hover { opacity:0.85; }
@@ -185,186 +177,143 @@
       nav { padding: 1.2rem 1.5rem; }
     }
 
-    section { padding: 8rem 4rem; }
+    /* ════════════════════════════════════════
+       PAGE HEADER
+    ════════════════════════════════════════ */
+    .gallery-hero {
+      padding: 10rem 4rem 3rem;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
     .section-eyebrow {
       font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
       color: var(--rose); margin-bottom: 1.2rem; display: block;
     }
-    .section-title {
-      font-family: var(--font-display); font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+    .gallery-title {
+      font-family: var(--font-display); font-size: clamp(2.6rem, 5.5vw, 4.5rem);
       font-weight: 300; line-height: 1.05; color: var(--ink);
-      letter-spacing: -0.02em; margin-bottom: 1.5rem;
+      letter-spacing: -0.02em; margin-bottom: 1.2rem;
     }
-    .section-title em { font-style: italic; color: var(--rose); }
-    .section-body { font-size: 1rem; line-height: 1.85; color: var(--ink-soft); max-width: 540px; }
+    .gallery-title em { font-style: italic; color: var(--rose); }
+    .gallery-sub { font-size: 1rem; line-height: 1.8; color: var(--ink-soft); }
 
     /* ════════════════════════════════════════
-       PAGE HERO
+       REAL WORK GRID
     ════════════════════════════════════════ */
-    .about-hero {
-      min-height: 70vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; background: var(--ink); color: var(--cream);
-      position: relative; overflow: hidden; padding: 9rem 2rem 5rem;
-    }
-    .about-hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        repeating-linear-gradient(90deg, rgba(45,106,85,0.09) 0px, rgba(45,106,85,0.09) 1px, transparent 1px, transparent 18px),
-        repeating-linear-gradient(0deg, rgba(45,106,85,0.06) 0px, rgba(45,106,85,0.06) 1px, transparent 1px, transparent 18px);
-    }
-    .about-hero-content { position: relative; z-index: 1; max-width: 760px; }
-    .about-hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rose-light); margin-bottom: 2rem; }
-    .about-hero-title {
-      font-family: var(--font-display); font-size: clamp(3rem, 7vw, 6rem);
-      font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.8rem;
-    }
-    .about-hero-title em { font-style: italic; color: var(--rose-light); }
-    .about-hero-sub { font-size: 1.05rem; color: rgba(253,246,240,0.6); max-width: 480px; margin: 0 auto; line-height: 1.8; }
+    .gallery-wrap { max-width: 1200px; margin: 0 auto; padding: 1rem 4rem 7rem; }
 
-    /* ════════════════════════════════════════
-       ORIGIN STORY — split layout
-    ════════════════════════════════════════ */
-    .origin-section { background: var(--cream); }
-    .origin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1140px; margin: 0 auto; align-items: center; }
-    .origin-visual {
-      aspect-ratio: 4/5; background: var(--ink); border-radius: 4px;
-      position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .origin-visual::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        repeating-linear-gradient(90deg, rgba(168,203,191,0.08) 0px, rgba(168,203,191,0.08) 1px, transparent 1px, transparent 22px),
-        repeating-linear-gradient(0deg, rgba(168,203,191,0.05) 0px, rgba(168,203,191,0.05) 1px, transparent 1px, transparent 22px);
-    }
-    .origin-visual-mark {
-      font-family: var(--font-display); font-style: italic; font-size: 5rem;
-      color: rgba(253,246,240,0.08); position: relative; z-index: 1;
-    }
-    .origin-pull {
-      margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid rgba(45,106,85,0.2);
-      font-family: var(--font-display); font-size: 1.3rem; font-style: italic;
-      color: var(--ink-soft); line-height: 1.6; max-width: 500px;
+    .real-work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 1rem;
+      margin-bottom: 5rem;
     }
 
-    /* ════════════════════════════════════════
-       WORKSHOP — photo grid
-    ════════════════════════════════════════ */
-    .workshop-section { background: var(--warm-white); }
-    .workshop-header { text-align: center; max-width: 640px; margin: 0 auto 4.5rem; }
-    .workshop-grid {
-      display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: 1fr 1fr;
-      gap: 0.75rem; max-width: 1140px; margin: 0 auto; height: 560px;
-    }
-    .workshop-photo {
-      border-radius: 4px; position: relative; overflow: hidden;
+    .rw-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
       background: var(--cream-dark);
+      cursor: default;
     }
-    .workshop-photo img {
-      width: 100%; height: 100%; object-fit: cover;
+    .rw-card--tall {
+      grid-row: span 2;
+    }
+    .rw-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
       transition: transform 0.6s var(--ease-apple);
+      min-height: 260px;
     }
-    .workshop-photo:hover img { transform: scale(1.04); }
-    .wp-1 { grid-row: 1 / 3; }
+    .rw-card--tall img { min-height: 540px; object-position: center top; }
+    .rw-card:hover img { transform: scale(1.04); }
+
+    .rw-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.8rem 1.2rem 1.2rem;
+      background: linear-gradient(to top, rgba(30,45,26,0.82) 0%, transparent 100%);
+      display: flex; flex-direction: column; gap: 0.2rem;
+    }
+    .rw-product {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--rose-light); font-family: var(--font-body);
+    }
+    .rw-desc {
+      font-family: var(--font-display); font-size: 1rem; font-weight: 400;
+      color: var(--cream); line-height: 1.3;
+    }
 
     /* ════════════════════════════════════════
-       MATERIALS — spec table
+       PRODUCTS REFERENCE TABLE
     ════════════════════════════════════════ */
-    .materials-section { background: var(--cream); }
-    .materials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1140px; margin: 0 auto; align-items: start; }
-    .materials-spec { display: flex; flex-direction: column; }
-    .spec-row {
-      display: flex; justify-content: space-between; align-items: baseline;
-      padding: 1.1rem 0; border-bottom: 1px solid rgba(74,94,86,0.14);
+    .gallery-products-ref {
+      padding: 4rem 0 5rem;
+      border-top: 1px solid rgba(68,81,36,0.12);
     }
-    .spec-row:first-child { border-top: 1px solid rgba(74,94,86,0.14); }
-    .spec-key { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
-    .spec-val { font-family: var(--font-display); font-size: 1.15rem; color: var(--ink); text-align: right; }
+    .ref-table-wrap { max-width: 700px; margin: 0 auto; }
+    .ref-table { width: 100%; border-collapse: collapse; }
+    .ref-table tr {
+      border-bottom: 1px solid rgba(68,81,36,0.1);
+    }
+    .ref-table tr:last-child { border-bottom: none; }
+    .ref-table td { padding: 1rem 0.5rem; font-size: 0.9rem; vertical-align: top; }
+    .ref-key {
+      color: var(--ink-soft); width: 38%;
+      font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .ref-val { color: var(--ink); width: 42%; }
+    .ref-price {
+      color: var(--rose); font-family: var(--font-display);
+      font-size: 1rem; text-align: right; white-space: nowrap;
+    }
 
-    /* ════════════════════════════════════════
-       MEET THE MAKER
-    ════════════════════════════════════════ */
-    .maker-section { background: var(--emerald); color: var(--cream); position: relative; overflow: hidden; }
-    .maker-section::after {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        repeating-linear-gradient(90deg, rgba(253,246,240,0.04) 0px, rgba(253,246,240,0.04) 1px, transparent 1px, transparent 32px),
-        repeating-linear-gradient(0deg, rgba(253,246,240,0.03) 0px, rgba(253,246,240,0.03) 1px, transparent 1px, transparent 32px);
-      pointer-events: none;
+    .btn-primary-dark {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 1rem 2.4rem;
+      background: var(--emerald); color: var(--cream);
+      border: none; border-radius: 2px; cursor: pointer;
+      font-family: var(--font-body); font-size: 0.78rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s var(--ease-apple);
     }
-    .maker-inner { position: relative; z-index: 1; max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 4rem; align-items: center; }
-    .maker-portrait {
-      aspect-ratio: 1; border-radius: 4px; background: rgba(253,246,240,0.06);
-      border: 1px solid rgba(253,246,240,0.14);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display); font-size: 4rem; color: rgba(253,246,240,0.2);
-    }
-    .maker-section .section-eyebrow { color: var(--rose-pale); }
-    .maker-section .section-title { color: var(--cream); }
-    .maker-section .section-body { color: rgba(253,246,240,0.65); max-width: 520px; }
-    .maker-name { font-family: var(--font-display); font-size: 1.6rem; font-style: italic; color: var(--rose-light); margin-top: 1.5rem; }
-    .maker-role { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(253,246,240,0.45); margin-top: 0.3rem; }
+    .btn-primary-dark:hover { background: var(--rose); transform: translateY(-2px); }
 
-    /* ════════════════════════════════════════
-       CRAFTSMANSHIP — macro detail strip
-    ════════════════════════════════════════ */
-    .craft-section { background: var(--warm-white); }
-    .craft-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
-    .craft-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; max-width: 1140px; margin: 0 auto; }
-    .craft-card {
-      aspect-ratio: 3/4; border-radius: 4px; background: var(--cream-dark);
-      position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.1rem;
-      transition: transform 0.4s var(--ease-spring);
-    }
-    .craft-card:hover { transform: translateY(-6px); }
-    .craft-card::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        repeating-linear-gradient(45deg, rgba(212,129,138,0.07) 0px, rgba(212,129,138,0.07) 1px, transparent 1px, transparent 14px);
-    }
-    .craft-card-label { position: relative; z-index: 1; font-size: 0.8rem; color: var(--ink); font-weight: 500; }
-    .craft-card-detail { position: relative; z-index: 1; font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.2rem; }
-
-    /* ════════════════════════════════════════
-       PHILOSOPHY — manifesto
-    ════════════════════════════════════════ */
-    .philosophy-section {
-      background: var(--ink); color: var(--cream);
-      text-align: center; padding: 10rem 2rem;
-      position: relative; overflow: hidden;
-    }
-    .philosophy-section::before {
-      content: '';
-      position: absolute; bottom: -0.1em; left: 50%; transform: translateX(-50%);
-      font-family: var(--font-display); font-size: clamp(8rem, 20vw, 22rem);
-      font-weight: 600; letter-spacing: -0.04em; color: transparent;
-      -webkit-text-stroke: 1px rgba(253,246,240,0.05);
-      content: 'CANVAS'; white-space: nowrap; pointer-events: none;
-    }
-    .philosophy-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
-    .philosophy-eyebrow { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rose-light); margin-bottom: 2rem; }
-    .philosophy-text {
-      font-family: var(--font-display); font-size: clamp(1.8rem, 3.6vw, 2.6rem);
-      font-weight: 300; line-height: 1.45; letter-spacing: -0.01em;
-    }
-    .philosophy-text em { font-style: italic; color: var(--rose-light); }
-    .philosophy-cta { margin-top: 3rem; }
-    .btn-primary {
-      background: var(--emerald); color: var(--cream); border: none;
-      padding: 1rem 2.5rem; font-family: var(--font-body); font-size: 0.82rem;
+    .btn-outline-dark {
+      display: inline-flex; align-items: center;
+      background: transparent; color: var(--ink);
+      border: 1.5px solid rgba(68,81,36,0.3);
+      padding: 0.9rem 2.4rem;
+      font-family: var(--font-body); font-size: 0.78rem;
       letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
-      text-decoration: none; display: inline-block; border-radius: 2px;
-      transition: transform 0.3s var(--ease-spring), box-shadow 0.3s, background 0.3s;
+      border-radius: 2px; text-decoration: none;
+      transition: all 0.3s var(--ease-apple);
     }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(45,106,85,0.4); background: var(--rose); }
+    .btn-outline-dark:hover { background: var(--emerald); border-color: var(--emerald); color: var(--cream); }
 
     /* ════════════════════════════════════════
-       FOOTER — identical to index.html
+       COMING SOON
+    ════════════════════════════════════════ */
+    .gallery-coming-soon {
+      text-align: center;
+      padding: 5rem 2rem;
+      border-top: 1px solid rgba(68,81,36,0.12);
+    }
+    .gallery-coming-soon h2 {
+      font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 300; margin: 1rem 0 1.5rem; line-height: 1.2;
+    }
+    .gallery-coming-soon h2 em { font-style: italic; color: var(--rose); }
+    .gallery-coming-soon p {
+      font-size: 0.95rem; color: var(--ink-soft); max-width: 500px;
+      margin: 0 auto 2.5rem; line-height: 1.7;
+    }
+
+    /* ════════════════════════════════════════
+       FOOTER
     ════════════════════════════════════════ */
     footer { background: var(--ink); color: var(--cream); padding: 4rem 4rem 2.5rem; }
     .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:4rem; max-width:1100px; margin:0 auto 3rem; }
@@ -375,22 +324,23 @@
     .footer-links li { margin-bottom:0.6rem; }
     .footer-links a { font-size:0.88rem; color:rgba(253,246,240,0.45); text-decoration:none; transition:color 0.3s; }
     .footer-links a:hover { color:var(--cream); }
-    .footer-bottom { border-top:1px solid rgba(253,246,240,0.08); padding-top:2rem; display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom { border-top:1px solid rgba(253,246,240,0.08); padding-top:2rem; display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; flex-wrap:wrap; gap:1rem; }
     .footer-copy { font-size:0.78rem; color:rgba(253,246,240,0.3); }
     .footer-legal { display:flex; gap:1.5rem; }
     .footer-legal a { font-size:0.78rem; color:rgba(253,246,240,0.3); text-decoration:none; transition:color 0.3s; }
     .footer-legal a:hover { color:var(--cream); }
 
     @media (max-width: 880px) {
-      section { padding: 5rem 1.5rem; }
-      .about-hero { padding: 8rem 1.5rem 4rem; }
-      .origin-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .workshop-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 200px); height: auto; }
-      .wp-1 { grid-row: auto; grid-column: 1 / 3; }
-      .materials-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .maker-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-      .maker-portrait { max-width: 220px; margin: 0 auto; }
-      .craft-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-hero { padding: 8rem 1.5rem 2rem; }
+      .gallery-wrap { padding: 1rem 1.5rem 5rem; }
+      .real-work-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+      .rw-card--tall { grid-row: span 1; }
+      .rw-card--tall img { min-height: 260px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 500px) {
+      .real-work-grid { grid-template-columns: 1fr; }
+    }
       footer { padding: 3rem 1.5rem 2rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
@@ -401,9 +351,9 @@
 <nav id="main-nav">
   <a href="index.html" class="nav-logo" aria-label="Canvas Theory"><img src="assets/icons/logo.png" alt="Canvas Theory" /></a>
   <ul class="nav-links">
-    <li><a href="about.html" class="current">About</a></li>
+    <li><a href="index.html#about">About</a></li>
     <li><a href="index.html#products">Products</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="gallery.html" class="current">Gallery</a></li>
     <li><a href="index.html#instagram">Instagram</a></li>
     <li><a href="index.html#order">Order</a></li>
   </ul>
@@ -415,7 +365,7 @@
 </nav>
 
 <div class="mobile-nav-overlay" id="mobileNavOverlay">
-  <a href="about.html" onclick="closeMobileNav()">About</a>
+  <a href="index.html#about" onclick="closeMobileNav()">About</a>
   <a href="index.html#products" onclick="closeMobileNav()">Products</a>
   <a href="gallery.html" onclick="closeMobileNav()">Gallery</a>
   <a href="index.html#instagram" onclick="closeMobileNav()">Instagram</a>
@@ -423,123 +373,95 @@
 </div>
 
 <!-- HERO -->
-<div class="about-hero">
-  <div class="about-hero-content">
-    <div class="about-hero-eyebrow" data-reveal>Our story</div>
-    <h1 class="about-hero-title" data-reveal data-delay="1">Made by hand.<br><em>Made for you.</em></h1>
-    <p class="about-hero-sub" data-reveal data-delay="2">Canvas Theory hand-paints jackets, totes, and clocks in Bangalore — to your exact spec, never anyone else's.</p>
-  </div>
+<div class="gallery-hero">
+  <span class="section-eyebrow" data-reveal>Our work</span>
+  <h1 class="gallery-title" data-reveal data-delay="1">Real pieces.<br><em>Already made.</em></h1>
+  <p class="gallery-sub" data-reveal data-delay="2">Every photo here is a real hand-painted piece. A full design catalogue (50+ options) is coming soon — until then, describe what you want in your order notes and we'll paint it.</p>
 </div>
 
-<!-- ORIGIN STORY -->
-<section class="origin-section" id="story">
-  <div class="origin-grid">
-    <div data-reveal="left">
-      <span class="section-eyebrow">How it started</span>
-      <h2 class="section-title">A blank jacket<br>and a <em>bad idea.</em></h2>
-      <p class="section-body">Canvas Theory started in 2025 with one plain denim jacket and a paintbrush. The first piece was for a friend — hand-painted, freehand, no stencils, learning the surface as it went. She wore it constantly.</p>
-      <p class="section-body" style="margin-top:1.2rem;">That was the moment the idea stopped being a favor and started being a question: what if everyday things — jackets, totes, even a clock on the wall — were treated as a canvas instead of just an object?</p>
-      <p class="origin-pull">"Everything is a canvas if you look hard enough."</p>
-    </div>
-    <div class="origin-visual" data-reveal="right" data-delay="2">
-      <div class="origin-visual-mark">CT</div>
-    </div>
-  </div>
-</section>
+<!-- REAL WORK GRID -->
+<div class="gallery-wrap">
+  <div class="real-work-grid">
 
-<!-- WORKSHOP -->
-<!-- ⚠ PLACEHOLDER — swap workshop-photo blocks for real, watermark-free photos once available. -->
-<section class="workshop-section" id="workshop">
-  <div class="workshop-header">
-    <span class="section-eyebrow" data-reveal>The studio</span>
-    <h2 class="section-title" data-reveal data-delay="1">Where it<br>actually <em>happens.</em></h2>
-    <p class="section-body" data-reveal data-delay="2" style="margin:0 auto;">A small home studio in Bangalore — brushes, paint, and a stack of plain jackets, totes, and clocks waiting for a design.</p>
-  </div>
-  <div class="workshop-grid" data-reveal data-delay="3">
-    <div class="workshop-photo wp-1">
-      <img src="assets/photos/jacket.jpg" alt="Hand-painted Spider-Man denim jacket" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+    <div class="rw-card rw-card--tall">
+      <img src="assets/photos/jacket.jpg" alt="Hand-painted Spider-Man denim jacket — Canvas Theory" loading="lazy" />
+      <div class="rw-label">
+        <span class="rw-product">Denim Jacket</span>
+        <span class="rw-desc">Spider-Man comic panel — freehand, full back</span>
+      </div>
     </div>
-    <div class="workshop-photo wp-2">
-      <img src="assets/photos/clock_full_1.jpg" alt="Hand-painted swan wall clock, full view" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
-    </div>
-    <div class="workshop-photo wp-3">
-      <img src="assets/photos/clock_close.jpg" alt="Hand-painted swan clock detail close-up" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
-    </div>
-    <div class="workshop-photo wp-4">
-      <img src="assets/photos/tote_masala.jpg" alt="Hand-painted Masala tote bag" loading="lazy" style="width:100%;height:100%;object-fit:cover;" />
-    </div>
-  </div>
-</section>
 
-<!-- MATERIALS -->
-<section class="materials-section" id="materials">
-  <div class="materials-grid">
-    <div data-reveal="left">
-      <span class="section-eyebrow">Materials</span>
-      <h2 class="section-title">Plain pieces.<br><em>Painted by hand.</em></h2>
-      <p class="section-body">Every piece starts as a plain blue denim jacket, a plain canvas tote, or a plain quartz wall clock — sourced as-is and hand-painted from there. We're not a denim manufacturer; we're painters working on a ready-made surface, so what you're paying for is the design, not the construction.</p>
+    <div class="rw-card">
+      <img src="assets/photos/tote_masala.jpg" alt="Hand-painted Add some Masala tote bag — Canvas Theory" loading="lazy" />
+      <div class="rw-label">
+        <span class="rw-product">Tote Bag — M</span>
+        <span class="rw-desc">Add some Masala to your Life — typography</span>
+      </div>
     </div>
-    <div class="materials-spec" data-reveal="right" data-delay="2">
-      <div class="spec-row"><span class="spec-key">Jacket base</span><span class="spec-val">Plain blue denim, XS–XL</span></div>
-      <div class="spec-row"><span class="spec-key">Tote base</span><span class="spec-val">Plain canvas, S / M / L</span></div>
-      <div class="spec-row"><span class="spec-key">Clock base</span><span class="spec-val">Plain quartz, no glass, Small / Big</span></div>
-      <div class="spec-row"><span class="spec-key">Paint</span><span class="spec-val">Fabric-safe / surface-safe, hand-applied</span></div>
-      <div class="spec-row"><span class="spec-key">Numerals (clock)</span><span class="spec-val">Roman or plain, consistent dial</span></div>
-      <div class="spec-row"><span class="spec-key">Clock battery</span><span class="spec-val">Not included</span></div>
-    </div>
-  </div>
-</section>
 
-<!-- MEET THE MAKER -->
-<section class="maker-section" id="maker">
-  <div class="maker-inner">
-    <div class="maker-portrait" data-reveal="scale">CT</div>
-    <div data-reveal="right" data-delay="1">
-      <span class="section-eyebrow">Meet the maker</span>
-      <h2 class="section-title">One person.<br><em>Every brushstroke.</em></h2>
-      <p class="section-body">Canvas Theory is a one-person operation — every design is hand-painted by the same person who answers your messages and packs your order. No outsourcing, no factory.</p>
-      <div class="maker-name">Nishtha Gandhi</div>
-      <div class="maker-role">Founder &amp; Artist</div>
+    <div class="rw-card">
+      <img src="assets/photos/clock_full_1.jpg" alt="Hand-painted swan wall clock — Canvas Theory" loading="lazy" />
+      <div class="rw-label">
+        <span class="rw-product">Wall Clock — Big</span>
+        <span class="rw-desc">Swan lake — acrylic on quartz, Roman numerals</span>
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- CRAFTSMANSHIP -->
-<section class="craft-section" id="craft">
-  <div class="craft-header">
-    <span class="section-eyebrow" data-reveal>Craftsmanship</span>
-    <h2 class="section-title" data-reveal data-delay="1">The details<br>you'll <em>feel.</em></h2>
-  </div>
-  <div class="craft-grid">
-    <div class="craft-card" data-reveal data-delay="1">
-      <div class="craft-card-label">Freehand painting</div>
-      <div class="craft-card-detail">No stencils, no print transfers</div>
+    <div class="rw-card">
+      <img src="assets/photos/clock_close.jpg" alt="Swan wall clock detail close-up — Canvas Theory" loading="lazy" />
+      <div class="rw-label">
+        <span class="rw-product">Wall Clock — detail</span>
+        <span class="rw-desc">Swan painting close-up</span>
+      </div>
     </div>
-    <div class="craft-card" data-reveal data-delay="2">
-      <div class="craft-card-label">Progress photos</div>
-      <div class="craft-card-detail">See your piece as it's painted</div>
-    </div>
-    <div class="craft-card" data-reveal data-delay="3">
-      <div class="craft-card-label">Confirmed before painting</div>
-      <div class="craft-card-detail">We check your design idea first</div>
-    </div>
-    <div class="craft-card" data-reveal data-delay="4">
-      <div class="craft-card-label">Final inspection</div>
-      <div class="craft-card-detail">Checked under daylight before packing</div>
-    </div>
-  </div>
-</section>
 
-<!-- PHILOSOPHY -->
-<section class="philosophy-section" id="philosophy">
-  <div class="philosophy-inner">
-    <div class="philosophy-eyebrow" data-reveal>Brand philosophy</div>
-    <p class="philosophy-text" data-reveal data-delay="1">Everything is a canvas <em>if you look hard enough.</em> A jacket isn't finished fabric — it's a surface waiting for a decision. We don't sell clothing. We sell the decision.</p>
-    <div class="philosophy-cta" data-reveal data-delay="2">
-      <a href="index.html#order" class="btn-primary"><span>Start your piece</span></a>
+    <div class="rw-card">
+      <img src="assets/photos/clock_full_2.jpg" alt="Swan wall clock alternate angle — Canvas Theory" loading="lazy" />
+      <div class="rw-label">
+        <span class="rw-product">Wall Clock — Big</span>
+        <span class="rw-desc">Swan lake — alternate angle</span>
+      </div>
+    </div>
+
+    <div class="rw-card">
+      <img src="assets/photos/guitar.jpg" alt="Hand-painted Starry Night guitar — Canvas Theory" loading="lazy" />
+      <div class="rw-label">
+        <span class="rw-product">Custom Guitar</span>
+        <span class="rw-desc">Starry Night (Van Gogh) — not currently orderable</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PRODUCTS REFERENCE -->
+  <div class="gallery-products-ref">
+    <span class="section-eyebrow" style="text-align:center; display:block; margin-bottom:2rem;">What we actually make</span>
+    <div class="ref-table-wrap">
+      <table class="ref-table">
+        <tbody>
+          <tr><td class="ref-key">Jacket base</td><td class="ref-val">Plain blue denim, XS–XL</td><td class="ref-price">₹1,299</td></tr>
+          <tr><td class="ref-key">Tote base</td><td class="ref-val">Plain canvas, S / M / L</td><td class="ref-price">₹399 – ₹849</td></tr>
+          <tr><td class="ref-key">Clock base</td><td class="ref-val">Plain quartz, no glass, Small / Big</td><td class="ref-price">₹499 – ₹599</td></tr>
+          <tr><td class="ref-key">Paint</td><td class="ref-val">Fabric-safe / surface-safe, hand-applied</td><td class="ref-price">—</td></tr>
+          <tr><td class="ref-key">Numerals (clock)</td><td class="ref-val">Roman or plain, consistent dial</td><td class="ref-price">—</td></tr>
+          <tr><td class="ref-key">Clock battery</td><td class="ref-val">Not included</td><td class="ref-price">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="text-align:center; margin-top:3rem;">
+      <a href="index.html#order" class="btn-primary-dark"><span>Order a custom piece</span></a>
     </div>
   </div>
-</section>
+
+  <!-- COMING SOON -->
+  <div class="gallery-coming-soon">
+    <span class="section-eyebrow" style="color:var(--rose);">Coming soon</span>
+    <h2>50+ painted designs<br><em>to choose from.</em></h2>
+    <p>We're building out a full design catalogue — browse, pick one you like, and order it directly. Until it's live, describe your idea in your order notes and we'll paint it.</p>
+    <a href="https://www.instagram.com/crafts.by.nish/" target="_blank" rel="noopener" class="btn-outline-dark">Follow @crafts.by.nish for new drops</a>
+  </div>
+
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -547,12 +469,12 @@
     <div>
       <img src="assets/icons/logo.png" alt="Canvas Theory" style="height:52px;width:auto;filter:brightness(0) invert(1);opacity:0.9;margin-bottom:0.8rem;display:block;" />
       <div class="footer-brand-name">Canvas Theory</div>
-      <p class="footer-tagline">Hand-painted denim jackets, totes, and clocks made to order in Bangalore. Every piece is unique because you are.</p>
+      <p class="footer-tagline">Handcrafted denim jackets and tote bags made to order in Bangalore. Every piece is unique because you are.</p>
     </div>
     <div>
       <p class="footer-col-title">Navigate</p>
       <ul class="footer-links">
-        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#about">About</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="index.html#testimonials">Reviews</a></li>
         <li><a href="index.html#order">Order now</a></li>
@@ -578,6 +500,8 @@
   </div>
 </footer>
 
+<div id="toast"></div>
+
 <script>
 // ─── MOBILE NAV ───────────────────────────────
 function toggleMobileNav() {
@@ -594,18 +518,26 @@ function closeMobileNav() {
   document.body.style.overflow = '';
 }
 
-// ─── SCROLL REVEAL ────────────────────────────
+// ─── TOAST ───────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+// Scroll reveal
 const ro = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('is-visible'); ro.unobserve(e.target); }
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.08 });
 document.querySelectorAll('[data-reveal]').forEach(el => ro.observe(el));
-
 requestAnimationFrame(() => {
   document.querySelectorAll('[data-reveal]').forEach(el => {
-    const r = el.getBoundingClientRect();
-    if (r.top < window.innerHeight && r.bottom > 0) { el.classList.add('is-visible'); ro.unobserve(el); }
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add('is-visible'); ro.unobserve(el);
+    }
   });
 });
 </script>
