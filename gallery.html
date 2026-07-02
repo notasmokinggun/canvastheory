@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Design Gallery — 50+ Custom Denim Pieces | Canvas Theory</title>
-  <meta name="description" content="Browse 50+ handcrafted denim jackets, totes, and guitar projects made by Canvas Theory. Filter by wash, patch style, and category. Find your design, then order it directly." />
+  <meta name="description" content="Real hand-painted work by Canvas Theory — denim jackets, totes, and wall clocks made in Bangalore. See what we've made, then order your own." />
   <link rel="canonical" href="https://www.canvastheory.in/gallery.html" />
 
   <!-- ═══════════════════════════════════════════
@@ -69,14 +69,14 @@
     :root {
       --cream:         #FDF6F0;
       --cream-dark:    #F5EAE2;
-      --rose:          #D4818A;
-      --rose-light:    #EBB5BA;
-      --rose-pale:     #F5DADE;
-      --emerald:       #2D6A55;
-      --emerald-mid:   #4A9178;
-      --emerald-light: #A8CBBF;
-      --ink:           #1E2D27;
-      --ink-soft:      #4A5E56;
+      --rose:          #E1948A;
+      --rose-light:    #EBB8B2;
+      --rose-pale:     #F5DADA;
+      --emerald:       #445124;
+      --emerald-mid:   #6A7D3A;
+      --emerald-light: #B5C48A;
+      --ink:           #1E2D1A;
+      --ink-soft:      #4A5E42;
       --warm-white:    #FBF4EF;
       --gold:          #C9A96E;
 
@@ -122,11 +122,9 @@
       border-bottom: 1px solid rgba(45,106,85,0.12);
       transition: padding 0.4s var(--ease-apple);
     }
-    .nav-logo {
-      font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
-      color: var(--ink); letter-spacing: 0.02em; text-decoration: none;
-    }
-    .nav-logo span { color: var(--emerald); font-style: italic; }
+    .nav-logo { display:flex; align-items:center; text-decoration:none; transition:opacity 0.3s; }
+    .nav-logo:hover { opacity:0.85; }
+    .nav-logo img { height:44px; width:auto; display:block; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
       font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em;
@@ -201,163 +199,121 @@
     .gallery-sub { font-size: 1rem; line-height: 1.8; color: var(--ink-soft); }
 
     /* ════════════════════════════════════════
-       CONTROLS — search + filter chips
-    ════════════════════════════════════════ */
-    .gallery-controls {
-      max-width: 1200px; margin: 0 auto; padding: 0 4rem 2rem;
-      display: flex; flex-direction: column; gap: 1.25rem;
-      position: sticky; top: 78px; z-index: 50;
-      background: var(--cream);
-      padding-top: 1rem;
-    }
-    .search-row { display: flex; gap: 0.75rem; align-items: center; }
-    .search-input-wrap { position: relative; flex: 1; max-width: 420px; }
-    .search-input-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); opacity: 0.4; }
-    #gallerySearch {
-      width: 100%; background: var(--warm-white);
-      border: 1px solid rgba(74,94,86,0.18); border-radius: 100px;
-      padding: 0.75rem 1.1rem 0.75rem 2.6rem;
-      font-family: var(--font-body); font-size: 0.9rem; color: var(--ink);
-      outline: none; transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    #gallerySearch:focus { border-color: var(--rose); box-shadow: 0 0 0 3px rgba(212,129,138,0.15); }
-    .result-count { font-size: 0.78rem; color: var(--ink-soft); white-space: nowrap; margin-left: auto; }
-
-    .filter-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
-    .filter-group-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); margin-right: 0.4rem; }
-    .filter-chip {
-      padding: 0.45rem 1rem; border: 1.5px solid rgba(74,94,86,0.2); border-radius: 100px;
-      font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.03em;
-      color: var(--ink-soft); cursor: pointer; background: var(--cream);
-      transition: all 0.25s var(--ease-apple); user-select: none;
-    }
-    .filter-chip:hover { border-color: var(--rose); color: var(--rose); }
-    .filter-chip.active { background: var(--emerald); border-color: var(--emerald); color: var(--cream); }
-    .filter-divider { width: 1px; height: 18px; background: rgba(74,94,86,0.18); margin: 0 0.3rem; }
-
-    /* ════════════════════════════════════════
-       GALLERY GRID
+       REAL WORK GRID
     ════════════════════════════════════════ */
     .gallery-wrap { max-width: 1200px; margin: 0 auto; padding: 1rem 4rem 7rem; }
-    .gallery-grid {
+
+    .real-work-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 1rem;
+      margin-bottom: 5rem;
     }
-    .gcard {
-      perspective: 1400px;
-      transition: opacity 0.35s var(--ease-apple), transform 0.35s var(--ease-apple);
-    }
-    .gcard.hidden-item { display: none; }
-    .gcard-inner {
-      position: relative; width: 100%; aspect-ratio: 3/4;
-      transform-style: preserve-3d;
-      transition: transform 0.7s var(--ease-expo);
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .gcard:hover .gcard-inner { transform: rotateY(180deg); }
 
-    .gcard-face {
-      position: absolute; inset: 0; backface-visibility: hidden;
-      border-radius: 6px; overflow: hidden;
-      border: 1px solid rgba(45,106,85,0.12);
+    .rw-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
       background: var(--cream-dark);
-      display: flex; flex-direction: column;
+      cursor: default;
     }
-    .gcard-face.back { transform: rotateY(180deg); background: var(--warm-white); }
+    .rw-card--tall {
+      grid-row: span 2;
+    }
+    .rw-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s var(--ease-apple);
+      min-height: 260px;
+    }
+    .rw-card--tall img { min-height: 540px; object-position: center top; }
+    .rw-card:hover img { transform: scale(1.04); }
 
-    .gcard-visual {
-      flex: 1; display: flex; align-items: center; justify-content: center;
-      font-size: 3.4rem; position: relative;
-      background:
-        repeating-linear-gradient(90deg, rgba(45,106,85,0.07) 0px, rgba(45,106,85,0.07) 1px, transparent 1px, transparent 16px),
-        repeating-linear-gradient(0deg, rgba(45,106,85,0.05) 0px, rgba(45,106,85,0.05) 1px, transparent 1px, transparent 16px);
+    .rw-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.8rem 1.2rem 1.2rem;
+      background: linear-gradient(to top, rgba(30,45,26,0.82) 0%, transparent 100%);
+      display: flex; flex-direction: column; gap: 0.2rem;
     }
-    .gcard-face.back .gcard-visual {
-      background:
-        repeating-linear-gradient(90deg, rgba(212,129,138,0.06) 0px, rgba(212,129,138,0.06) 1px, transparent 1px, transparent 16px),
-        repeating-linear-gradient(0deg, rgba(212,129,138,0.04) 0px, rgba(212,129,138,0.04) 1px, transparent 1px, transparent 16px);
+    .rw-product {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--rose-light); font-family: var(--font-body);
     }
-    .gcard-back-label {
-      position: absolute; top: 10px; left: 10px;
-      font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--rose); background: rgba(253,246,240,0.85);
-      padding: 0.25rem 0.6rem; border-radius: 100px;
-    }
-
-    .gcard-info { padding: 1rem 1.1rem 1.1rem; }
-    .gcard-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--ink); margin-bottom: 0.2rem; }
-    .gcard-meta { font-size: 0.74rem; color: var(--ink-soft); letter-spacing: 0.02em; }
-    .gcard-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.6rem; }
-    .gcard-tag {
-      font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--emerald); background: rgba(45,106,85,0.08);
-      padding: 0.18rem 0.5rem; border-radius: 100px;
+    .rw-desc {
+      font-family: var(--font-display); font-size: 1rem; font-weight: 400;
+      color: var(--cream); line-height: 1.3;
     }
 
-    .gcard-actions {
-      position: absolute; top: 10px; right: 10px; z-index: 5;
-      display: flex; gap: 0.4rem;
+    /* ════════════════════════════════════════
+       PRODUCTS REFERENCE TABLE
+    ════════════════════════════════════════ */
+    .gallery-products-ref {
+      padding: 4rem 0 5rem;
+      border-top: 1px solid rgba(68,81,36,0.12);
     }
-    .gcard-action-btn {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: rgba(253,246,240,0.92); border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.95rem; transition: transform 0.25s var(--ease-spring), background 0.25s;
-      backdrop-filter: blur(4px);
+    .ref-table-wrap { max-width: 700px; margin: 0 auto; }
+    .ref-table { width: 100%; border-collapse: collapse; }
+    .ref-table tr {
+      border-bottom: 1px solid rgba(68,81,36,0.1);
     }
-    .gcard-action-btn:hover { transform: scale(1.12); background: var(--cream); }
-    .gcard-action-btn.favorited { color: var(--rose); }
-    .gcard-action-btn.favorited svg { fill: var(--rose); }
+    .ref-table tr:last-child { border-bottom: none; }
+    .ref-table td { padding: 1rem 0.5rem; font-size: 0.9rem; vertical-align: top; }
+    .ref-key {
+      color: var(--ink-soft); width: 38%;
+      font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .ref-val { color: var(--ink); width: 42%; }
+    .ref-price {
+      color: var(--rose); font-family: var(--font-display);
+      font-size: 1rem; text-align: right; white-space: nowrap;
+    }
 
-    .gcard-order-btn {
-      width: 100%; padding: 0.7rem; margin-top: 0.7rem;
-      background: var(--emerald); color: var(--cream); border: none; border-radius: 3px;
-      font-family: var(--font-body); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase;
-      cursor: pointer; transition: background 0.3s, transform 0.2s;
+    .btn-primary-dark {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 1rem 2.4rem;
+      background: var(--emerald); color: var(--cream);
+      border: none; border-radius: 2px; cursor: pointer;
+      font-family: var(--font-body); font-size: 0.78rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s var(--ease-apple);
     }
-    .gcard-order-btn:hover { background: var(--rose); transform: translateY(-2px); }
+    .btn-primary-dark:hover { background: var(--rose); transform: translateY(-2px); }
 
-    .gcard-back-actions { display: flex; gap: 0.5rem; padding: 0 1.1rem; }
-    .gcard-back-btn {
-      flex: 1; padding: 0.5rem; background: transparent;
-      border: 1.5px solid rgba(74,94,86,0.25); border-radius: 3px;
-      font-family: var(--font-body); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--ink-soft); cursor: pointer; transition: all 0.25s;
-    }
-    .gcard-back-btn:hover { border-color: var(--emerald); color: var(--emerald); }
-
-    .empty-state {
-      text-align: center; padding: 5rem 2rem; color: var(--ink-soft);
-      display: none;
-    }
-    .empty-state.show { display: block; }
-    .empty-state-icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.4; }
-    .empty-state h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; color: var(--ink); margin-bottom: 0.5rem; }
-
-    .load-more-row { text-align: center; margin-top: 3rem; }
     .btn-outline-dark {
-      background: transparent; color: var(--ink); border: 1.5px solid rgba(45,106,85,0.3);
-      padding: 0.9rem 2.4rem; font-family: var(--font-body); font-size: 0.78rem;
+      display: inline-flex; align-items: center;
+      background: transparent; color: var(--ink);
+      border: 1.5px solid rgba(68,81,36,0.3);
+      padding: 0.9rem 2.4rem;
+      font-family: var(--font-body); font-size: 0.78rem;
       letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
-      border-radius: 2px; transition: all 0.35s var(--ease-expo);
+      border-radius: 2px; text-decoration: none;
+      transition: all 0.3s var(--ease-apple);
     }
     .btn-outline-dark:hover { background: var(--emerald); border-color: var(--emerald); color: var(--cream); }
 
     /* ════════════════════════════════════════
-       TOAST
+       COMING SOON
     ════════════════════════════════════════ */
-    #toast {
-      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(120%);
-      background: var(--ink); color: var(--cream); padding: 0.9rem 1.8rem;
-      border-radius: 100px; font-size: 0.85rem; z-index: 999;
-      transition: transform 0.5s var(--ease-expo); box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+    .gallery-coming-soon {
+      text-align: center;
+      padding: 5rem 2rem;
+      border-top: 1px solid rgba(68,81,36,0.12);
     }
-    #toast.show { transform: translateX(-50%) translateY(0); }
+    .gallery-coming-soon h2 {
+      font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 300; margin: 1rem 0 1.5rem; line-height: 1.2;
+    }
+    .gallery-coming-soon h2 em { font-style: italic; color: var(--rose); }
+    .gallery-coming-soon p {
+      font-size: 0.95rem; color: var(--ink-soft); max-width: 500px;
+      margin: 0 auto 2.5rem; line-height: 1.7;
+    }
 
     /* ════════════════════════════════════════
-       FOOTER — identical to index.html
+       FOOTER
     ════════════════════════════════════════ */
     footer { background: var(--ink); color: var(--cream); padding: 4rem 4rem 2.5rem; }
     .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:4rem; max-width:1100px; margin:0 auto 3rem; }
@@ -368,7 +324,7 @@
     .footer-links li { margin-bottom:0.6rem; }
     .footer-links a { font-size:0.88rem; color:rgba(253,246,240,0.45); text-decoration:none; transition:color 0.3s; }
     .footer-links a:hover { color:var(--cream); }
-    .footer-bottom { border-top:1px solid rgba(253,246,240,0.08); padding-top:2rem; display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom { border-top:1px solid rgba(253,246,240,0.08); padding-top:2rem; display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; flex-wrap:wrap; gap:1rem; }
     .footer-copy { font-size:0.78rem; color:rgba(253,246,240,0.3); }
     .footer-legal { display:flex; gap:1.5rem; }
     .footer-legal a { font-size:0.78rem; color:rgba(253,246,240,0.3); text-decoration:none; transition:color 0.3s; }
@@ -376,10 +332,15 @@
 
     @media (max-width: 880px) {
       .gallery-hero { padding: 8rem 1.5rem 2rem; }
-      .gallery-controls { padding: 1rem 1.5rem 1.5rem; top: 70px; }
       .gallery-wrap { padding: 1rem 1.5rem 5rem; }
-      .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.85rem; }
-      .result-count { display: none; }
+      .real-work-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+      .rw-card--tall { grid-row: span 1; }
+      .rw-card--tall img { min-height: 260px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 500px) {
+      .real-work-grid { grid-template-columns: 1fr; }
+    }
       footer { padding: 3rem 1.5rem 2rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
@@ -388,7 +349,7 @@
 <body>
 
 <nav id="main-nav">
-  <a href="index.html" class="nav-logo">Canvas <span>Theory</span></a>
+  <a href="index.html" class="nav-logo" aria-label="Canvas Theory"><img src="assets/icons/logo.png" alt="Canvas Theory" /></a>
   <ul class="nav-links">
     <li><a href="index.html#about">About</a></li>
     <li><a href="index.html#products">Products</a></li>
@@ -413,55 +374,100 @@
 
 <!-- HERO -->
 <div class="gallery-hero">
-  <span class="section-eyebrow" data-reveal>Design gallery</span>
-  <h1 class="gallery-title" data-reveal data-delay="1">Find your piece.<br><em>Or your starting point.</em></h1>
-  <p class="gallery-sub" data-reveal data-delay="2">Every design here has already been made once. Favorite the ones you love, filter by what matters to you, then order it directly — or use it as a starting point in the Customization Studio.</p>
+  <span class="section-eyebrow" data-reveal>Our work</span>
+  <h1 class="gallery-title" data-reveal data-delay="1">Real pieces.<br><em>Already made.</em></h1>
+  <p class="gallery-sub" data-reveal data-delay="2">Every photo here is a real hand-painted piece. A full design catalogue (50+ options) is coming soon — until then, describe what you want in your order notes and we'll paint it.</p>
 </div>
 
-<!-- CONTROLS -->
-<div class="gallery-controls" data-reveal data-delay="2">
-  <div class="search-row">
-    <div class="search-input-wrap">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      <input type="text" id="gallerySearch" placeholder="Search by name, wash, or detail…" autocomplete="off" />
-    </div>
-    <span class="result-count" id="resultCount">54 designs</span>
-  </div>
-  <div class="filter-row">
-    <span class="filter-group-label">Category</span>
-    <button class="filter-chip active" data-filter-type="category" data-filter-val="all">All</button>
-    <button class="filter-chip" data-filter-type="category" data-filter-val="jacket">Jackets</button>
-    <button class="filter-chip" data-filter-type="category" data-filter-val="tote">Totes</button>
-    <button class="filter-chip" data-filter-type="category" data-filter-val="guitar">Guitar Projects</button>
-    <div class="filter-divider"></div>
-    <span class="filter-group-label">Wash</span>
-    <button class="filter-chip active" data-filter-type="wash" data-filter-val="all">All</button>
-    <button class="filter-chip" data-filter-type="wash" data-filter-val="raw">Raw</button>
-    <button class="filter-chip" data-filter-type="wash" data-filter-val="mid">Mid</button>
-    <button class="filter-chip" data-filter-type="wash" data-filter-val="light">Light</button>
-    <button class="filter-chip" data-filter-type="wash" data-filter-val="black">Black</button>
-    <div class="filter-divider"></div>
-    <button class="filter-chip" id="favoritesOnlyBtn" data-filter-type="favorites">★ Favorites</button>
-  </div>
-</div>
-
-<!-- GALLERY -->
+<!-- REAL WORK GRID -->
 <div class="gallery-wrap">
-  <div class="gallery-grid" id="galleryGrid"></div>
-  <div class="empty-state" id="emptyState">
-    <div class="empty-state-icon">⌬</div>
-    <h3>Nothing matches yet</h3>
-    <p>Try a different filter, or clear your search.</p>
+  <div class="real-work-grid">
+
+    <div class="rw-card rw-card--tall">
+      <img src="assets/photos/jacket.jpg" alt="Hand-painted Spider-Man denim jacket — Canvas Theory" loading="lazy" />
+      <div class="rw-label">
+        <span class="rw-product">Denim Jacket</span>
+        <span class="rw-desc">Spider-Man comic panel — freehand, full back</span>
+      </div>
+    </div>
+
+    <div class="rw-card">
+      <img src="assets/photos/tote_masala.jpg" alt="Hand-painted Add some Masala tote bag — Canvas Theory" loading="lazy" />
+      <div class="rw-label">
+        <span class="rw-product">Tote Bag — M</span>
+        <span class="rw-desc">Add some Masala to your Life — typography</span>
+      </div>
+    </div>
+
+    <div class="rw-card">
+      <img src="assets/photos/clock_full_1.jpg" alt="Hand-painted swan wall clock — Canvas Theory" loading="lazy" />
+      <div class="rw-label">
+        <span class="rw-product">Wall Clock — Big</span>
+        <span class="rw-desc">Swan lake — acrylic on quartz, Roman numerals</span>
+      </div>
+    </div>
+
+    <div class="rw-card">
+      <img src="assets/photos/clock_close.jpg" alt="Swan wall clock detail close-up — Canvas Theory" loading="lazy" />
+      <div class="rw-label">
+        <span class="rw-product">Wall Clock — detail</span>
+        <span class="rw-desc">Swan painting close-up</span>
+      </div>
+    </div>
+
+    <div class="rw-card">
+      <img src="assets/photos/clock_full_2.jpg" alt="Swan wall clock alternate angle — Canvas Theory" loading="lazy" />
+      <div class="rw-label">
+        <span class="rw-product">Wall Clock — Big</span>
+        <span class="rw-desc">Swan lake — alternate angle</span>
+      </div>
+    </div>
+
+    <div class="rw-card">
+      <img src="assets/photos/guitar.jpg" alt="Hand-painted Starry Night guitar — Canvas Theory" loading="lazy" />
+      <div class="rw-label">
+        <span class="rw-product">Custom Guitar</span>
+        <span class="rw-desc">Starry Night (Van Gogh) — not currently orderable</span>
+      </div>
+    </div>
+
   </div>
-  <div class="load-more-row" id="loadMoreRow" style="display:none;">
-    <button class="btn-outline-dark" id="loadMoreBtn">Load more designs</button>
+
+  <!-- PRODUCTS REFERENCE -->
+  <div class="gallery-products-ref">
+    <span class="section-eyebrow" style="text-align:center; display:block; margin-bottom:2rem;">What we actually make</span>
+    <div class="ref-table-wrap">
+      <table class="ref-table">
+        <tbody>
+          <tr><td class="ref-key">Jacket base</td><td class="ref-val">Plain blue denim, XS–XL</td><td class="ref-price">₹1,299</td></tr>
+          <tr><td class="ref-key">Tote base</td><td class="ref-val">Plain canvas, S / M / L</td><td class="ref-price">₹399 – ₹849</td></tr>
+          <tr><td class="ref-key">Clock base</td><td class="ref-val">Plain quartz, no glass, Small / Big</td><td class="ref-price">₹499 – ₹599</td></tr>
+          <tr><td class="ref-key">Paint</td><td class="ref-val">Fabric-safe / surface-safe, hand-applied</td><td class="ref-price">—</td></tr>
+          <tr><td class="ref-key">Numerals (clock)</td><td class="ref-val">Roman or plain, consistent dial</td><td class="ref-price">—</td></tr>
+          <tr><td class="ref-key">Clock battery</td><td class="ref-val">Not included</td><td class="ref-price">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="text-align:center; margin-top:3rem;">
+      <a href="index.html#order" class="btn-primary-dark"><span>Order a custom piece</span></a>
+    </div>
   </div>
+
+  <!-- COMING SOON -->
+  <div class="gallery-coming-soon">
+    <span class="section-eyebrow" style="color:var(--rose);">Coming soon</span>
+    <h2>50+ painted designs<br><em>to choose from.</em></h2>
+    <p>We're building out a full design catalogue — browse, pick one you like, and order it directly. Until it's live, describe your idea in your order notes and we'll paint it.</p>
+    <a href="https://www.instagram.com/crafts.by.nish/" target="_blank" rel="noopener" class="btn-outline-dark">Follow @crafts.by.nish for new drops</a>
+  </div>
+
 </div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div>
+      <img src="assets/icons/logo.png" alt="Canvas Theory" style="height:52px;width:auto;filter:brightness(0) invert(1);opacity:0.9;margin-bottom:0.8rem;display:block;" />
       <div class="footer-brand-name">Canvas Theory</div>
       <p class="footer-tagline">Handcrafted denim jackets and tote bags made to order in Bangalore. Every piece is unique because you are.</p>
     </div>
@@ -480,7 +486,7 @@
         <li><a href="privacy-policy.html">Privacy Policy</a></li>
         <li><a href="terms.html">Terms of Service</a></li>
         <li><a href="refund.html">Refund Policy</a></li>
-        <li><a href="https://instagram.com/canvastheory" target="_blank" rel="noopener">Instagram ↗</a></li>
+        <li><a href="https://www.instagram.com/crafts.by.nish/" target="_blank" rel="noopener">Instagram ↗</a></li>
       </ul>
     </div>
   </div>
@@ -520,262 +526,20 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2600);
 }
 
-// ─── DESIGN DATA ──────────────────────────────
-// In production this array is replaced by a Firestore query against the
-// `gallery` collection (see Firebase Backend section of the strategy doc).
-// front_emoji/back_emoji are placeholders — swap for front_image/back_image
-// Storage URLs when real product photography is ready.
-const JACKET_NAMES = [
-  'Midnight Garden','Static Bloom','Quiet Riot','Tide Pool','Velvet Static',
-  'Paper Moon','Iron Orchid','Slow Burn','Echo Chamber','Loose Thread',
-  'Saltwater','Afterglow','Concrete Bloom','Northbound','Heat Mirage',
-  'Dust & Gold','Wildflower Static','Low Tide','Amber Hour','Tin Roof',
-  'Faded Polaroid','Lemon Static','Smoke Signal','Frayed Edge','Last Light',
-  'Coastal Drift','Static Rose','Bone Yard','Honeycomb','Riverbed',
-  'Crosswind','Salt & Indigo','Dusty Trail','Late Bloomer','Pale Fire',
-  'Open Road','Marble Static','Wild Grass','Long Shadow','Indigo Static',
-  'Driftwood','Static Garden','Foxfire','Slow Light','Quiet Static',
-  'Threadbare Sun','Static Moth','Hollow Bloom','Embered','Loose Static'
-];
-const TOTE_NAMES = ['Sunflower Carry','Field Notes','Daily Static','Market Run','Loose Leaf'];
-const GUITAR_NAMES = ['Stratocaster Static','Les Paul Bloom'];
-
-const WASHES = ['raw','mid','light','black'];
-const WASH_LABEL = { raw: 'Raw indigo', mid: 'Mid wash', light: 'Light wash', black: 'Black denim' };
-const JACKET_EMOJI = ['🧥'];
-const TOTE_EMOJI = ['👜'];
-const GUITAR_EMOJI = ['🎸'];
-const TAGS_POOL = ['embroidery','floral','geometric','custom text','vintage badge','minimal'];
-
-function buildDesigns() {
-  const designs = [];
-  let id = 1;
-  JACKET_NAMES.forEach((name, i) => {
-    designs.push({
-      id: id++, name, category: 'jacket',
-      wash: WASHES[i % WASHES.length],
-      emoji: JACKET_EMOJI[0],
-      tags: [TAGS_POOL[i % TAGS_POOL.length], TAGS_POOL[(i + 2) % TAGS_POOL.length]],
-      price: 2499 + (i % 4) * 350,
-    });
-  });
-  TOTE_NAMES.forEach((name, i) => {
-    designs.push({
-      id: id++, name, category: 'tote',
-      wash: WASHES[i % WASHES.length],
-      emoji: TOTE_EMOJI[0],
-      tags: [TAGS_POOL[i % TAGS_POOL.length]],
-      price: 899 + (i % 3) * 200,
-    });
-  });
-  GUITAR_NAMES.forEach((name, i) => {
-    designs.push({
-      id: id++, name, category: 'guitar',
-      wash: WASHES[i % WASHES.length],
-      emoji: GUITAR_EMOJI[0],
-      tags: ['embroidery', 'custom text'],
-      price: 3199 + i * 400,
-    });
-  });
-  return designs;
-}
-
-const ALL_DESIGNS = buildDesigns();
-const PAGE_SIZE = 12;
-
-let state = {
-  category: 'all',
-  wash: 'all',
-  favoritesOnly: false,
-  query: '',
-  visibleCount: PAGE_SIZE,
-};
-
-// Favorites persist for the session only — wire to Firestore wishlist
-// (see users.wishlist schema) once Firebase Auth is integrated.
-let favorites = new Set();
-
-function getFiltered() {
-  return ALL_DESIGNS.filter(d => {
-    if (state.category !== 'all' && d.category !== state.category) return false;
-    if (state.wash !== 'all' && d.wash !== state.wash) return false;
-    if (state.favoritesOnly && !favorites.has(d.id)) return false;
-    if (state.query) {
-      const q = state.query.toLowerCase();
-      const hay = (d.name + ' ' + d.category + ' ' + d.wash + ' ' + d.tags.join(' ')).toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
-    return true;
-  });
-}
-
-function categoryLabel(cat) {
-  return cat === 'jacket' ? 'Jacket' : cat === 'tote' ? 'Tote bag' : 'Guitar project';
-}
-
-function renderCard(d) {
-  const isFav = favorites.has(d.id);
-  return `
-    <div class="gcard" data-id="${d.id}">
-      <div class="gcard-actions">
-        <button class="gcard-action-btn ${isFav ? 'favorited' : ''}" title="Favorite" onclick="toggleFavorite(event, ${d.id})">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </button>
-        <button class="gcard-action-btn" title="Share" onclick="shareDesign(event, ${d.id})">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-        </button>
-      </div>
-      <div class="gcard-inner">
-        <div class="gcard-face front">
-          <div class="gcard-visual">${d.emoji}</div>
-          <div class="gcard-info">
-            <div class="gcard-name">${d.name}</div>
-            <div class="gcard-meta">${categoryLabel(d.category)} · ${WASH_LABEL[d.wash]}</div>
-            <div class="gcard-tags">${d.tags.map(t => `<span class="gcard-tag">${t}</span>`).join('')}</div>
-          </div>
-        </div>
-        <div class="gcard-face back">
-          <span class="gcard-back-label">Back view</span>
-          <div class="gcard-visual">${d.emoji}</div>
-          <div class="gcard-info" style="padding-bottom:0.5rem;">
-            <div class="gcard-name">₹${d.price.toLocaleString('en-IN')} <span style="font-size:0.7rem;color:var(--ink-soft);font-family:var(--font-body);">onwards</span></div>
-          </div>
-          <div class="gcard-back-actions">
-            <button class="gcard-back-btn" onclick="duplicateDesign(event, ${d.id})">Duplicate</button>
-            <button class="gcard-back-btn" onclick="saveDesign(event, ${d.id})">Save</button>
-          </div>
-          <div style="padding:0.7rem 1.1rem 1.1rem;">
-            <button class="gcard-order-btn" onclick="orderDesign(event, ${d.id})">Order this design</button>
-          </div>
-        </div>
-      </div>
-    </div>`;
-}
-
-function render() {
-  const filtered = getFiltered();
-  const grid = document.getElementById('galleryGrid');
-  const empty = document.getElementById('emptyState');
-  const loadMoreRow = document.getElementById('loadMoreRow');
-  const visible = filtered.slice(0, state.visibleCount);
-
-  document.getElementById('resultCount').textContent =
-    filtered.length + (filtered.length === 1 ? ' design' : ' designs');
-
-  if (filtered.length === 0) {
-    grid.innerHTML = '';
-    empty.classList.add('show');
-    loadMoreRow.style.display = 'none';
-    return;
-  }
-  empty.classList.remove('show');
-  grid.innerHTML = visible.map(renderCard).join('');
-  loadMoreRow.style.display = filtered.length > visible.length ? 'block' : 'none';
-
-  // Re-trigger reveal for newly added cards
-  requestAnimationFrame(() => {
-    document.querySelectorAll('.gcard').forEach((el, i) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(16px)';
-      el.style.transition = `opacity 0.5s var(--ease-expo) ${Math.min(i * 0.03, 0.3)}s, transform 0.5s var(--ease-expo) ${Math.min(i * 0.03, 0.3)}s`;
-      requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'none'; });
-    });
-  });
-}
-
-// ─── ACTIONS ──────────────────────────────────
-function toggleFavorite(e, id) {
-  e.stopPropagation();
-  if (favorites.has(id)) { favorites.delete(id); showToast('Removed from favorites'); }
-  else { favorites.add(id); showToast('★ Added to favorites'); }
-  render();
-}
-function shareDesign(e, id) {
-  e.stopPropagation();
-  const d = ALL_DESIGNS.find(x => x.id === id);
-  const url = `${location.origin}${location.pathname.replace('gallery.html','')}gallery.html?design=${id}`;
-  if (navigator.share) {
-    navigator.share({ title: `${d.name} — Canvas Theory`, url }).catch(() => {});
-  } else if (navigator.clipboard) {
-    navigator.clipboard.writeText(url);
-    showToast('Link copied');
-  } else {
-    showToast('Share: ' + url);
-  }
-}
-function duplicateDesign(e, id) {
-  e.stopPropagation();
-  // In production: clones this design's specs into a new Customization
-  // Studio draft (see drafts collection) and redirects to customize.html?from=<draftId>
-  showToast('Opening in Customization Studio…');
-}
-function saveDesign(e, id) {
-  e.stopPropagation();
-  // In production: writes to users.wishlist via Firestore (requires Firebase Auth)
-  showToast('Saved to your wishlist');
-}
-function orderDesign(e, id) {
-  e.stopPropagation();
-  const d = ALL_DESIGNS.find(x => x.id === id);
-  // Pre-fills the order form on index.html with this design's specs via query params
-  window.location.href = `index.html?prefill_product=${d.category}&prefill_wash=${d.wash}&prefill_name=${encodeURIComponent(d.name)}#order`;
-}
-
-// ─── FILTER WIRING ────────────────────────────
-document.querySelectorAll('.filter-chip[data-filter-type="category"]').forEach(chip => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('.filter-chip[data-filter-type="category"]').forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    state.category = chip.dataset.filterVal;
-    state.visibleCount = PAGE_SIZE;
-    render();
-  });
-});
-document.querySelectorAll('.filter-chip[data-filter-type="wash"]').forEach(chip => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('.filter-chip[data-filter-type="wash"]').forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    state.wash = chip.dataset.filterVal;
-    state.visibleCount = PAGE_SIZE;
-    render();
-  });
-});
-document.getElementById('favoritesOnlyBtn').addEventListener('click', function() {
-  state.favoritesOnly = !state.favoritesOnly;
-  this.classList.toggle('active', state.favoritesOnly);
-  state.visibleCount = PAGE_SIZE;
-  render();
-});
-let searchDebounce;
-document.getElementById('gallerySearch').addEventListener('input', (e) => {
-  clearTimeout(searchDebounce);
-  searchDebounce = setTimeout(() => {
-    state.query = e.target.value.trim();
-    state.visibleCount = PAGE_SIZE;
-    render();
-  }, 150);
-});
-document.getElementById('loadMoreBtn').addEventListener('click', () => {
-  state.visibleCount += PAGE_SIZE;
-  render();
-});
-
-// ─── SCROLL REVEAL (hero + controls only — cards handle their own) ──
+// Scroll reveal
 const ro = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('is-visible'); ro.unobserve(e.target); }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 document.querySelectorAll('[data-reveal]').forEach(el => ro.observe(el));
 requestAnimationFrame(() => {
   document.querySelectorAll('[data-reveal]').forEach(el => {
-    const r = el.getBoundingClientRect();
-    if (r.top < window.innerHeight) { el.classList.add('is-visible'); ro.unobserve(el); }
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add('is-visible'); ro.unobserve(el);
+    }
   });
 });
-
-// ─── INITIAL RENDER ───────────────────────────
-render();
 </script>
 </body>
 </html>
